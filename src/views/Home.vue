@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld msg="메인 페이지 개발을 시작합니다."/>
   </div>
 </template>
 
@@ -16,3 +16,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  @media(max-width:900px){
+    .home{
+      padding-top:80px;
+    }
+  }
+</style>
