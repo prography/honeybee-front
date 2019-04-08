@@ -1,6 +1,5 @@
 <template>
   <div class="Intro">
-    intro
     <div class="img-drop">
       intro
     </div>
@@ -10,7 +9,6 @@
 <script>
 export default {
   name: 'Intro',
-
 }
 </script>
 
