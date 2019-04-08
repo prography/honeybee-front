@@ -23,7 +23,7 @@
     color:#444020;
   }
 
-  @media(max-width:900px){
+  @media(max-width:480px){
     button{
       margin:0;
       padding:20px;

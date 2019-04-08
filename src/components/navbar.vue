@@ -49,7 +49,8 @@ export default{
     justify-content: space-between;
     width:100%;
     height:80px;
-    background-color: #f9f9f8;
+    background-color: transparent;
+    z-index:-1;
   }
 
   .navbar-logo,
