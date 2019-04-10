@@ -23,8 +23,7 @@ export default {
     padding-top:120px;
     padding-left:20px;
     padding-right:20px;
-    border:1px solid red;
-    background-color:yellow;
+    background-color:white;
   }
 
   img{

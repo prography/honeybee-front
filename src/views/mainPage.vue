@@ -1,7 +1,7 @@
 <template>
   <div class="mainPage">
     <Intro/>
-    <Gallery/>
+    <!-- <Gallery/> -->
   </div>
 </template>
 
