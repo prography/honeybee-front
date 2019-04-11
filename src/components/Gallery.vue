@@ -1,7 +1,8 @@
 <template>
     <section>
-        <div id="gallery_border">
-            <img class="images" v-for="myImage in myImages" :src="myImage" alt="img">
+        <div id="gallery_border" v-for="myImage in myImages">
+            <img class="images" :src="myImage" alt="img">
+            <div class="info"></div>
         </div>
     </section>
 </template>
@@ -42,16 +43,25 @@
         padding: 5px;
         flex-grow: 1;
         margin: 3px;
-        width: 100%;
+
     }
 
     .images {
         max-height: 250px;
         min-height: 200px;
         max-width: 100%;
-        margin: 5px;
         flex-grow: 1;
+        margin: 5px;
         object-fit: cover;
+    }
+
+    .info {
+        position: relative;
+        width: 100%;
+        height: 45px;
+        background-color: lightgray;
+        bottom: 53px;
+        opacity: 0.3;
     }
 
 </style>
