@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div id="gallery_border" v-for="myImage in myImages">
+        <div id="gallery_border" :key="myImage" v-for="myImage in myImages">
             <img class="images" :src="myImage" alt="img">
             <div class="info"></div>
         </div>
@@ -8,17 +8,16 @@
 </template>
 
 <script>
-    import img1 from '@/img/img1.jpg'
-    import img2 from '@/img/img2.jpg'
-    import img3 from '@/img/img3.jpg'
-    import img4 from '@/img/img4.jpg'
-    import img5 from '@/img/img5.jpg'
-    import img6 from '@/img/img6.jpg'
+    import img1 from '@/assets/img1.jpg'
+    import img2 from '@/assets/img2.jpg'
+    import img3 from '@/assets/img3.jpg'
+    import img4 from '@/assets/img4.jpg'
+    import img5 from '@/assets/img5.jpg'
 
     export default {
         name: "Gallery",
         data: function () {
-            const myImages = [ img1,img2,img3,img4,img5,img6 ];
+            const myImages = [ img1,img2,img3,img4,img5 ];
             return {
                 myImages
             }
@@ -36,6 +35,7 @@
     section {
         display: flex;
         flex-wrap: wrap;
+        margin-top: 100px;
     }
 
     #gallery_border {
