@@ -4,7 +4,7 @@
     <img src="../assets/navbar-logo.png">
   </div>
   <div class="navbar-buttons">
-    <navbarButton v-for="item in items" :key="item.id" :buttonText="item.name"/>
+    <navbarButton v-for="item in items" :key="item.id" :buttonText="item.name" :page="item.path"/>
   </div>
   <div @click="open()" class="mobile-navbar">
     <span class="bar"></span>
@@ -16,7 +16,7 @@
 
 
 <script>
-import navbarButton from './navbarButton.vue'
+import navbarButton from './NavbarButton.vue'
 
 export default{
   name :'navbar',
@@ -31,10 +31,10 @@ export default{
   },
   data(){
     const items=[
-      {name:'CONTACT US'},
-      {name:'ABOUT'},
-      {name:'SIGN UP'},
-      {name:'SIGN IN'},
+      {name:'HOME', path:'/'},
+      {name:'ABOUT', path:'/'},
+      {name:'SIGN UP', path:'/sign_up'},
+      {name:'SIGN IN', path:'/sign_in'},
     ];
     return{
       items
