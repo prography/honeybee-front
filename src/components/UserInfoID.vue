@@ -1,7 +1,7 @@
 <template>
   <div class="user">
-    <img v-if="basicIMG" class="profile_img" src="../assets/img5.jpg">
-    
+    <img v-if="user_img" class="profile_img" src="../assets/img5.jpg">
+    <default_img v-else/>
     <div class="profile">
       <div class="profile_info profile_name">{Name}</div>
       <div class="profile_info profile_id">{ID}</div>
@@ -13,17 +13,16 @@
 
 
 <script>
-import user_img from "./UserImg.vue"
-import default_imgn from "./UserImg.vue"
+import default_img from "./UserDefaultImg.vue"
 
 export default {
   name:"user-info-id",
   components:{
-    user_img,
+    default_img,
   },
   data(){
     return{
-      basicIMG:true
+      user_img:false
     }
   }
   

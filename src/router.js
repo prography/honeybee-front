@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import SignUp from './views/SignUp.vue'
 import SignIn from './views/SignIn.vue'
 import UserPage from './views/UserPage.vue'
+import UserInfoChange from './views/UserInfoChange.vue'
 
 Vue.use(Router)
 
@@ -36,6 +37,11 @@ export default new Router({
       path:'/user_page',
       name:'user_page',
       component:UserPage
+    },
+    {
+      path:'/user_info_change',
+      name:'user_inf_change',
+      component:UserInfoChange
     }
 
   ]
