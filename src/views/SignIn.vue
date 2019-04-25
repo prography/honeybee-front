@@ -15,6 +15,10 @@
       <!-- modal로 warning을 줄 것인가? 아니면 txt를 띄울 것인가 -->
     </div>
     <button @click="signIn()">Sign In</button>
+    <button>
+      <!-- <img src="../assets/google_logo.png"> -->
+      Google Sign In
+    </button>
   </div>
 </template>
 

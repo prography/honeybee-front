@@ -4,7 +4,7 @@
       <user/>
     </div>
     <div class="profile_change_button">
-      <router-link to="/" tag="button">정보수정</router-link>
+      <router-link to="/user_info_change" tag="button">Edit Info</router-link>
     </div>
     <div class="total">
       <total/>
