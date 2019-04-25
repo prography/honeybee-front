@@ -27,8 +27,11 @@ export default {
 
 
 <style lang="scss">
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
 body{
   margin:0;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 #app {
   position: relative;

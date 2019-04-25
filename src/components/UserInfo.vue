@@ -30,7 +30,7 @@ export default {
 <style scoped>
 .user_info{
   display:flex;
-  padding-top:80px;
+  padding-top:100px;
   padding-left:30px;
   padding-right:30px;
   height:320px;

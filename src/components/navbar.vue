@@ -48,7 +48,7 @@ export default{
     display:flex;
     justify-content: space-between;
     width:100%;
-    height:80px;
+    height:100px;
     background-color: transparent;
     z-index:-1;
   }
@@ -69,9 +69,9 @@ export default{
   }
 
   img{
-    width:160px;
-    height:50px;
-    margin:10px;
+    width:320px;
+    height:100px;
+    margin-left:30px;
   }
 
   .mobile-navbar{
@@ -81,13 +81,14 @@ export default{
   @media(max-width:480px){
 
     .navbar{
-      position:fixed;
+      position:absolute;
     }
 
     .navbar-buttons{
       flex-direction: column;
       position:fixed;
-      top:80px;
+      /* top:80px; */
+      padding-top:100px;
       padding-bottom:100vh;
       width:100%;
       background-color:#f9f9f8;
