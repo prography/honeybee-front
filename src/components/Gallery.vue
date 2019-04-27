@@ -1,8 +1,8 @@
 <template>
     <section>
-        <div id="gallery_border" :key="myImage" v-for="myImage in myImages">
-            <img class="images" :src="myImage" alt="img">
-            <div class="info"></div>
+        <div :key="myImage" v-for="myImage in myImages">
+            <img class="images" :src="myImage.src" alt="img" @mouseover="mouseOver(myImage)">
+            <div class="info">{{myImage.name}}</div>
         </div>
     </section>
 </template>
@@ -13,11 +13,61 @@
     import img3 from '@/assets/img3.jpg'
     import img4 from '@/assets/img4.jpg'
     import img5 from '@/assets/img5.jpg'
+    import img6 from '@/assets/img6.jpg'
+    import img7 from '@/assets/img7.jpg'
+    import img8 from '@/assets/img8.jpg'
+    import img9 from '@/assets/img9.jpg'
 
     export default {
         name: "Gallery",
         data: function () {
-            const myImages = [ img1,img2,img3,img4,img5 ];
+            const myImages = [
+                {
+                    src: img1,
+                    name: 'John',
+                    show: false
+                },
+                {
+                    src: img2,
+                    name: 'kevin',
+                    show: false
+                },
+                {
+                    src: img3,
+                    name: 'abigail',
+                    show: false
+                },
+                {
+                    src: img4,
+                    name: 'sarah',
+                    show: false
+                },
+                {
+                    src: img5,
+                    name: 'ruth',
+                    show: false
+                },
+                {
+                    src: img6,
+                    name: 'peter',
+                    show: false
+                },
+                {
+                    src: img7,
+                    name: 'micheal',
+                    show: false
+                },
+                {
+                    src: img8,
+                    name: 'owen',
+                    show: false
+                },
+                {
+                    src: img9,
+                    name: 'james',
+                    show: false
+                }
+            ]
             return {
                 myImages
             }
@@ -27,41 +77,37 @@
         },
         components: {
             Image
+        },
+        methods: {
+            mouseOver: function (obj) {
+                console.log(obj.parent());
+                // 여기서 hover 했을 때 show 값을 true로 바꾸고 회색 박스(.info)
+            }
         }
     }
 </script>
 
 <style scoped>
     section {
-        display: flex;
-        flex-wrap: wrap;
         margin-top: 100px;
-    }
-
-    #gallery_border {
-        border: 1px solid red;
-        padding: 5px;
-        flex-grow: 1;
-        margin: 3px;
-
+        column-count: 3;
+        column-gap: 15px;
     }
 
     .images {
-        max-height: 250px;
-        min-height: 200px;
-        max-width: 100%;
-        flex-grow: 1;
+        border: 1px solid red;
+        width: 97% !important;
+        height: auto !important;
         margin: 5px;
         object-fit: cover;
     }
 
     .info {
+        margin: 0 auto;
         position: relative;
-        width: 100%;
+        width: 98%;
         height: 45px;
         background-color: lightgray;
-        bottom: 53px;
         opacity: 0.3;
     }
-
 </style>
