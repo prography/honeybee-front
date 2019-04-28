@@ -29,7 +29,7 @@ export default {
   methods: {
 
   	onChange: function(e) {
-    	this.isDragging = false;
+      this.isDragging = false;
       let files = e.target.files || e.dataTransfer.files;
       
       if(files.length == 0) {
@@ -37,18 +37,20 @@ export default {
       }
       
       this.addImages(files);
+      this.$emit("forTransfer", files);
       e.target.value = '';
     },
 
     addImages: function(files) {
       let file=files[0];
-      console.log(file);
+      // console.log(file);
       let fileReader=new FileReader();
       if(file.type.match(/image.*/)) {
         fileReader.readAsDataURL(file);
         fileReader.onload = function(e) {
           let image_data=e.target.result;
-          console.log(image_data);
+          
+          // console.log(image_data);
         }
       }
     },
