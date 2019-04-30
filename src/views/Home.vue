@@ -1,7 +1,9 @@
 <template>
-  <div class="home">
+  <div class="home" id='top'>
     <Intro @forUse="openSection"/>
-    <FilterSection v-if="open" @forClose="closeSection" :img_file="file"/>
+    <div id="filter-hidden">
+      <FilterSection id="filter-component" v-if="open" @forClose="closeSection" :img_obj="file"/>
+    </div>
     <Gallery/>
   </div>
 </template>
@@ -29,10 +31,12 @@ export default {
   methods:{
     openSection(files){
       this.open=true;
-      this.file=files[0];
+      document.getElementById("filter-hidden").scrollIntoView({behavior:'smooth'});
     },
+
     closeSection(){
       this.open=false;
+      document.getElementById("top").scrollIntoView({behavior:'smooth'});
     }
   }
 }

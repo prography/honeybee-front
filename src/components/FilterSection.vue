@@ -1,13 +1,15 @@
 <template>
   <div class="filter">
-    <div class="cross" @click="close">
-      <i class="fas fa-times"></i>
+    <div class="cross">
+      <i class="fas fa-times close-icon" @click="close"></i>
     </div>
     <div class="result">
       <div class="before">
-        
+        before
       </div>
-      <div class="after"></div>
+      <div class="after">
+        after
+      </div>
     </div>
   </div>
 </template>
@@ -15,13 +17,12 @@
 <script>
 export default {
   name:'filter-section',
-  props:["img_file"],
+
   methods:{
     close(){
       this.$emit("forClose");
-    },
+    }
   },
-  
 }
 </script>
 
@@ -36,15 +37,31 @@ export default {
 
 .cross{
   display: flex;
-  justify-content: flex-end;
-  padding:30px;
-  font-size:70px;
+  justify-content:flex-end;
+  font-size:60px;
 }
 
-
-img{
-  height:700px;
+.close-icon{
+  margin:20px;
 }
 
+.result{
+  display: flex;
+  justify-content: space-around;
+}
+
+.before{
+  height:500px;
+  width:42%;
+  background-color:silver;
+  border:3px solid blue;
+}
+
+.after{
+  height:500px;
+  width:42%;
+  background-color:silver;
+  border:3px solid red;
+}
 
 </style>
