@@ -19,7 +19,7 @@ export default {
   },
   data(){
     return{
-      signIN:true
+      signIN:false
     }
   },
 }
@@ -27,7 +27,6 @@ export default {
 
 
 <style lang="scss">
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 body{
   margin:0;
