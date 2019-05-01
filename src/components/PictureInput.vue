@@ -29,7 +29,7 @@ export default {
   methods: {
 
   	onChange: function(e) {
-    	this.isDragging = false;
+      this.isDragging = false;
       let files = e.target.files || e.dataTransfer.files;
       
       if(files.length == 0) {
@@ -37,18 +37,20 @@ export default {
       }
       
       this.addImages(files);
+      this.$emit("forTransfer", files);
       e.target.value = '';
     },
 
     addImages: function(files) {
       let file=files[0];
-      console.log(file);
+      // console.log(file);
       let fileReader=new FileReader();
       if(file.type.match(/image.*/)) {
         fileReader.readAsDataURL(file);
         fileReader.onload = function(e) {
           let image_data=e.target.result;
-          console.log(image_data);
+          
+          // console.log(image_data);
         }
       }
     },
@@ -61,15 +63,14 @@ export default {
 .img_upload{
   text-align: center;
   position: relative;
-  top:12%;
+  top:5%;
   left:26.5%;
   width:47.2937467157%;
-  height:240px;
+  height:250px;
   border-radius:25px;
   background-color:#f9f9f8;
   box-shadow: 0px 5px 5px #DCDCDC;
   color:#DCDCDC;
-  
 }
 
 #drop-zone{
@@ -105,12 +106,13 @@ export default {
 }
 
 .img_upload_icon{
-    margin-top:1%;
-    font-size:150px;
+    margin-top:20px;
+    margin-bottom:3%;
+    font-weight:lighter;
+    font-size:120px;
   }
 
 .img_upload_txt{
-  margin-bottom: 1%;
-  font-size:35px;
+  font-size:30px;
 } 
 </style>

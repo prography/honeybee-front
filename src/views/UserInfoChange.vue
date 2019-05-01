@@ -37,7 +37,7 @@
   </div>
 </template>
 
-
+<script src="js/load-image.all.min.js"></script>
 <script>
 //수정 필요 이미지 orientation해야함
 export default {
@@ -52,7 +52,7 @@ export default {
         image.src=e.target.result;
       }
     }
-  }
+  },
 }
 </script>
 

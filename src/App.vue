@@ -19,7 +19,7 @@ export default {
   },
   data(){
     return{
-      signIN:true
+      signIN:false
     }
   },
 }
@@ -27,8 +27,10 @@ export default {
 
 
 <style lang="scss">
+
 body{
   margin:0;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 #app {
   position: relative;

@@ -1,7 +1,7 @@
 <template>
-  <div class="Intro-background">
-    <div class="Intro">
-      <div class="Intro_txt">
+  <div class="intro-background">
+    <div class="intro">
+      <div class="intro_txt">
         <div class="main_txt">
           <div>사진을 보정해 드립니다</div>
           <div>여러분이 원하는 방향으로</div>
@@ -18,7 +18,7 @@
           </div>
         </div>
       </div>
-      <picture-input/>
+      <picture-input @forTransfer="data"/>
     </div>
   </div>
 </template>
@@ -32,36 +32,41 @@ export default {
     pictureInput,
   },
   methods:{
+    data(files){
+      this.$emit("forUse", files);
+    }
 
   }
 }
 </script>
 
 <style scoped>
-  .Intro-background{
-    /* background-image:url('@/assets/img1.jpg'); */
+  .intro-background{
+    background-image:url('../assets/img9.jpg');
     background-repeat: no-repeat;
-    background-size: 100% 630px; /*630=550(height)+80(padding-top)*/
+    background-size: 100% 650px; /*630=550(height)+100(padding-top)*/
   }
 
-  .Intro{
-    padding-top:80px;
+  .intro{
+    padding-top:100px;
     height:550px;
-    background-color:rgba(27, 25, 13, 0.95);
+    background-color:rgba(47, 45, 22, 0.9);
   }
 
-  .Intro_txt{
-    padding-top:2%;
+  .intro_txt{
+    padding-top:4%;
     text-align: center;
   }
 
   .main_txt{
-    font-size:55px;
+    font-size:50px;
+    font-weight:100;
     color:white;
   }
 
   .sub_txt{
-    font-size:35px;
+    margin-top:30px;
+    font-size:24px;
     color: white;
   }
 

@@ -16,14 +16,14 @@ export default {
 
 <style scoped>
 button{
-  margin:10px;
+  margin-top:20px;
+  margin-right:90px;
   padding:15px;
   border:none;
   background-color:transparent;
-  font-size:14px;
-  font-weight:700;
-  color:#444020;
-  text-decoration: none;
+  font-size:18px;
+  font-weight:lighter;
+  color:silver;
 }
 
 @media(max-width:480px){
