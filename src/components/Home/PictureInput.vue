@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import {eventbus} from '../eventbus'
+import {eventbus} from '@/eventbus'
 
 export default {
   name:'picture-input',

@@ -7,8 +7,8 @@
 
 
 <script>
-import UserInfo from '@/components/UserInfo.vue'
-import UserGallery from '@/components/UserGallery.vue'
+import UserInfo from '@/components/UserInfo/UserInfo.vue'
+import UserGallery from '@/components/UserInfo/UserGallery.vue'
 
 export default {
   name:'user_page',
