@@ -1,7 +1,7 @@
 <template>
   <div class="info_change">
     <div class="user_img">
-      <img id="image" src="../assets/user.png">
+      <img id="image" src="@/assets/user.png">
       <div class="filebox">
         <label for="change_img">사진 변경</label>
         <input type="file" id="change_img" @change="onChange">
@@ -37,7 +37,6 @@
   </div>
 </template>
 
-<script src="js/load-image.all.min.js"></script>
 <script>
 //수정 필요 이미지 orientation해야함
 export default {

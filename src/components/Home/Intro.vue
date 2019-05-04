@@ -42,7 +42,7 @@ export default {
 
 <style scoped>
   .intro-background{
-    background-image:url('../assets/img9.jpg');
+    background-image:url('../../assets/img9.jpg');
     background-repeat: no-repeat;
     background-size: 100% 650px; /*630=550(height)+100(padding-top)*/
   }

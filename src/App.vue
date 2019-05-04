@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import navbar from './components/Navbar.vue';
-import navbarSignin from './components/NavbarSignIn.vue';
+import navbar from './components/NavBar/Navbar.vue';
+import navbarSignin from './components/NavBar/NavbarSignIn.vue';
 export default {
   name:'app',
   components:{
@@ -19,7 +19,7 @@ export default {
   },
   data(){
     return{
-      signIN:true,
+      signIN:false,
     }
   },
 }
