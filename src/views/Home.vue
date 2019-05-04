@@ -9,7 +9,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import Intro from '@/components/Intro.vue'
 import FilterSection from '@/components/FilterSection.vue'
 import Gallery from '@/components/Gallery.vue'
@@ -31,6 +30,7 @@ export default {
   methods:{
     openSection(files){
       this.open=true;
+      this.file=files[0];
       document.getElementById("filter-hidden").scrollIntoView({behavior:'smooth'});
     },
 
