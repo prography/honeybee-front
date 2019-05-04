@@ -35,6 +35,11 @@ export default {
       if(files.length == 0) {
 	      return;
       }
+      
+      if(!files[0].type.match(/image.*/)){
+        window.alert("이미지가 아닙니다");
+        return;
+      }
 
       this.addImages(files);
       this.$emit("forTransfer", files);
@@ -44,12 +49,10 @@ export default {
     addImages: function(files) {
       let file=files[0];
       let fileReader=new FileReader();
-      if(file.type.match(/image.*/)) {
-        fileReader.readAsDataURL(file);
-        fileReader.onload = function(e) {
-          let image_data=e.target.result;
-          eventbus.$emit('transfer-file', image_data);
-        }
+      fileReader.readAsDataURL(file);
+      fileReader.onload = function(e) {
+        let image_data=e.target.result;
+        eventbus.$emit('transfer-file', image_data);
       }
     },
   }
