@@ -1,7 +1,7 @@
 <template>
 <div class="navbar">
   <div class="navbar-logo">
-    <img src="../assets/navbar-logo.png">
+    <img src="@/assets/navbar-logo.png">
   </div>
   <div class="navbar-buttons">
     <navbarButton v-for="item in items" :key="item.id" :buttonText="item.name" :page="item.path"/>

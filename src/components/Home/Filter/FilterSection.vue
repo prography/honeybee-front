@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import {eventbus} from '../eventbus'
+import {eventbus} from '@/eventbus';
 
 export default {
   name:'filter-section',

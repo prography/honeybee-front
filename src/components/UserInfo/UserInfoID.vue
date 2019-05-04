@@ -1,6 +1,6 @@
 <template>
   <div class="user">
-    <img v-if="user_img" class="profile_img" src="../assets/img5.jpg">
+    <img v-if="user_img" class="profile_img" src="../../assets/img5.jpg">
     <default_img v-else/>
     <div class="profile">
       <div class="profile_info profile_name">{Name}</div>
