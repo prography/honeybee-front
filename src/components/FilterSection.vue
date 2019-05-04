@@ -4,25 +4,32 @@
       <i class="fas fa-times close-icon" @click="close"></i>
     </div>
     <div class="result">
-      <div class="before">
-        before
-      </div>
-      <div class="after">
-        after
-      </div>
+      <img id="before">
+      <img class="after">
     </div>
   </div>
 </template>
 
 <script>
+import {eventbus} from '../eventbus'
+
 export default {
   name:'filter-section',
-
+  data(){
+    return{
+      receivedFile:'',
+    }
+  },
   methods:{
     close(){
       this.$emit("forClose");
     }
   },
+  created:function(){
+    eventbus.$once("transfer-file", (data)=>{
+      document.getElementById('before').src=data;
+    });
+  }
 }
 </script>
 
@@ -50,7 +57,7 @@ export default {
   justify-content: space-around;
 }
 
-.before{
+#before{
   height:500px;
   width:42%;
   background-color:silver;

@@ -5,7 +5,7 @@
   </div>
   <div class="navbar-buttons">
     <navbarButton v-for="item in items" :key="item.id" :buttonText="item.name" :page="item.path"/>
-    <button class="signOut">SIGN OUT</button>
+    <router-link to='/' @click.native="signOut" tag="button" class="signout-btn">SIGN OUT</router-link>
   </div>
   <div @click="open()" class="mobile-navbar">
     <span class="bar"></span>
@@ -23,6 +23,11 @@ export default{
   name :'navbarSignin',
   components:{
     navbarButton
+  },
+  data(){
+    return{
+      signout_clicked:true,
+    }
   },
   methods:{
     open(){
@@ -78,7 +83,7 @@ img{
   display:none;
 }
 
-button{
+.signout-btn{
   margin-top:20px;
   margin-right:90px;
   padding:15px;
@@ -141,7 +146,7 @@ button{
     transition:all 0.5s;
   }
 
-  button{
+  .signout-btn{
     margin:0;
     padding:20px;
     width:100%;

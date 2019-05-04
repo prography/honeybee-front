@@ -17,9 +17,10 @@
 </template>
 
 <script>
+import {eventbus} from '../eventbus'
+
 export default {
   name:'picture-input',
-  
   data: function() {
   	return {
       isDragging : false,
@@ -27,7 +28,6 @@ export default {
   },
   
   methods: {
-
   	onChange: function(e) {
       this.isDragging = false;
       let files = e.target.files || e.dataTransfer.files;
@@ -35,7 +35,7 @@ export default {
       if(files.length == 0) {
 	      return;
       }
-      
+
       this.addImages(files);
       this.$emit("forTransfer", files);
       e.target.value = '';
@@ -43,14 +43,12 @@ export default {
 
     addImages: function(files) {
       let file=files[0];
-      // console.log(file);
       let fileReader=new FileReader();
       if(file.type.match(/image.*/)) {
         fileReader.readAsDataURL(file);
         fileReader.onload = function(e) {
           let image_data=e.target.result;
-          
-          // console.log(image_data);
+          eventbus.$emit('transfer-file', image_data);
         }
       }
     },
