@@ -57,8 +57,8 @@ export default {
 }
 
 #result{
-  max-height:650px;
-  max-width:90%;
+  max-width:800px;
+  max-height:600px;
   background-color:silver;
   border:3px solid blue;
 }
