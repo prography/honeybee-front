@@ -25,7 +25,7 @@ export default {
     }
   },
   created:function(){
-    eventbus.$once("transfer-file", (data)=>{
+    eventbus.$on("transfer-file", (data)=>{
       document.getElementById('result').src=data;
     });
   }
@@ -57,7 +57,7 @@ export default {
 }
 
 #result{
-  max-width:800px;
+  max-width: 90%;
   max-height:600px;
   background-color:silver;
   border:3px solid blue;
