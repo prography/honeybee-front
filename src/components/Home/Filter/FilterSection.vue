@@ -4,8 +4,7 @@
       <i class="fas fa-times close-icon" @click="close"></i>
     </div>
     <div class="result">
-      <img id="before">
-      <img class="after">
+      <img id="result">
     </div>
   </div>
 </template>
@@ -27,7 +26,7 @@ export default {
   },
   created:function(){
     eventbus.$once("transfer-file", (data)=>{
-      document.getElementById('before').src=data;
+      document.getElementById('result').src=data;
     });
   }
 }
@@ -38,7 +37,7 @@ export default {
   margin-top:90px;
   margin-bottom:90px;
   width:100%;
-  height:800px;
+  height:900px;
   background-color:green;
 }
 
@@ -57,18 +56,12 @@ export default {
   justify-content: space-around;
 }
 
-#before{
-  height:500px;
-  width:42%;
+#result{
+  max-width:800px;
+  max-height:600px;
   background-color:silver;
   border:3px solid blue;
 }
 
-.after{
-  height:500px;
-  width:42%;
-  background-color:silver;
-  border:3px solid red;
-}
 
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="navbar_section">
-      <navbarSignin v-if="signIN"/>
+      <navbarSignin v-if="signInOut"/>
       <navbar v-else/>
     </div>
     <router-view/>
@@ -17,11 +17,11 @@ export default {
     navbar,
     navbarSignin,
   },
-  data(){
-    return{
-      signIN:false,
+  computed:{
+    signInOut(){
+      return this.$store.getters.getSignIn;
     }
-  },
+  }
 }
 </script>
 
