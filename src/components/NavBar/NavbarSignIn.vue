@@ -20,7 +20,7 @@
 import navbarButton from './NavbarButton.vue'
 
 export default{
-  name :'navbarSignin',
+  name :'navbarSignIn',
   components:{
     navbarButton
   },
@@ -33,6 +33,9 @@ export default{
     open(){
       document.querySelector(".navbar-buttons").classList.toggle('open');
       document.querySelector(".mobile-navbar").classList.toggle('open');
+    },
+    signOut(){
+      this.$store.commit('signOut');
     }
   },
   data(){
@@ -44,7 +47,7 @@ export default{
     return{
       items
     }
-  }
+  },
 }
 </script>
 
