@@ -57,9 +57,11 @@ export default {
 }
 
 #result{
-  max-width: 90%;
-  max-height:600px;
-  background-color:silver;
+  width: 600px;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  background-color: white;
   border:3px solid blue;
 }
 
