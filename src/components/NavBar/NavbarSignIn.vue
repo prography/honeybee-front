@@ -26,7 +26,7 @@ export default{
   },
   data(){
     return{
-      signout_clicked:true,
+      signout_clicked:false,
     }
   },
   methods:{
