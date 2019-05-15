@@ -3,8 +3,10 @@
     <div class="cross">
       <i class="fas fa-times close-icon" @click="close"></i>
     </div>
-    <div class="result">
-      <img id="result">
+    <div class="result_section">
+      <div class="result">
+        <img id="result">
+      </div>
     </div>
   </div>
 </template>
@@ -51,14 +53,19 @@ export default {
   margin:20px;
 }
 
-.result{
+.result_section{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+}
+
+.result{
+  max-width:800px;
+  max-height:700px;
 }
 
 #result{
-  max-width: 90%;
-  max-height:600px;
+  width: 100%;
+  height:100%;
   background-color:silver;
   border:3px solid blue;
 }
