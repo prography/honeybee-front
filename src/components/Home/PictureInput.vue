@@ -54,6 +54,7 @@ export default {
       fileReader.readAsDataURL(file);
       fileReader.onload = function(e) {
         let image_data=e.target.result;
+        console.log(image_data);
         eventbus.$emit('transfer-file', image_data);
         //이벤트 버스를 이용한 데이터 전달. 인코딩된 이미지 전달.
       }

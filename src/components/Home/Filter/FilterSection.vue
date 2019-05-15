@@ -64,9 +64,11 @@ export default {
 }
 
 #result{
-  width: 100%;
-  height:100%;
-  background-color:silver;
+  width: 600px;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  background-color: white;
   border:3px solid blue;
 }
 
