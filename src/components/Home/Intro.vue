@@ -52,7 +52,7 @@ export default {
   .intro{
     padding-top:100px;
     height:550px;
-    background-color:rgba(47, 45, 22, 0.9);
+    background-color:rgba(51, 51, 51, 0.7); /*47, 45, 22*/
   }
 
   .intro_txt{

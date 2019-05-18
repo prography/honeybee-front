@@ -32,6 +32,9 @@ export default {
       this.isDragging = false;
       let files = e.target.files || e.dataTransfer.files;
 
+
+      console.log(files[0]);
+
       if(files.length == 0) {
 	      return;
       }
