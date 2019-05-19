@@ -1,12 +1,10 @@
 <template>
   <div class="user">
     <img v-if="user_img" class="profile_img" src="../../assets/img5.jpg">
-    <default_img v-else/>
+    <default_img v-else/> <!--컴포넌트입니다-->
     <div class="profile">
-      <div class="profile_info profile_name">{Name}</div>
-      <div class="profile_info profile_id">{ID}</div>
-      <div class="profile_info profile_email">{Email@naver.com}</div>
-      <div class="profile_info profile_intro">{Introduce}</div>
+      <div class="profile_info profile_id">{{ID}}</div>
+      <div class="profile_info profile_intro">{{Introduce}}</div>
     </div>
   </div>
 </template>
@@ -22,6 +20,8 @@ export default {
   },
   data(){
     return{
+      ID:"OWEN",
+      Introduce:"Hello, I'm Owen. Nice to meet you. I like honeybees. I work for prography blur blur....",
       user_img:false
     }
   }
@@ -31,11 +31,11 @@ export default {
 
 <style lang="scss" scoped>
 .user{
-  display:flex;
+  margin-top:150px;
+  text-align:center;
 }
+
 .profile_img{
-  margin-top:40px;
-  margin-right:40px;
   width:200PX;
   height:200PX;
   border:none;
@@ -43,13 +43,15 @@ export default {
 }
 
 .profile{
-  margin-top:30px;
-  margin-left:2%;
+  margin-bottom:20px;
   font-size:25px;
   font-weight:10%;
 }
 
-.profile_info{
-  margin:20px 3px;
+.profile_id{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 55px;
 }
+
 </style>

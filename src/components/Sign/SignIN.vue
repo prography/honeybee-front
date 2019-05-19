@@ -49,7 +49,7 @@ export default {
   text-align:center;
   margin-left:35%;
   margin-right:35%;
-  padding-top:200px;
+  padding-top:100px;
 }
 
 .signIn_title{

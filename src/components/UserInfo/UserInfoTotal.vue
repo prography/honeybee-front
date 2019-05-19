@@ -1,45 +1,47 @@
 <template>
-  <div class="total_good_dl">
-    <div class="total total_good">
-      <span>
-        <i class="fas fa-thumbs-up"></i>
-        {number}
-      </span>
-    </div>
-    <div class="total total_dl">
-      <span>
-        <i class="fas fa-file-download"></i>
-        {number}
-      </span>
-    </div>
+  <div class="total_like_dl">
+    <span class="total">
+      <span class="total_like_num">{{likes}}</span>
+      <span class="total_like"> likes</span>
+    </span>
+    <span class="total">
+      <span class="total_dl_num">{{downloads}}</span>
+      <span class="total_dl"> downloads</span>
+    </span>
   </div>
 </template>
 
 <script>
 export default {
+  name:'total',
+  data(){
+    return{
+      likes:"177",
+      downloads:"547"
+    }
+  }
   
 }
 </script>
 
 <style scoped>
-.total_good_dl{
-  font-size: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end
+.total_like_dl{
+  margin-bottom:20px;
+  text-align:center;
+  font-size:25px;
 }
 
 .total{
-  margin-left:35px;
-  margin-right:35px;
-}
-
-.total_good{
-  margin-top:35px;
-  margin-bottom:94px;
-}
-
-i{
+  margin-left:10px;
   margin-right:10px;
 }
+
+.total_like_num{
+  font-weight:bold;
+}
+
+.total_dl_num{
+  font-weight:bold;
+}
+
 </style>

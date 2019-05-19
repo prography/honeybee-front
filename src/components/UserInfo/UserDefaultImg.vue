@@ -13,10 +13,8 @@ export default {
 
 <style scoped>
 img{
-  margin-top:40px;
-  margin-right:40px;
-  width:200PX;
-  height:200PX;
+  width:240PX;
+  height:240PX;
   border:none;
   border-radius: 50%;
   background-color: silver;

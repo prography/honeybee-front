@@ -65,7 +65,7 @@ export default {
 }
 
 #result{
-  width: 700px;
+  width: 700px; /*이미지의 사이즈가 너무 작은거 같아 제가 임의로 수정했습니다.*/
   height: auto;
   max-height: 400px;
   object-fit: contain;

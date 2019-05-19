@@ -32,7 +32,7 @@ export default{
   data(){
     const items=[
       {name:'HOME', path:'/'},
-      {name:'ABOUT', path:'/'},
+      {name:'ABOUT', path:'/about'},
       {name:'SIGN UP', path:'/sign_up'},
       {name:'SIGN IN', path:'/sign_in'},
     ];
