@@ -69,7 +69,8 @@ export default {
   text-align:center;
   margin-left:35%;
   margin-right:35%;
-  padding-top:50px;
+  padding-top:100px;
+  padding-bottom:100px;
 }
 
 .user_img{

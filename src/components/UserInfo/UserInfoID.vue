@@ -31,7 +31,7 @@ export default {
 
 <style lang="scss" scoped>
 .user{
-  margin-top:150px;
+  padding-top:150px;
   text-align:center;
 }
 

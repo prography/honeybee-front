@@ -26,6 +26,7 @@ export default {
 .user_info{
   text-align:center;
   height:770px;
+  background:linear-gradient( to right, white, Gainsboro );
   /* border:1px solid blue; */
 }
 
