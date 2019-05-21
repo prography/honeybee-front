@@ -32,9 +32,6 @@ export default {
       this.isDragging = false;
       let files = e.target.files || e.dataTransfer.files;
 
-
-      console.log(files[0]);
-
       if(files.length == 0) {
 	      return;
       }
@@ -43,6 +40,8 @@ export default {
         window.alert("이미지가 아닙니다");
         return;
       }
+
+      
 
       this.addImages(files);
       this.$emit("forTransfer", files);

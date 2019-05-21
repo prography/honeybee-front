@@ -62,7 +62,7 @@ export default {
 <style scoped>
 .forNav{
   height:100px;
-  background-color:rgba(51, 51, 51); /*47, 45, 22*/
+  background-color:#514C1E; /*47, 45, 22*/
 }
 
 .info_change{
