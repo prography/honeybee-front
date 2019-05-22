@@ -1,14 +1,8 @@
 <template>
   <div class="user_info">
-    <div class="user">
-      <user/>
-    </div>
-    <div class="profile_change_button">
-      <router-link to="/user_info_change" tag="button">Edit Info</router-link>
-    </div>
-    <div class="total">
-      <total/>
-    </div>
+    <user/>
+    <total/>
+    <router-link to="/user_info_change" tag="button">Edit Info</router-link>
   </div>
 </template>
 
@@ -28,35 +22,22 @@ export default {
 </script>
 
 <style scoped>
+
 .user_info{
-  display:flex;
-  padding-top:100px;
-  padding-left:30px;
-  padding-right:30px;
-  height:320px;
-  border:1px solid blue;
-}
-
-.user{
-flex:1;
-}
-
-.profile_change_button{
-  flex:1;
-  display: flex;
-  justify-content: flex-end;
-  height:246px;
-  align-items: flex-end
+  text-align:center;
+  height:770px;
+  background:linear-gradient( to right, white, Gainsboro );
+  /* border:1px solid blue; */
 }
 
 button{
   height:50px;
-  padding:5px 60px;
+  padding:5px 40px;
+  border:none;
+  border-radius:30px;
+  background-color:#333;
   font-size:25px;
-}
-
-.total{
-  flex:1;
+  color:white;
 }
 
 </style>

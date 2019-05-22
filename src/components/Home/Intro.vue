@@ -19,6 +19,7 @@
         </div>
       </div>
       <picture-input @forTransfer="data"/>
+      <!-- forTransfer 이벤트에서 하위 컴포넌트(PictureInput.vue)에서 받은 파일(인코딩 안함)  data 메서드가 처리 -->
     </div>
   </div>
 </template>
@@ -34,6 +35,7 @@ export default {
   methods:{
     data(files){
       this.$emit("forUse", files);
+      //받은 files를 forUse 이벤트(상위 컴포넌트:Home.vue)에 전달 
     }
 
   }
@@ -50,7 +52,7 @@ export default {
   .intro{
     padding-top:100px;
     height:550px;
-    background-color:rgba(47, 45, 22, 0.9);
+    background-color:rgba(43.32, 40.64, 16.04, 0.85); /*47, 45, 22*/
   }
 
   .intro_txt{

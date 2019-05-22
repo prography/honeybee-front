@@ -1,10 +1,20 @@
 <template>
-  <div class="filter">
-    <div class="cross">
-      <i class="fas fa-times close-icon" @click="close"></i>
+  <div class="filter_section">
+    <div class="result_section">
+      <div class="result">
+        <img id="result">
+      </div>
     </div>
-    <div class="result">
-      <img id="result">
+    <div class="filters">
+      <button class="filter">1</button>
+      <button class="filter">2</button>
+      <button class="filter">3</button>
+      <button class="filter">4</button>
+      <button class="filter">5</button>
+    </div>
+    <div class="buttons">
+      <button class="btn donwnload_btn">DOWNLOAD</button>
+      <button class="btn close_btn" @click="close">CLOSE</button>
     </div>
   </div>
 </template>
@@ -33,37 +43,65 @@ export default {
 </script>
 
 <style scoped>
-.filter {
+.filter_section {
   margin-top:90px;
   margin-bottom:90px;
   width:100%;
   height:900px;
-  background-color:green;
+  background-color:#333333;
 }
 
-.cross{
+.result_section{
   display: flex;
-  justify-content:flex-end;
-  font-size:60px;
-}
-
-.close-icon{
-  margin:20px;
+  justify-content: center;
+  margin-bottom:50px;
 }
 
 .result{
-  display: flex;
-  justify-content: space-around;
+  margin-top:80px;
+  margin-bottom:80px;
+  max-width:800px;
+  max-height:700px;
 }
 
 #result{
-  width: 600px;
+  width: 700px; /*이미지의 사이즈가 너무 작은거 같아 제가 임의로 수정했습니다.*/
   height: auto;
   max-height: 400px;
   object-fit: contain;
   background-color: white;
-  border:3px solid blue;
+  /* border:3px solid blue; */
 }
 
+.filters{
+  margin-top:20px;
+  margin-bottom:20px;
+  text-align:center;
+}
+
+.filter{
+  margin-left:30px;
+  margin-right:30px;
+  width:150px;
+  height:100px;
+  background-color:white;
+  border:none;
+}
+
+.buttons{
+  margin-top:50px;
+  margin-bottom:50px;
+  text-align:center;
+}
+
+.btn{
+  margin:10px 20px;
+  width:200px;
+  height:60px;
+  font-size:30px;
+  background-color:white;
+  border:none;
+  border-radius:30px;
+}
 
 </style>

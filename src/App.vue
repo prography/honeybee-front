@@ -4,18 +4,26 @@
       <navbarSignin v-if="signInOut"/>
       <navbar v-else/>
     </div>
-    <router-view/>
+    <div class="main_contents">
+      <router-view/>
+    </div>
+    <div class="footer_section">
+      <foot/>
+    </div>
   </div>
 </template>
 
 <script>
 import navbar from './components/NavBar/Navbar.vue';
 import navbarSignin from './components/NavBar/NavbarSignIn.vue';
+import foot from './components/Footer/Footer.vue';
+
 export default {
   name:'app',
   components:{
     navbar,
     navbarSignin,
+    foot
   },
   computed:{
     signInOut(){
@@ -46,5 +54,13 @@ body{
   top:0;
   width:100%;
   z-index:1;
+}
+
+.main_contents{
+  min-height: calc(100vh - 200px);
+}
+
+.footer_section{
+  height:200px; //Footer.vue에서 설정한 Footer의 height
 }
 </style>

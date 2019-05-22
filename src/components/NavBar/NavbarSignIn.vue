@@ -5,7 +5,8 @@
   </div>
   <div class="navbar-buttons">
     <navbarButton v-for="item in items" :key="item.id" :buttonText="item.name" :page="item.path"/>
-    <router-link to='/' @click.native="signOut" tag="button" class="signout-btn">SIGN OUT</router-link>
+    <router-link to='/user_Page' tag="button" class="link-btn">{{user_name}}</router-link>
+    <router-link to='/' @click.native="signOut" tag="button" class="link-btn">SIGN OUT</router-link>
   </div>
   <div @click="open()" class="mobile-navbar">
     <span class="bar"></span>
@@ -25,8 +26,13 @@ export default{
     navbarButton
   },
   data(){
+    const items=[
+      {name:'HOME', path:'/'},
+      {name:'ABOUT', path:'/about'},
+    ];
     return{
-      signout_clicked:false,
+      items,
+      user_name:"OWEN" //임시로 정해놓은 사용자 이름
     }
   },
   methods:{
@@ -38,16 +44,7 @@ export default{
       this.$store.commit('signOut');
     }
   },
-  data(){
-    const items=[
-      {name:'HOME', path:'/'},
-      {name:'ABOUT', path:'/'},
-      {name:'(USER_NAME)', path:'/user_Page'},
-    ];
-    return{
-      items
-    }
-  },
+
 }
 </script>
 
@@ -86,7 +83,7 @@ img{
   display:none;
 }
 
-.signout-btn{
+.link-btn{
   margin-top:20px;
   margin-right:90px;
   padding:15px;
@@ -106,7 +103,6 @@ img{
   .navbar-buttons{
     flex-direction: column;
     position:fixed;
-    /* top:80px; */
     padding-top:100px;
     padding-bottom:100vh;
     width:100%;
@@ -149,7 +145,7 @@ img{
     transition:all 0.5s;
   }
 
-  .signout-btn{
+  .link-btn{
     margin:0;
     padding:20px;
     width:100%;

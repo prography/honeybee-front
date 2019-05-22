@@ -1,39 +1,43 @@
 <template>
-  <div class="info_change">
-    <div class="user_img">
-      <img id="image" src="@/assets/user.png">
-      <div class="filebox">
-        <label for="change_img">사진 변경</label>
-        <input type="file" id="change_img" @change="onChange">
+  <div class="user_info_change">
+    <div class="forNav"></div>
+    <!--네브바 색상을 설정하기 위한 꼼수. 현재 네부바는 backgroud-color가 transparent로 설정 되어있습니다. 따라서 기존 네브바 설정을 유지하면서 네브바의 색상의 변경할 수 있도록 새로운 div를 만들어 사용하였습니다.-->
+    <div class="info_change">
+      <div class="user_img">
+        <img id="image" src="@/assets/user.png">
+        <div class="filebox">
+          <label for="change_img">사진 변경</label>
+          <input type="file" id="change_img" @change="onChange">
+        </div>
       </div>
+      <form>
+        <label for="userName">Name</label>
+        <br>
+        <input type="text" id="user_Name">
+      </form>
+      <form>
+        <label for="userID">ID</label>
+        <br>
+        <input type="text" id="user_ID">
+      </form>
+      <form>
+        <label for="userEmail">Email</label>
+        <br>
+        <input type="email" id="user_Email"> 
+      </form>
+      <form>
+        <label for="userPassword">PassWord</label>
+        <br>
+        <input type="password" id="user_PWD">
+      </form>
+      <form>
+        <label for="userPassword_check">PassWord 확인</label>
+        <br>
+        <input type="password" id="user_PWD_Check">
+      </form>
+      <div class="warningMesage"></div>
+      <button>Edit</button>
     </div>
-    <form>
-      <label for="userName">Name</label>
-      <br>
-      <input type="text" id="user_Name">
-    </form>
-    <form>
-      <label for="userID">ID</label>
-      <br>
-      <input type="text" id="user_ID">
-    </form>
-    <form>
-      <label for="userEmail">Email</label>
-      <br>
-      <input type="email" id="user_Email"> 
-    </form>
-    <form>
-      <label for="userPassword">PassWord</label>
-      <br>
-      <input type="password" id="user_PWD">
-    </form>
-    <form>
-      <label for="userPassword_check">PassWord 확인</label>
-      <br>
-      <input type="password" id="user_PWD_Check">
-    </form>
-    <div class="warningMesage"></div>
-    <button>Edit</button>
   </div>
 </template>
 
@@ -56,11 +60,17 @@ export default {
 </script>
 
 <style scoped>
+.forNav{
+  height:100px;
+  background-color:#514C1E; /*47, 45, 22*/
+}
+
 .info_change{
   text-align:center;
   margin-left:35%;
   margin-right:35%;
-  padding-top:150px;
+  padding-top:100px;
+  padding-bottom:100px;
 }
 
 .user_img{
