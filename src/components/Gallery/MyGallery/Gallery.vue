@@ -14,9 +14,6 @@
     import img4 from '@/assets/img4.jpg'
     import img5 from '@/assets/img5.jpg'
     import img6 from '@/assets/img6.jpg'
-    import img7 from '@/assets/img7.jpg'
-    import img8 from '@/assets/img8.jpg'
-    import img9 from '@/assets/img9.jpg'
     import heart from '@/assets/heart.png'
     import heartFill from '@/assets/heart_fill.png'
     import dload from '@/assets/download.png'
@@ -55,24 +52,10 @@
                 },
                 {
                     src: img6,
-                    name: 'peter',
+                    name: 'kate',
                     show: false
                 },
-                {
-                    src: img7,
-                    name: 'micheal',
-                    show: false
-                },
-                {
-                    src: img8,
-                    name: 'owen',
-                    show: false
-                },
-                {
-                    src: img9,
-                    name: 'james',
-                    show: false
-                }
+
             ]
             return {
                 myImages, like, likeFill, download
@@ -100,7 +83,7 @@
     }
 
     .units:first-child {
-        margin-top: -5px;
+        margin-top: -10px;
     }
 
     .images {

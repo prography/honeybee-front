@@ -70,20 +70,20 @@ export default {
 .img_upload{
   text-align: center;
   position: relative;
-  top:5%;
-  left:26.5%;
-  width:47.2937467157%;
-  height:250px;
-  border-radius:25px;
+  top:50px;
+  margin: 0 auto;
+  width:400px;
+  height:150px;
+  border-radius:20px;
   background-color:#f9f9f8;
-  box-shadow: 0px 5px 5px #DCDCDC;
+  box-shadow: 0px 3px 3px #DCDCDC;
   color:#DCDCDC;
 }
 
 #drop-zone{
   width:100%;
-  height:240px;
-  border-radius:25px;
+  height:150px;
+  border-radius:20px;
 }
 
 .drag-over {
@@ -113,13 +113,12 @@ export default {
 }
 
 .img_upload_icon{
-    margin-top:20px;
     margin-bottom:3%;
     font-weight:lighter;
-    font-size:120px;
+    font-size:60px;
   }
 
 .img_upload_txt{
-  font-size:30px;
+  font-size:15px;
 } 
 </style>

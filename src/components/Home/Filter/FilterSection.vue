@@ -2,19 +2,25 @@
   <div class="filter_section">
     <div class="result_section">
       <div class="result">
-        <img id="result">
+        <img id="before">
+      </div>
+      <div class="arrow">
+        <img src="@/assets/right-arrow.png" alt="화살표">
+      </div>
+      <div class="result">
+        <div id="after"></div>
       </div>
     </div>
-    <div class="filters">
-      <button class="filter">1</button>
-      <button class="filter">2</button>
-      <button class="filter">3</button>
-      <button class="filter">4</button>
-      <button class="filter">5</button>
+    <div class="filter_button">
+      <button class="filter" style="background-color: antiquewhite">물방울 필터</button>
+      <button class="filter" style="background-color: darkorchid">고흐 필터</button>
+      <button class="filter" style="background-color: salmon">구름 필터</button>
+      <button class="filter" style="background-color: khaki">파스텔 필터</button>
+      <button class="filter" style="background-color: greenyellow">모네 필터</button>
     </div>
     <div class="buttons">
-      <button class="btn donwnload_btn">DOWNLOAD</button>
-      <button class="btn close_btn" @click="close">CLOSE</button>
+      <button class="btn">DOWNLOAD</button>
+      <button class="btn" @click="close">CLOSE</button>
     </div>
   </div>
 </template>
@@ -27,6 +33,7 @@ export default {
   data(){
     return{
       receivedFile:'',
+      arrow
     }
   },
   methods:{
@@ -36,7 +43,7 @@ export default {
   },
   created:function(){
     eventbus.$on("transfer-file", (data)=>{
-      document.getElementById('result').src=data;
+      document.getElementById('before').src=data;
     });
   }
 }
@@ -44,48 +51,60 @@ export default {
 
 <style scoped>
 .filter_section {
-  margin-top:90px;
-  margin-bottom:90px;
   width:100%;
-  height:900px;
+  height:700px;
   background-color:#333333;
 }
 
 .result_section{
-  display: flex;
-  justify-content: center;
+  display:flex;
+  justify-content:center;
   margin-bottom:50px;
 }
 
 .result{
-  margin-top:80px;
-  margin-bottom:80px;
-  max-width:800px;
-  max-height:700px;
+  margin: 100px 50px;
+  padding: 0 auto;
+  left: 50px;
+  flex: 2;
+  /*max-width:800px;*/
+  /*max-height:700px;*/
 }
 
-#result{
-  width: 700px; /*이미지의 사이즈가 너무 작은거 같아 제가 임의로 수정했습니다.*/
+.arrow {
+  margin: 120px 0;
+  padding: auto;
+  flex: 1;
+}
+
+#before {
+  width: 350px; /*이미지의 사이즈가 너무 작은거 같아 제가 임의로 수정했습니다.*/
   height: auto;
-  max-height: 400px;
+  max-height: 200px;
   object-fit: contain;
   background-color: white;
   /* border:3px solid blue; */
 }
 
-.filters{
-  margin-top:20px;
-  margin-bottom:20px;
-  text-align:center;
+#after {
+  display: flex;
+  justify-content: flex-end;
+  width: 350px;
+  height: 200px;
+  background-color: #fff;
+}
+.filter_button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
-.filter{
-  margin-left:30px;
-  margin-right:30px;
-  width:150px;
-  height:100px;
-  background-color:white;
-  border:none;
+.filter {
+  width: 120px;
+  height: 80px;
+  margin: auto;
+  background-color: white;
 }
 
 .buttons{
@@ -96,12 +115,12 @@ export default {
 
 .btn{
   margin:10px 20px;
-  width:200px;
-  height:60px;
-  font-size:30px;
+  width:120px;
+  height:30px;
+  font-size:14px;
   background-color:white;
   border:none;
-  border-radius:30px;
+  border-radius:20px;
 }
 
 </style>

@@ -18,8 +18,4 @@ export default {
 </script>
 
 <style scoped>
-.forNav{
-  height:100px;
-  background-color:#514C1E; /*47, 45, 22*/
-}
 </style>

@@ -36,22 +36,23 @@ export default {
 }
 
 .profile_img{
-  width:200PX;
-  height:200PX;
+  width: 100px;
+  height: 100px;
   border:none;
   border-radius: 50%;
 }
 
 .profile{
   margin-bottom:20px;
-  font-size:25px;
-  font-weight:10%;
+  font-size:20px;
+  font-weight:100;
 }
 
 .profile_id{
   margin-top: 30px;
-  margin-bottom: 30px;
-  font-size: 55px;
+  margin-bottom: 20px;
+  font-size: 40px;
+  font-weight: 700;
 }
 
 </style>

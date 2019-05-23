@@ -31,12 +31,12 @@ export default {
 }
 
 button{
-  height:50px;
+  height:40px;
   padding:5px 40px;
   border:none;
-  border-radius:30px;
+  border-radius:20px;
   background-color:#333;
-  font-size:25px;
+  font-size:18px;
   color:white;
 }
 

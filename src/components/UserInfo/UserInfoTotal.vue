@@ -28,7 +28,7 @@ export default {
 .total_like_dl{
   margin-bottom:20px;
   text-align:center;
-  font-size:25px;
+  font-size:20px;
 }
 
 .total{
