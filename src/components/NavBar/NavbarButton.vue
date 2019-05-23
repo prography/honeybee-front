@@ -20,8 +20,8 @@ button{
   padding:15px;
   border:none;
   background-color:transparent;
-  font-size:18px;
-  font-weight:lighter;
+  font-size:16px;
+  font-weight: 400;
   color:yellow;
 }
 

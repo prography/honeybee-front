@@ -55,8 +55,12 @@ export default{
   justify-content: space-between;
   width:100%;
   height:70px;
-  background-color: black;
+  background-color: rgba(20,20,20,0.4);
   z-index:-1;
+}
+
+.navbar.notHome{
+  background-color: #111111;
 }
 
 .navbar-logo,
@@ -67,7 +71,7 @@ export default{
 
 .navbar-logo{
   flex:0;
-} 
+}
 
 .navbar-buttons{
   flex:1;
@@ -94,8 +98,8 @@ img#logo_round{
   padding:15px;
   border:none;
   background-color:transparent;
-  font-size:18px;
-  font-weight:lighter;
+  font-size:16px;
+  font-weight: 400;
   color:yellow;
 }
 
@@ -119,7 +123,7 @@ img#logo_round{
   .navbar-buttons.open{
     transform:translate(0);
   }
-  
+
   .mobile-navbar{
     display:flex;
     flex-direction:column;

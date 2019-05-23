@@ -34,7 +34,7 @@ export default {
   methods:{
     data(files){
       this.$emit("forUse", files);
-      //받은 files를 forUse 이벤트(상위 컴포넌트:Home.vue)에 전달 
+      //받은 files를 forUse 이벤트(상위 컴포넌트:Home.vue)에 전달
     }
 
   }
@@ -43,15 +43,15 @@ export default {
 
 <style scoped>
   .intro-background{
-    /*background-image:url('../../assets/img9.jpg');*/
-    /*background-repeat: no-repeat;*/
-    /*background-size: 100% 650px; !*630=550(height)+100(padding-top)*!*/
+    background-image:url('../../assets/main_bg.jpg');
+    background-size: cover;
   }
 
   .intro{
+    box-sizing: border-box;
     padding-top: 100px;
-    height:550px;
-    background-color:lightslategrey;
+    height:100vh;
+    background-color: rgba(0,0,0,0.5);
   }
 
   .intro_txt{

@@ -5,7 +5,7 @@
     <div id="filter-hidden">
       <FilterSection id="filter-component" v-if="open" @forClose="closeSection"/>
     </div>
-    <Gallery/>
+    <Gallery v-bind:images = "myImages"/>
   </div>
 </template>
 
@@ -15,19 +15,78 @@ import Intro from '@/components/Home/Intro.vue'
 import FilterSection from '@/components/Home/Filter/FilterSection.vue'
 import Gallery from '@/components/Gallery/MainGallery/Gallery.vue'
 
+import img1 from '@/assets/img1.jpg'
+import img2 from '@/assets/img2.jpg'
+import img3 from '@/assets/img3.jpg'
+import img4 from '@/assets/img4.jpg'
+import img5 from '@/assets/img5.jpg'
+import img6 from '@/assets/img6.jpg'
+import img7 from '@/assets/img7.jpg'
+import img8 from '@/assets/img8.jpg'
+import img9 from '@/assets/img9.jpg'
 
 export default {
   name: 'home',
+  data() {
+    const myImages = [
+      {
+        src: img1,
+        name: 'John',
+        show: false
+      },
+      {
+        src: img2,
+        name: 'kevin',
+        show: false
+      },
+      {
+        src: img3,
+        name: 'abigail',
+        show: false
+      },
+      {
+        src: img4,
+        name: 'sarah',
+        show: false
+      },
+      {
+        src: img5,
+        name: 'ruth',
+        show: false
+      },
+      {
+        src: img6,
+        name: 'peter',
+        show: false
+      },
+      {
+        src: img7,
+        name: 'micheal',
+        show: false
+      },
+      {
+        src: img8,
+        name: 'owen',
+        show: false
+      },
+      {
+        src: img9,
+        name: 'james',
+        show: false
+      },
+    ];
+
+
+    return {
+      myImages,
+      file:'',
+      open:false,
+    }
+  },
   components: {
     Intro,
     FilterSection,
     Gallery,
-  },
-  data(){
-    return{
-      file:'',
-      open:false,
-    }
   },
   methods:{
     openSection(files){
