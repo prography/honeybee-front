@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="navbar_section">
+    <div class="navbar_section" :class="{'not-on-image': overWindow}">
       <navbarSignin v-if="signInOut"/>
       <navbar v-else/>
     </div>
@@ -25,9 +25,25 @@ export default {
     navbarSignin,
     foot
   },
+  data() {
+    let overWindow = false;
+    const windowHeight = window.innerHeight;
+    return {
+      overWindow,
+      windowHeight
+    }
+  },
+  mounted(){
+    window.addEventListener('scroll', this.checkWhere);
+  },
   computed:{
     signInOut(){
       return this.$store.getters.getSignIn;
+    }
+  },
+  methods: {
+    checkWhere() {
+      this.overWindow = this.windowHeight < window.scrollY
     }
   }
 }
@@ -50,11 +66,17 @@ body{
 }
 
 .navbar_section{
-  position:absolute;
+  position:fixed;
   top:0;
   width:100%;
   z-index:1;
+  transition: .35s ease-in-out;
 }
+
+.navbar_section.not-on-image{
+  background-color: #2d2d2d;
+}
+
 
 .main_contents{
   min-height: calc(100vh - 200px);

@@ -46,6 +46,7 @@ export default{
 
 <style scoped>
   .navbar{
+
     display:flex;
     justify-content: space-between;
     width:100%;
@@ -62,7 +63,7 @@ export default{
 
   .navbar-logo{
     flex:0;
-  } 
+  }
 
   .navbar-buttons{
     flex:1;
@@ -104,7 +105,7 @@ export default{
     .navbar-buttons.open{
       transform:translate(0);
     }
-    
+
     .mobile-navbar{
       display:flex;
       flex-direction: column;

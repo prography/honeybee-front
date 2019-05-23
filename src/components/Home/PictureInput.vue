@@ -1,6 +1,6 @@
 <template>
   <div class="img_upload">
-    <div 
+    <div
       id="drop-zone"
       v-bind:class="[isDragging?'drag-over':'']"
       v-on:dragover="isDragging=true"
@@ -26,7 +26,7 @@ export default {
       isDragging : false,
     };
   },
-  
+
   methods: {
   	onChange: function(e) {
       this.isDragging = false;
@@ -35,13 +35,13 @@ export default {
       if(files.length == 0) {
 	      return;
       }
-      
+
       if(!files[0].type.match(/image.*/)){
         window.alert("이미지가 아닙니다");
         return;
       }
 
-      
+
 
       this.addImages(files);
       this.$emit("forTransfer", files);
@@ -62,7 +62,7 @@ export default {
       }
     },
   }
-  
+
 }
 </script>
 
@@ -77,7 +77,7 @@ export default {
   border-radius:20px;
   background-color:#f9f9f8;
   box-shadow: 0px 3px 3px #DCDCDC;
-  color:#DCDCDC;
+  color:#444020;
 }
 
 #drop-zone{
@@ -120,5 +120,5 @@ export default {
 
 .img_upload_txt{
   font-size:15px;
-} 
+}
 </style>
