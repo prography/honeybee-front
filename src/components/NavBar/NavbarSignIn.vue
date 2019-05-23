@@ -1,7 +1,8 @@
 <template>
 <div class="navbar">
   <div class="navbar-logo">
-    <img src="@/assets/navbar-logo.png">
+    <img id="logo_round" src="@/assets/logo_shape.png">
+    <span id="brand_title">Honeybee</span>
   </div>
   <div class="navbar-buttons">
     <navbarButton v-for="item in items" :key="item.id" :buttonText="item.name" :page="item.path"/>
@@ -53,8 +54,8 @@ export default{
   display:flex;
   justify-content: space-between;
   width:100%;
-  height:100px;
-  background-color: transparent;
+  height:70px;
+  background-color: black;
   z-index:-1;
 }
 
@@ -73,10 +74,15 @@ export default{
   justify-content:flex-end;
 }
 
-img{
-  width:320px;
-  height:100px;
-  margin-left:30px;
+img#logo_round{
+  width:70px;
+  height:70px;
+  margin-left:20px;
+}
+
+#brand_title {
+    color: yellow;
+    font-size: 24px;
 }
 
 .mobile-navbar{
@@ -84,14 +90,13 @@ img{
 }
 
 .link-btn{
-  margin-top:20px;
-  margin-right:90px;
+  margin-right:50px;
   padding:15px;
   border:none;
   background-color:transparent;
   font-size:18px;
   font-weight:lighter;
-  color:silver;
+  color:yellow;
 }
 
 @media(max-width:480px){
@@ -117,7 +122,7 @@ img{
   
   .mobile-navbar{
     display:flex;
-    flex-direction: column;
+    flex-direction:column;
     justify-content:space-between;
     margin-top:15px;
     padding:10px;

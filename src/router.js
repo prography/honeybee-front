@@ -7,9 +7,10 @@ import SignIn from './views/SignIn.vue'
 import UserPage from './views/UserPage.vue'
 import UserInfoChange from './views/UserInfoChange.vue'
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -22,25 +23,24 @@ export default new Router({
       component: About
     },
     {
-      path:'/sign_up',
-      name:'sing_up',
+      path: '/sign_up',
+      name: 'sing_up',
       component: SignUp
     },
     {
-      path:'/sign_in',
-      name:'sing_in',
+      path: '/sign_in',
+      name: 'sing_in',
       component: SignIn
     },
     {
-      path:'/user_page',
-      name:'user_page',
-      component:UserPage
+      path: '/user_page',
+      name: 'user_page',
+      component: UserPage
     },
     {
-      path:'/user_info_change',
-      name:'user_inf_change',
-      component:UserInfoChange
+      path: '/user_info_change',
+      name: 'user_inf_change',
+      component: UserInfoChange
     }
-
   ]
 })

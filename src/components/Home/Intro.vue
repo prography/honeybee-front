@@ -3,8 +3,7 @@
     <div class="intro">
       <div class="intro_txt">
         <div class="main_txt">
-          <div>사진을 보정해 드립니다</div>
-          <div>여러분이 원하는 방향으로</div>
+          <div>사진이 아름다운 필터를 입다</div>
         </div>
         <br/>
         <div class="sub_txt">
@@ -14,7 +13,7 @@
             <span>을 이용하여</span>
           </div>
           <div class="sub_txt_second">
-            사진을 Stylish하고 Unique하게 보정해 드립니다.
+            사진을 아름답게 보정해 드립니다.
           </div>
         </div>
       </div>
@@ -44,15 +43,15 @@ export default {
 
 <style scoped>
   .intro-background{
-    background-image:url('../../assets/img9.jpg');
-    background-repeat: no-repeat;
-    background-size: 100% 650px; /*630=550(height)+100(padding-top)*/
+    /*background-image:url('../../assets/img9.jpg');*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: 100% 650px; !*630=550(height)+100(padding-top)*!*/
   }
 
   .intro{
-    padding-top:100px;
+    padding-top: 100px;
     height:550px;
-    background-color:rgba(43.32, 40.64, 16.04, 0.85); /*47, 45, 22*/
+    background-color:lightslategrey;
   }
 
   .intro_txt{
@@ -61,19 +60,20 @@ export default {
   }
 
   .main_txt{
-    font-size:50px;
-    font-weight:100;
-    color:white;
+    font-size:45px;
+    font-weight:400;
+    color:yellow;
   }
 
   .sub_txt{
     margin-top:30px;
-    font-size:24px;
-    color: white;
+    font-size:18px;
+    color: #f2f2f2;
   }
 
   .sub_txt .highLight{
     color:yellow;
+    font-weight: 400;
   }
 
 </style>
