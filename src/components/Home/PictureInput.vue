@@ -41,9 +41,13 @@ export default {
         return;
       }
 
-
+      const formData=new FormData();
+      formData.append('original-img', files[0]);
+      axios.post('multipart/form-data', formData);
+      //이미지를 서버에 전송.(form-data)
 
       this.addImages(files);
+      //이미지 인코딩하는 부분
       this.$emit("forTransfer", files);
       //컴포넌트간 데이터 통신(이벤트 버스X, 자식->부모). 단순히 파일이 업로드 되었다는 것을 알려주기 위하여 파일을 상위 컴포넌트(Intro.vue)에 전달. forTransger 이벤트에 인코딩 전 파일을 전달.
       e.target.value = '';
@@ -56,7 +60,6 @@ export default {
       fileReader.readAsDataURL(file);
       fileReader.onload = function(e) {
         let image_data=e.target.result;
-        console.log(image_data);
         eventbus.$emit('transfer-file', image_data);
         //이벤트 버스를 이용한 데이터 전달. 인코딩된 이미지 전달.
       }
