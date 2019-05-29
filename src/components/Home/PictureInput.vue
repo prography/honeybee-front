@@ -11,27 +11,29 @@
         <i class="far fa-image img_upload_icon"></i>
         <div for="tmp" class="img_upload_txt">이미지를 업로드해주세요</div>
       </div>
-      <input type="file" @change="onChange">
+      <input type="file" id="files" ref="files" @change="onChange">
     </div>
   </div>
 </template>
 
 <script>
 import {eventbus} from '@/eventbus'
+import axios from 'axios'
 
 export default {
   name:'picture-input',
   data: function() {
   	return {
       isDragging : false,
+      files1:'',
     };
   },
 
   methods: {
   	onChange: function(e) {
       this.isDragging = false;
-      let files = e.target.files || e.dataTransfer.files;
-
+      let files=this.files1=this.$refs.files.files;
+      
       if(files.length == 0) {
 	      return;
       }
@@ -41,10 +43,19 @@ export default {
         return;
       }
 
-      const formData=new FormData();
-      formData.append('original-img', files[0]);
-      axios.post('multipart/form-data', formData);
-      //이미지를 서버에 전송.(form-data)
+      let formData=new FormData();
+      for( var i = 0; i < this.files1.length; i++ ){
+        let file = this.files1[i];
+        formData.append('pic_address', file);
+      }
+
+      axios.post ('http://127.0.0.1:8000/tmppicture/',
+        formData,
+        {
+           headers: {
+               'Content-Type': 'multipart/form-data'
+           }
+        });
 
       this.addImages(files);
       //이미지 인코딩하는 부분
@@ -55,7 +66,6 @@ export default {
 
     addImages: function(files) {
       let file=files[0];
-
       let fileReader=new FileReader();
       fileReader.readAsDataURL(file);
       fileReader.onload = function(e) {
