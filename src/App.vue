@@ -1,8 +1,7 @@
 <template>
   <div id="app">
     <div class="navbar_section" :class="{'not-on-image': overWindow}">
-      <navbarSignin v-if="signInOut"/>
-      <navbar v-else/>
+      <navbar/>
     </div>
     <div class="main_contents">
       <router-view/>
@@ -15,14 +14,12 @@
 
 <script>
 import navbar from './components/NavBar/Navbar.vue';
-import navbarSignin from './components/NavBar/NavbarSignIn.vue';
 import foot from './components/Footer/Footer.vue';
 
 export default {
   name:'app',
   components:{
     navbar,
-    navbarSignin,
     foot
   },
   data() {
@@ -35,11 +32,6 @@ export default {
   },
   mounted(){
     window.addEventListener('scroll', this.checkWhere);
-  },
-  computed:{
-    signInOut(){
-      return this.$store.getters.getSignIn;
-    }
   },
   methods: {
     checkWhere() {
@@ -61,8 +53,6 @@ body{
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  // text-align: center;
-  // color: #2c3e50;
 }
 
 .navbar_section{
@@ -79,10 +69,10 @@ body{
 
 
 .main_contents{
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 100px);
 }
 
 .footer_section{
-  height:200px; //Footer.vue에서 설정한 Footer의 height
+  height:100px; //Footer.vue에서 설정한 Footer의 height
 }
 </style>

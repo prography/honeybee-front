@@ -1,11 +1,13 @@
 <template>
-  <router-link :to='page' tag="button">{{buttonText}}</router-link>
+  <div class='buttons'>
+    <router-link to='/sign_up' tag="button">SIGN UP</router-link>
+    <router-link to='/sign_in' tag="button">SIGN IN</router-link>
+  </div>
 </template>
 
 <script>
 export default {
-  name:'navbarButton',
-  props:['buttonText', 'page'],
+  name:'buttonSignOut',
 }
 </script>
 
@@ -31,3 +33,4 @@ button{
   }
 }
 </style>
+

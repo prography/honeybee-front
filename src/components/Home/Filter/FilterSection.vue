@@ -32,7 +32,7 @@ export default {
   name:'filter-section',
   data(){
     return{
-      receivedFile:'',
+      receivedFile:'',//사용 안하고 있다
     }
   },
   methods:{
