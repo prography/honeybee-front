@@ -8,7 +8,7 @@ Vue.use(Vuex);
 export const store=new Vuex.Store({
 
   state:{
-    signIn: true
+    signIn: true,
   },
   getters:{
     getSignIn(state){
@@ -19,5 +19,5 @@ export const store=new Vuex.Store({
     signOut(state, payload){
       state.signIn=false;
     }
-  },
+  }
 });

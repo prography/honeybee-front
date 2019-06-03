@@ -43,6 +43,9 @@ export default {
         return;
       }
 
+      eventbus.$emit("objTransfer", this.files1);
+
+
       this.addImages(this.files1);
       //이미지 인코딩하는 부분
       
@@ -58,7 +61,6 @@ export default {
       fileReader.readAsDataURL(file);
       fileReader.onload = function(e) {
         let image_data=e.target.result;
-        eventbus.$emit("objTransfer", files);
         eventbus.$emit('transfer-file', image_data);
         //이벤트 버스를 이용한 데이터 전달. 인코딩된 이미지 전달. FilterSection.vue로 전달.
       }

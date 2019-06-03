@@ -41,8 +41,10 @@ export default {
       this.$emit("forClose");
     },
     applyFilter(filter){
-      let formData=new FormData();
 
+
+
+      let formData=new FormData();
       for( var i = 0; i < this.imageOBJ.length; i++ ){
         let file = this.imageOBJ[i];
         formData.append('pic_address', file);
@@ -63,6 +65,9 @@ export default {
       document.getElementById('before').src=data;
     });
     eventbus.$on("objTransfer", (obj)=>{
+      //obj자체가 전달 안됨
+      console.log(obj);
+      // console.log(obj[0]);
       this.imageOBJ=obj;
     });
   }
