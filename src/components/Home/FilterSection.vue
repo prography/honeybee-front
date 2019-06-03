@@ -12,11 +12,11 @@
       </div>
     </div>
     <div class="filter_button">
-      <button class="filter">물방울 필터</button>
-      <button class="filter">고흐 필터</button>
-      <button class="filter">구름 필터</button>
-      <button class="filter">파스텔 필터</button>
-      <button class="filter">모네 필터</button>
+      <button class="filter" @click="applyFilter('bubble')">물방울 필터</button>
+      <button class="filter" @click="applyFilter('gogh')">고흐 필터</button>
+      <button class="filter" @click="applyFilter('cloud')">구름 필터</button>
+      <button class="filter" @click="applyFilter('pastel')">파스텔 필터</button>
+      <button class="filter" @click="applyFilter('monet')">모네 필터</button>
     </div>
     <div class="buttons">
       <button class="btn">DOWNLOAD</button>
@@ -27,22 +27,43 @@
 
 <script>
 import {eventbus} from '@/eventbus';
+import axios from 'axios'
 
 export default {
   name:'filter-section',
   data(){
     return{
-      receivedFile:'',//사용 안하고 있다
+      imageOBJ:'',
     }
   },
   methods:{
     close(){
       this.$emit("forClose");
+    },
+    applyFilter(filter){
+      let formData=new FormData();
+
+      for( var i = 0; i < this.imageOBJ.length; i++ ){
+        let file = this.imageOBJ[i];
+        formData.append('pic_address', file);
+      }
+      formData.append('filter_info', filter);
+
+      axios.post ('http://127.0.0.1:8000/tmppicture/',
+        this.formData,
+        {
+           headers: {
+               'Content-Type': 'multipart/form-data'
+           }
+        });
     }
   },
   created:function(){
     eventbus.$on("transfer-file", (data)=>{
       document.getElementById('before').src=data;
+    });
+    eventbus.$on("objTransfer", (obj)=>{
+      this.imageOBJ=obj;
     });
   }
 }
