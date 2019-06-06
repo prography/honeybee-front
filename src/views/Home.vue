@@ -11,6 +11,8 @@
 
 <script>
 
+import {eventbus} from '@/eventbus'
+
 import Intro from '@/components/Home/Intro.vue'
 import FilterSection from '@/components/Home/FilterSection.vue'
 import Gallery from '@/components/Gallery/MainGallery/Gallery.vue'
@@ -75,8 +77,6 @@ export default {
         show: false
       },
     ];
-
-
     return {
       myImages,
       file:'',

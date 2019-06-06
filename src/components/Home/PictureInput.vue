@@ -42,16 +42,19 @@ export default {
         window.alert("이미지가 아닙니다");
         return;
       }
-
-      eventbus.$emit("objTransfer", this.files1);
-
-
+           
       this.addImages(this.files1);
       //이미지 인코딩하는 부분
+
+      // this.$store.commit('setOBJ', this.files1);
+      // console.log(this.$store.getters.getOBJ);
       
+
+
       this.$emit("forTransfer", this.files1);
       //컴포넌트간 데이터 통신(이벤트 버스X, 자식->부모). 단순히 파일이 업로드 되었다는 것을 알려주기 위하여 파일을 상위 컴포넌트(Intro.vue)에 전달. forTransger 이벤트에 인코딩 전 파일을 전달.
-       
+      
+      eventbus.$emit("objTransfer", this.files1);
       e.target.value = '';
     },
 
@@ -64,7 +67,7 @@ export default {
         eventbus.$emit('transfer-file', image_data);
         //이벤트 버스를 이용한 데이터 전달. 인코딩된 이미지 전달. FilterSection.vue로 전달.
       }
-    },
+    }
   }
 
 }

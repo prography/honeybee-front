@@ -42,8 +42,6 @@ export default {
     },
     applyFilter(filter){
 
-
-
       let formData=new FormData();
       for( var i = 0; i < this.imageOBJ.length; i++ ){
         let file = this.imageOBJ[i];
@@ -64,11 +62,10 @@ export default {
     eventbus.$on("transfer-file", (data)=>{
       document.getElementById('before').src=data;
     });
-    eventbus.$on("objTransfer", (obj)=>{
-      //obj자체가 전달 안됨
+
+    eventbus.$on('objTransfer', (obj)=>{
       console.log(obj);
-      // console.log(obj[0]);
-      this.imageOBJ=obj;
+      //obj자체가 전달 안됨
     });
   }
 }
