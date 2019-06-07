@@ -33,7 +33,7 @@ export default {
   name:'filter-section',
   data(){
     return{
-      imageOBJ:'',
+      files:'',
     }
   },
   methods:{
@@ -41,31 +41,33 @@ export default {
       this.$emit("forClose");
     },
     applyFilter(filter){
+      console.log(filter);
+      console.log(this.files);
+      // console.log(this.$store.getters.getOBJ);
 
-      let formData=new FormData();
-      for( var i = 0; i < this.imageOBJ.length; i++ ){
-        let file = this.imageOBJ[i];
-        formData.append('pic_address', file);
-      }
-      formData.append('filter_info', filter);
+      // let formData=new FormData();
+      // for( var i = 0; i < this.imageOBJ.length; i++ ){
+      //   let file = this.imageOBJ[i];
+      //   formData.append('pic_address', file);
+      // }
+      // formData.append('filter_info', filter);
 
-      axios.post ('http://127.0.0.1:8000/tmppicture/',
-        this.formData,
-        {
-           headers: {
-               'Content-Type': 'multipart/form-data'
-           }
-        });
+      // axios.post ('http://127.0.0.1:8000/tmppicture/',
+      //   this.formData,
+      //   {
+      //      headers: {
+      //          'Content-Type': 'multipart/form-data'
+      //      }
+      //   });
     }
   },
   created:function(){
     eventbus.$on("transfer-file", (data)=>{
       document.getElementById('before').src=data;
     });
-
     eventbus.$on('objTransfer', (obj)=>{
       console.log(obj);
-      //obj자체가 전달 안됨
+      this.files=obj;
     });
   }
 }
