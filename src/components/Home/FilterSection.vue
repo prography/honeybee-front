@@ -41,34 +41,31 @@ export default {
       this.$emit("forClose");
     },
     applyFilter(filter){
-      console.log(filter);
-      console.log(this.files);
-      // console.log(this.$store.getters.getOBJ);
 
-      // let formData=new FormData();
-      // for( var i = 0; i < this.imageOBJ.length; i++ ){
-      //   let file = this.imageOBJ[i];
-      //   formData.append('pic_address', file);
-      // }
-      // formData.append('filter_info', filter);
+      this.files=this.$store.getters.getOBJ;
+      //data()에 vuex에 저장된 배열을 저장.
 
-      // axios.post ('http://127.0.0.1:8000/tmppicture/',
-      //   this.formData,
-      //   {
-      //      headers: {
-      //          'Content-Type': 'multipart/form-data'
-      //      }
-      //   });
+      let formData=new FormData();
+      for( var i = 0; i < this.files.length; i++ ){
+        let file = this.files[i];
+        formData.append('pic_address', file);
+      }
+      formData.append('filter_info', filter);
+
+      axios.post ('http://127.0.0.1:8000/tmppicture/',
+        this.formData,
+        {
+           headers: {
+               'Content-Type': 'multipart/form-data'
+           }
+        });
+      //서버에 필터 이름과 함꼐 이미지를 전송.
     }
   },
-  created:function(){
+  created(){
     eventbus.$on("transfer-file", (data)=>{
       document.getElementById('before').src=data;
-    });
-    eventbus.$on('objTransfer', (obj)=>{
-      console.log(obj);
-      this.files=obj;
-    });
+    }); 
   }
 }
 </script>

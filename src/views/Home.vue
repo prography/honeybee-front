@@ -3,7 +3,7 @@
     <Intro @forUse="openSection"/>
     <!-- forUse 이벤트에서 하위 컴포넌트(Intro.vue)에서 받은 파일을 openSection 메서드에 전달 -->
     <div id="filter-hidden">
-      <FilterSection id="filter-component" @forClose="closeSection"/>
+      <FilterSection id="filter-component" v-if="open" @forClose="closeSection"/>
     </div>
     <Gallery v-bind:images = "myImages"/>
   </div>

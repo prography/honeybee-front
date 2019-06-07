@@ -9,7 +9,7 @@ export const store=new Vuex.Store({
 
   state:{
     signIn: true,
-    imgOBJ:[{}],
+    imgOBJ:[],
   },
   getters:{
     getSignIn(state){
