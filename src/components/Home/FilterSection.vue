@@ -12,11 +12,13 @@
       </div>
     </div>
     <div class="filter_button">
-      <button class="filter" @click="applyFilter('bubble')">물방울 필터</button>
-      <button class="filter" @click="applyFilter('gogh')">고흐 필터</button>
-      <button class="filter" @click="applyFilter('cloud')">구름 필터</button>
-      <button class="filter" @click="applyFilter('pastel')">파스텔 필터</button>
+      <button class="filter" @click="applyFilter('cezanne')">세잔 필터</button>
+      <button class="filter" @click="applyFilter('vangogh')">고흐 필터</button>
+      <button class="filter" @click="applyFilter('duchamp')">뒤샹 필터</button>
+      <button class="filter" @click="applyFilter('kandinsky')">칸딘스키 필터</button>
       <button class="filter" @click="applyFilter('monet')">모네 필터</button>
+      <button class="filter" @click="applyFilter('katsushika')">가쓰시카 필터</button>
+      <button class="filter" @click="applyFilter('picabia')">피카비아 필터</button>
     </div>
     <div class="buttons">
       <button class="btn">DOWNLOAD</button>
@@ -53,13 +55,19 @@ export default {
       formData.append('filter_info', filter);
 
       axios.post ('http://127.0.0.1:8000/tmppicture/',
-        this.formData,
+        formData,
         {
            headers: {
                'Content-Type': 'multipart/form-data'
            }
-        });
+        }).then(
+          function(response){
+            document.getElementById('after').src="data:image.png;base64"+response.data;
+          }
+        );
       //서버에 필터 이름과 함꼐 이미지를 전송.
+
+
     }
   },
   created(){
@@ -120,7 +128,8 @@ export default {
   /*justify-content: flex-end;*/
   width: 300px;
   height: 200px;
-  background-color: #fff;
+  border:5px dashed white;
+  background-color: #333;
 }
 
 .filter_button {
@@ -159,6 +168,10 @@ export default {
 }
 .filter:nth-child(6){
   background-color: #678678;
+}
+
+.filter:nth-child(7){
+  background-color: #678679;
 }
 
 .buttons{
