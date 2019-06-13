@@ -36,6 +36,7 @@ export default {
   data(){
     return{
       files:'',
+      tmp:''
     }
   },
   methods:{
@@ -43,7 +44,6 @@ export default {
       this.$emit("forClose");
     },
     applyFilter(filter){
-
       this.files=this.$store.getters.getOBJ;
       //data()에 vuex에 저장된 배열을 저장.
 
@@ -62,16 +62,17 @@ export default {
            }
         }).then(
           function(response){
+            this.$store.commit('setfilterResult', "data:image.png;base64"+response.data);
+            //나온 결과를 vuex에 저장(현재 사용할 지 안할지 모른다)
             document.getElementById('after').src="data:image.png;base64"+response.data;
           }
         );
       //서버에 필터 이름과 함꼐 이미지를 전송.
-
-
     }
   },
   created(){
     eventbus.$on("transfer-file", (data)=>{
+      this.tmp=data;
       document.getElementById('before').src=data;
     }); 
   }

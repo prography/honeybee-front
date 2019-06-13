@@ -10,6 +10,7 @@ export const store=new Vuex.Store({
   state:{
     signIn: true,
     imgOBJ:[],
+    filterResult:'',
   },
   getters:{
     getSignIn(state){
@@ -17,6 +18,9 @@ export const store=new Vuex.Store({
     },
     getOBJ(state){
       return state.imgOBJ;
+    },
+    getfilterResult(state){
+      return state.filterResult;
     }
   },
   mutations:{
@@ -25,6 +29,9 @@ export const store=new Vuex.Store({
     },
     setOBJ(state, payload){
       state.imgOBJ=payload;
+    },
+    setfilterResult(state, payload){
+      state.filterResult=payload;
     }
   }
 });
