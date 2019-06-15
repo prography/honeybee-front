@@ -9,28 +9,29 @@ export const store=new Vuex.Store({
 
   state:{
     signIn: true,
-    filterSection:'close'
+    imgOBJ:[],
+    filterResult:'',
   },
   getters:{
     getSignIn(state){
       return state.signIn;
     },
-    getFilterSection(state){
-      return state.filterSeciton;
-      //사용X
+    getOBJ(state){
+      return state.imgOBJ;
+    },
+    getfilterResult(state){
+      return state.filterResult;
     }
   },
   mutations:{
     signOut(state, payload){
       state.signIn=false;
     },
-    setFilterSection(state, payload){
-      if(state.filterSection=='close'){
-        state.filterSeciton='open';
-      }else if(state.filterSection=='open'){
-        state.filterSection='close';
-      }
-      //사용X
+    setOBJ(state, payload){
+      state.imgOBJ=payload;
+    },
+    setfilterResult(state, payload){
+      state.filterResult=payload;
     }
-  },
+  }
 });
