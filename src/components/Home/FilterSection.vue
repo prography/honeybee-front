@@ -78,10 +78,10 @@ export default {
            }
         }).then(
           function(response){
+            this.$store.commit('setfilterResult', "data:image.png;base64"+response.data);
             this.beforeFiltet=false;
             this.loading=false;
             this.afterFilter=true;
-            this.$store.commit('setfilterResult', "data:image.png;base64"+response.data);
             //나온 결과를 vuex에 저장(현재 사용할 지 안할지 모른다)
             //document.getElementById('after').src="data:image.png;base64"+response.data;
           }
