@@ -8,13 +8,14 @@
 export default {
   name:'afterFilter',
   created(){
-    document.getElementById('result').src=this.$store.getters.getfilterResult();
+    document.getElementById('result').src=this.$store.getters.getfilterResult;
   }
 }
 </script>
 
 <style scoped>
 #result{
+  margin:0 auto;
   height: 200px;
   max-height: 200px;
   object-fit: contain;

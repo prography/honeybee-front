@@ -9,9 +9,9 @@
       </div>
       <div class="result">
         <!-- <img id="after"> -->
-        <beforeFilter v-show="beforeFilter">
-        <loading v-show="loading">
-        <afterFilter v-show="afterFilter">
+        <beforeFilter v-show="beforeFilter"/>
+        <loading v-show="loading"/>
+        <afterFilter v-show="afterFilter"/>
       </div>
     </div>
     <div class="filter_button">
@@ -49,7 +49,9 @@ export default {
     }
   },
   components:{
-
+    beforeFilter,
+    loading,
+    afterFilter,
   },
   methods:{
     close(){
