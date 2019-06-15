@@ -33,7 +33,7 @@ export default {
   	onChange: function(e) {
       this.isDragging = false;
       let files=this.files1=this.$refs.files.files;
-      
+      console.log(files[0]);
       if(files.length == 0) {
 	      return;
       }
@@ -48,7 +48,7 @@ export default {
         let file = this.files1[i];
         formData.append('pic_address', file);
       }
-
+      eventbus.$emit('image',formData);
       axios.post ('http://127.0.0.1:8000/tmppicture/',
         formData,
         {
