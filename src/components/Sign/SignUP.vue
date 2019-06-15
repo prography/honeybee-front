@@ -32,6 +32,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name:"sign_up",
   methods:{
@@ -43,11 +45,13 @@ export default {
       let PWD_Check=document.getElementById("user_PWD_Check").value;
 
 
-      if(PWD!=PWD_Check){
-        console.log("비밀번호 다름");
-      }else{
-        console.log("O");
-      }
+      // if(PWD!=PWD_Check){
+      //   console.log("비밀번호 다름");
+      // }else{
+      //   console.log("O");
+      // }
+
+
     }
   }
 }

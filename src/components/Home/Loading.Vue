@@ -1,6 +1,10 @@
 
 <template>
-  <div class="lds-facebook"><div></div><div></div><div></div></div>
+  <div class="lds-facebook">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
   <!-- https://loading.io/css/ -->
 </template>
 

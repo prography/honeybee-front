@@ -8,10 +8,14 @@
         <img src="@/assets/right-arrow.png" alt="화살표">
       </div>
       <div class="result">
-        <!-- <img id="after"> -->
-        <beforeFilter v-show="beforeFilter"/>
-        <loading v-show="loading"/>
-        <afterFilter v-show="afterFilter"/>
+        
+        <div id="beforeFilter">
+          <beforeFilter/>
+        </div> 
+        <div id="loading">
+          <loading/>
+        </div>
+        <img id="after">
       </div>
     </div>
     <div class="filter_button">
@@ -35,32 +39,26 @@ import {eventbus} from '@/eventbus';
 import axios from 'axios'
 import beforeFilter from './BeforeFilter.vue'
 import loading from './Loading.vue'
-import afterFilter from './AfterFilter.vue'
 
 export default {
   name:'filter-section',
   data(){
     return{
       files:'',
-      //tmp:'',
-      beforeFilter:true,
-      loading:false,
-      afterFilter:false
     }
   },
   components:{
     beforeFilter,
     loading,
-    afterFilter,
   },
   methods:{
     close(){
       this.$emit("forClose");
     },
     applyFilter(filter){
-      this.beforeFiltet=false;
-      this.loading=true;
-      this.afterFilter=false;
+      document.getElementById('beforeFilter').style.display='none';
+      document.getElementById('after').style.display='none';
+      document.getElementById('loading').style.display='block';
 
       this.files=this.$store.getters.getOBJ;
       //data()에 vuex에 저장된 배열을 저장.
@@ -72,7 +70,7 @@ export default {
       }
       formData.append('filter_info', filter);
 
-      axios.post ('http://127.0.0.1:8000/tmppicture/',
+      axios.post ('http://3.218.93.179:8000/tmppicture/',
         formData,
         {
            headers: {
@@ -80,12 +78,9 @@ export default {
            }
         }).then(
           function(response){
-            this.$store.commit('setfilterResult', "data:image.png;base64"+response.data);
-            this.beforeFiltet=false;
-            this.loading=false;
-            this.afterFilter=true;
-            //나온 결과를 vuex에 저장(현재 사용할 지 안할지 모른다)
-            //document.getElementById('after').src="data:image.png;base64"+response.data;
+            document.getElementById('after').src="data:image.png;base64,"+response.data;
+            document.getElementById('loading').style.display='none'
+            document.getElementById('after').style.display='block';
           }
         );
       //서버에 필터 이름과 함꼐 이미지를 전송.
@@ -93,11 +88,10 @@ export default {
   },
   created(){
     eventbus.$on("transfer-file", (data)=>{
-      //this.tmp=data;(원본 사진)
       this.beforeFiltet=true;
-      this.loading=false;
-      this.afterFilter=false;
       document.getElementById('before').src=data;
+      document.getElementById('beforeFilter').style.display='block';
+      document.getElementById('after').style.display='none';
     }); 
   }
 }
@@ -132,7 +126,6 @@ export default {
   /*padding: auto;*/
   flex: none;
   padding: 0 20px;
-
   display: flex;
   align-content: center;
   align-items: center;
@@ -148,12 +141,23 @@ export default {
   /* border:3px solid blue; */
 }
 
-#after {
-  /*display: flex;*/
-  /*justify-content: flex-end;*/
-  width: 300px;
+#loading{
+  box-sizing: border-box;
+  display: none;
   height: 200px;
-  border:5px dashed white;
+  padding: 68px 0;
+}
+
+#after {
+  display: none;
+  margin: 0 auto;
+  /*justify-content: flex-end;*/
+  /* width: 300px;
+  height: 200px; */
+  height: 224px;
+  max-height: 224px;
+  object-fit: contain;
+  /* border:5px dashed white; */
   background-color: #333;
 }
 
@@ -170,7 +174,7 @@ export default {
   height: 48px;
   margin: 20px;
   border: none;
-  outline: none;
+  /* outline: none; */
   font-size: 14px;
   font-weight: 700;
   color: #ffffff;
