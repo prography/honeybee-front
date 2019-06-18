@@ -54,19 +54,18 @@ export default {
       }
       formData.append('filter_info', filter);
 
-      axios.post ('http://127.0.0.1:8000/tmppicture/',
+      axios.post('http://3.218.93.179:8000/tmppicture/',
         formData,
         {
            headers: {
                'Content-Type': 'multipart/form-data'
            }
-        }).then(
-          function(response){
-            this.$store.commit('setfilterResult', "data:image.png;base64"+response.data);
+        }).then((response)=>{
+            this.$store.commit('setfilterResult', "data:image.png;base64,"+response.data);
             //나온 결과를 vuex에 저장(현재 사용할 지 안할지 모른다)
-            document.getElementById('after').src="data:image.png;base64"+response.data;
+            document.getElementById('after').src="data:image.png;base64,"+response.data;
           }
-        );
+        ).catch(err => console.log(err));
       //서버에 필터 이름과 함꼐 이미지를 전송.
     }
   },

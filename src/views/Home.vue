@@ -11,11 +11,9 @@
 
 <script>
 
-import {eventbus} from '@/eventbus'
-
 import Intro from '@/components/Home/Intro.vue'
 import FilterSection from '@/components/Home/FilterSection.vue'
-import Gallery from '@/components/Gallery/MainGallery/Gallery.vue'
+import Gallery from '@/components/Gallery/Gallery.vue'
 
 import img1 from '@/assets/img1.jpg'
 import img2 from '@/assets/img2.jpg'

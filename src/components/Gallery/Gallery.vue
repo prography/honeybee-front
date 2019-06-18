@@ -8,7 +8,7 @@
     <div class="column-wrap">
       <div class="column">
         <div class="element"
-             v-for="(myImage, index) in myImages">
+             v-for="(myImage, index) in images">
           <div v-if="index%3===0">
             <img class="images" :src="myImage.src" alt="img">
             <div class="info">{{myImage.name}}<span><img class="like" :src="download"/><img class="like"
@@ -19,7 +19,7 @@
       </div>
       <div class="column">
         <div class="element"
-             v-for="(myImage, index) in myImages">
+             v-for="(myImage, index) in images">
           <div v-if="index%3===1">
             <img class="images" :src="myImage.src" alt="img">
             <div class="info">{{myImage.name}}<span><img class="like" :src="download"/><img class="like"
@@ -30,7 +30,7 @@
       </div>
       <div class="column">
         <div class="element"
-             v-for="(myImage, index) in myImages">
+             v-for="(myImage, index) in images">
           <div v-if="index%3===2">
             <img class="images" :src="myImage.src" alt="img">
             <div class="info">{{myImage.name}}<span><img class="like" :src="download"/><img class="like"
@@ -45,61 +45,20 @@
 </template>
 
 <script>
-  import img1 from '@/assets/img1.jpg'
-  import img2 from '@/assets/img2.jpg'
-  import img3 from '@/assets/img3.jpg'
-  import img4 from '@/assets/img4.jpg'
-  import img5 from '@/assets/img5.jpg'
-  import img6 from '@/assets/img6.jpg'
   import heart from '@/assets/heart.png'
   import heartFill from '@/assets/heart_fill.png'
   import dload from '@/assets/download.png'
 
   export default {
     name: "Gallery",
+    props: ['images'],
     data: function () {
       const like = heart;
       const likeFill = heartFill;
       const download = dload;
-      const myImages = [
-        {
-          src: img1,
-          name: 'John',
-          show: false
-        },
-        {
-          src: img2,
-          name: 'kevin',
-          show: false
-        },
-        {
-          src: img3,
-          name: 'abigail',
-          show: false
-        },
-        {
-          src: img4,
-          name: 'sarah',
-          show: false
-        },
-        {
-          src: img5,
-          name: 'ruth',
-          show: false
-        },
-        {
-          src: img6,
-          name: 'kate',
-          show: false
-        },
-
-      ]
       return {
-        myImages, like, likeFill, download
+        like, likeFill, download
       }
-    },
-    props: {
-      msg: String
     },
     components: {},
     methods: {}
