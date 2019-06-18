@@ -82,7 +82,7 @@ export default {
             document.getElementById('loading').style.display='none'
             document.getElementById('after').style.display='block';
           }
-        );
+        ).catch(err => console.log(err));
       //서버에 필터 이름과 함꼐 이미지를 전송.
     }
   },
