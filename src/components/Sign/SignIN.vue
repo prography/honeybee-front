@@ -32,16 +32,16 @@ export default {
       let ID=document.getElementById("user_ID").value;
       let PWD=document.getElementById("user_PWD").value;
 
-      if(ID.length==0 || PWD.length==0){
-        if(ID.length==0 && PWD.length==0){
+      if(ID.length===0 || PWD.length===0){
+        if(ID.length===0 && PWD.length===0){
           window.alert("입력을 완료해주세요.");
           document.getElementById("user_ID").style.borderColor="orangered";
           document.getElementById("user_PWD").style.borderColor="orangered";
-        }else if(ID.length==0){
+        }else if(ID.length===0){
           window.alert("아이디를 입력해 주세요.");
           document.getElementById("user_ID").style.borderColor="orangered";
           document.getElementById("user_PWD").style.borderColor="initial";
-        }else if(PWD.length==0){
+        }else if(PWD.length===0){
           window.alert("비밀번호를 입력해 주세요.");
           document.getElementById("user_ID").style.borderColor="initial";
           document.getElementById("user_PWD").style.borderColor="orangered";

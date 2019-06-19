@@ -48,7 +48,7 @@ export default {
       //현재 ID의 길이는 최소 5글자 최대 10글자로 한다.
       let ID=document.getElementById("user_ID").value;
       if(ID.length<5 || ID.length>10){
-        if(ID.length==0){
+        if(ID.length===0){
           this.ID_OK=false;
           document.getElementById('user_ID').style.borderColor="initial";
           document.getElementById('warnLengthID').style.display="none";
@@ -67,7 +67,7 @@ export default {
     },
     emailCheck(){
       let Email=document.getElementById("user_Email").value;
-      if(Email.length==0){
+      if(Email.length===0){
         this.Email_OK=false;
         document.getElementById('user_Email').style.borderColor="initial";
         document.getElementById('warnWrongEM').style.display="none";
@@ -92,7 +92,7 @@ export default {
       let pwdBlank=false;
       let pwdRule=false;
 
-      if(PW.length==0){
+      if(PW.length===0){
         this.PWD_OK=false;
         document.getElementById('user_PWD').style.borderColor="initial";
         document.getElementById('warnPWDLength').style.display="none";
@@ -110,7 +110,7 @@ export default {
         } 
 
         for(let i=0; i<PW.length; i++){
-          if(PW[i]==' '){
+          if(PW[i]===' '){
             pwdBlank=true;
           }
         }
@@ -121,29 +121,29 @@ export default {
           pwdRule=false;
         }
 
-        if(pwdLength==true || pwdBlank==true || pwdRule==true){
+        if(pwdLength===true || pwdBlank===true || pwdRule===true){
           document.getElementById('user_PWD').style.borderColor="OrangeRed";
 
-          if(pwdLength==true){
+          if(pwdLength===true){
             document.getElementById('warnPWDLength').style.display="block";
           }else{
             document.getElementById('warnPWDLength').style.display="none";
           }
 
-          if(pwdBlank==true){
+          if(pwdBlank===true){
             document.getElementById('warnPWDBlank').style.display="block";
           }else{
             document.getElementById('warnPWDBlank').style.display="none";
           }
 
-          if(pwdRule==true){
+          if(pwdRule===true){
             document.getElementById('warnPWDRule').style.display="block";
           }else{
             document.getElementById('warnPWDRule').style.display="none";
           }
 
           this.PWD_OK=false;
-        }else if(pwdLength==false || pwdBlank==false || pwdRule==false){
+        }else if(pwdLength===false || pwdBlank===false || pwdRule===false){
           //모든 조건 충족하여 password를 사용할 수 있다.
           this.PWD_OK=true;
           document.getElementById('user_PWD').style.borderColor="LimeGreen";
@@ -157,18 +157,18 @@ export default {
       let PWD=document.getElementById("user_PWD").value;
       let PWD_Check=document.getElementById("user_PWD_Check").value;
 
-      if(PWD_Check.length==0){
+      if(PWD_Check.length===0){
         this.PWD_Check_OK=false;
         document.getElementById('user_PWD_Check').style.borderColor="initial";
         document.getElementById('warnPWDCompl').style.display="none";
         document.getElementById('warnPWDSame').style.display="none";
-      }else if(this.PWD_OK==false){
+      }else if(this.PWD_OK===false){
         this.PWD_Check_OK=false;
         document.getElementById('user_PWD_Check').style.borderColor="orangered";
         document.getElementById('warnPWDCompl').style.display="block";
         document.getElementById('warnPWDSame').style.display="none";
-      }else if(this.PWD_OK==true){
-        if(PWD==PWD_Check){
+      }else if(this.PWD_OK===true){
+        if(PWD===PWD_Check){
           this.PWD_Check_OK=false;
           document.getElementById('user_PWD_Check').style.borderColor="LimeGreen";
           document.getElementById('warnPWDCompl').style.display="none";
@@ -187,7 +187,7 @@ export default {
       let PWD=document.getElementById("user_PWD").value;
       let PWD_Check=document.getElementById("user_PWD_Check").value;
 
-      if(this.ID_OK==true && this.Email_OK==true && this.PWD_OK==true && this.PWD_Check_OK==true){
+      if(this.ID_OK===true && this.Email_OK===true && this.PWD_OK===true && this.PWD_Check_OK===true){
         //회원 가입 실행
       }else{
         window.alert("입력을 완료해주세요.")
