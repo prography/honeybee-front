@@ -73,7 +73,7 @@ export default {
         document.getElementById('warnWrongEM').style.display="none";
       }else{
         let re = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-        if(Email.match(re)!=null){
+        if(Email.match(re)!==null){
           this.Email_OK=true;
           document.getElementById('user_Email').style.borderColor="LimeGreen";
           document.getElementById('warnWrongEM').style.display="none";
