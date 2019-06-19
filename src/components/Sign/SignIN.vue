@@ -2,7 +2,7 @@
   <div class="signIn">
     <div class="signIn_title">SIGN IN</div>
     <form>
-      <label for="userIDEmail">ID/Email</label>
+      <label for="userIDEmail">ID</label>
       <br>
       <input id="user_ID_Email" type="text">
     </form>
