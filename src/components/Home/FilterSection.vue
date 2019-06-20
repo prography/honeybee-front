@@ -2,13 +2,12 @@
   <div class="filter_section">
     <div class="result_section">
       <div class="result">
-        <img id="before">
+        <div id="beforeIMG"></div>
       </div>
       <div class="arrow">
         <img src="@/assets/right-arrow.png" alt="화살표">
       </div>
       <div class="result">
-        
         <div id="beforeFilter">
           <beforeFilter/>
         </div> 
@@ -16,6 +15,7 @@
           <loading/>
         </div>
         <img id="after">
+        <!-- <div id="afterIMG"></div> -->
       </div>
     </div>
     <div class="filter_button">
@@ -78,21 +78,28 @@ export default {
            }
         }).then(
           function(response){
+            //loadImage를 사용해야함. 그리고 vuex에 데이터 저장할 수 있도록 해야함.
+            let imgSRC="data:image.png;base64,"+response.data;
             document.getElementById('after').src="data:image.png;base64,"+response.data;
             document.getElementById('loading').style.display='none'
             document.getElementById('after').style.display='block';
           }
-        ).catch(err => console.log(err));
+        );
       //서버에 필터 이름과 함꼐 이미지를 전송.
     }
   },
   created(){
-    eventbus.$on("transfer-file", (data)=>{
-      this.beforeFiltet=true;
-      document.getElementById('before').src=data;
-      document.getElementById('beforeFilter').style.display='block';
-      document.getElementById('after').style.display='none';
-    }); 
+    loadImage(
+      this.$store.getters.getOBJ[0],
+      function(img){
+        document.getElementById('beforeIMG').appendChild(img);
+      },
+      {
+        maxWidth:300,
+        maxHeight:300,
+        orientation:true,
+      }
+    );
   }
 }
 </script>
@@ -130,15 +137,6 @@ export default {
   align-content: center;
   align-items: center;
 
-}
-
-#before {
-  /*width: 350px; !*이미지의 사이즈가 너무 작은거 같아 제가 임의로 수정했습니다.*!*/
-  height: 200px;
-  max-height: 200px;
-  object-fit: contain;
-  background-color: white;
-  /* border:3px solid blue; */
 }
 
 #loading{

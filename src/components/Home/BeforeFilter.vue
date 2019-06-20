@@ -16,8 +16,8 @@ export default {
   justify-content:center;
   align-items: center;
   margin:0 auto;
-  width: 300px;
-  height: 200px;
+  width: 224px;
+  height: 224px;
   border:5px dashed white;
   font-size:30px;
   color:white;
