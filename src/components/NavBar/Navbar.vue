@@ -1,5 +1,5 @@
 <template>
-<div class="navbar">
+<div class="navbar" :class="[currentPath==='/' ? '' : 'notHome' ]">
   <div class="navbar-logo">
     <img id="logo_round" src="@/assets/logo_shape.png">
     <span id="brand_title">Honeybee</span>
@@ -42,6 +42,9 @@ export default{
   computed:{
     signInOut(){
       return this.$store.getters.getSignIn; //현재 로그인 상태 가지고 온다
+    },
+    currentPath(){
+      return this.$route.path;
     }
   },
   methods:{
@@ -49,7 +52,7 @@ export default{
       document.querySelector(".navbar-buttons").classList.toggle('open');
       document.querySelector(".mobile-navbar").classList.toggle('open');
     },
-  },
+  }
 
 }
 </script>

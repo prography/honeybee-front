@@ -34,6 +34,6 @@ export const store=new Vuex.Store({
     },
     setfilterResult(state, payload){
       state.filterResult=payload;
-    }
+    },
   }
 });
