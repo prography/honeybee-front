@@ -2,23 +2,25 @@
   <div class="signIn">
     <div class="signIn_title">SIGN IN</div>
     <form>
-      <label for="userIDEmail">ID/Email</label>
+      <label for="userID">ID</label>
       <br>
-      <input id="user_ID_Email" type="text">
+      <input id="user_ID" type="text">
     </form>
     <form>
       <label for="userPWD">PassWord</label>
       <br>
       <input id="user_PWD" type="password">
     </form>
-    <div class="warningMessage">
-      <!-- modal로 warning을 줄 것인가? 아니면 txt를 띄울 것인가 -->
+    <div class="etc">
+      <router-link to='/sign_up' tag="button">회원가입</router-link>
+      <button>아이디 비밀번호 찾기</button>
     </div>
     <button @click="signIn()">Sign In</button>
     <button>
       <!-- <img src="../assets/google_logo.png"> -->
       Google Sign In
     </button>
+    
   </div>
 </template>
 
@@ -27,18 +29,29 @@ export default {
   name:'sign_in',
   methods:{
     signIn(){
-      let ID_Email=document.getElementById("user_ID_Email").value;
+      let ID=document.getElementById("user_ID").value;
       let PWD=document.getElementById("user_PWD").value;
 
-      if(ID_Email=="" || PWD==""){
-        console.log("!");
+      if(ID.length===0 || PWD.length===0){
+        if(ID.length===0 && PWD.length===0){
+          window.alert("입력을 완료해주세요.");
+          document.getElementById("user_ID").style.borderColor="orangered";
+          document.getElementById("user_PWD").style.borderColor="orangered";
+        }else if(ID.length===0){
+          window.alert("아이디를 입력해 주세요.");
+          document.getElementById("user_ID").style.borderColor="orangered";
+          document.getElementById("user_PWD").style.borderColor="initial";
+        }else if(PWD.length===0){
+          window.alert("비밀번호를 입력해 주세요.");
+          document.getElementById("user_ID").style.borderColor="initial";
+          document.getElementById("user_PWD").style.borderColor="orangered";
+        }
       }else{
-        console.log(ID_Email);
-        console.log(PWD);
+        document.getElementById("user_ID").style.borderColor="initial";
+        document.getElementById("user_PWD").style.borderColor="initial";
+        document.getElementById("user_ID").value="";
+        document.getElementById("user_PWD").value="";
       }
-
-      document.getElementById("user_ID_Email").value="";
-      document.getElementById("user_PWD").value="";
     }
   }
 }
@@ -79,6 +92,11 @@ button{
   margin-top:5%;
   width:100%;
   height:30px;
+}
+
+.etc{
+  display:flex;
+  justify-content: space-around;
 }
 
 </style>

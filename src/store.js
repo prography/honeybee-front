@@ -4,23 +4,25 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex);
 
-
 export const store=new Vuex.Store({
 
   state:{
-    signIn: true,
+    signIn: false,
     imgOBJ:[],
     filterResult:'',
   },
   getters:{
     getSignIn(state){
       return state.signIn;
+      //로그인 상태 저장
     },
     getOBJ(state){
       return state.imgOBJ;
+      //원본 이미지 객체를 저장
     },
     getfilterResult(state){
       return state.filterResult;
+      //필터를 적용한 결과를 저장
     }
   },
   mutations:{
@@ -32,6 +34,6 @@ export const store=new Vuex.Store({
     },
     setfilterResult(state, payload){
       state.filterResult=payload;
-    }
+    },
   }
 });
