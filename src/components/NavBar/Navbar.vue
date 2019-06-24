@@ -2,12 +2,16 @@
 <div class="navbar" :class="[currentPath==='/' ? '' : 'notHome' ]">
   <div class="navbar-logo">
     <img id="logo_round" src="@/assets/logo_shape.png">
-    <span id="brand_title">Honeybee</span>
+    <span id="brand_title"><a class="logo_word" href="/">Honeybee</a></span>
   </div>
   <div class="navbar-buttons">
     <navbarButton v-for="item in items" :key="item.id" :buttonText="item.name" :page="item.path"/>
-    <buttonSignIn v-if='signInOut'/>
-    <buttonSignOut v-else/>
+    <navbarButton v-if="signedIn" :buttonText="getUserId" :page="'/user_page'"/> <!-- :key 꼭 넣어 주어야 하나?-->
+    <navbarButton v-else :buttonText="'SIGN UP'" :page="'/sign_up'"/>
+    <navbarButton v-if="signedIn" :buttonText="'SIGN OUT'" :page="'/'" @click.native="signOut"/>
+    <navbarButton v-else :buttonText="'SIGN IN'" :page="'/sign_in'"/>
+    <!--<buttonSignIn v-if='signInOut'/>-->
+    <!--<buttonSignOut v-else/>-->
   </div>
   <div @click="open()" class="mobile-navbar">
     <span class="bar"></span>
@@ -20,15 +24,11 @@
 
 <script>
 import navbarButton from './NavbarButton.vue'
-import buttonSignOut from './ButtonSignOut'
-import buttonSignIn from './ButtonSignIn'
 
 export default{
   name :'navbarSignIn',
   components:{
-    navbarButton,
-    buttonSignOut,
-    buttonSignIn
+    navbarButton
   },
   data(){
     const items=[
@@ -40,11 +40,14 @@ export default{
     }
   },
   computed:{
-    signInOut(){
+    signedIn(){
       return this.$store.getters.getSignIn; //현재 로그인 상태 가지고 온다
     },
     currentPath(){
       return this.$route.path;
+    },
+    getUserId() {
+      return this.$store.getters.getUserId;
     }
   },
   methods:{
@@ -52,12 +55,22 @@ export default{
       document.querySelector(".navbar-buttons").classList.toggle('open');
       document.querySelector(".mobile-navbar").classList.toggle('open');
     },
+
+    signOut() {
+      this.$store.commit('signOut');//현재 로그인 상태 변경 로그인->로그 아웃
+
+    }
   }
 
 }
 </script>
 
 <style scoped>
+a.logo_word {
+  text-decoration: none;
+  color: yellow;
+}
+
 .navbar{
   display:flex;
   justify-content: space-between;

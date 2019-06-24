@@ -24,12 +24,12 @@ export default new Router({
     },
     {
       path: '/sign_up',
-      name: 'sing_up',
+      name: 'sign_up',
       component: SignUp
     },
     {
       path: '/sign_in',
-      name: 'sing_in',
+      name: 'sign_in',
       component: SignIn
     },
     {
