@@ -10,7 +10,7 @@
         <div class="element"
              v-for="(myImage, index) in images">
           <div v-if="index%3===0">
-            <img class="images" :src="myImage.src" alt="img">
+            <img class="images" :src="myImage.src" alt="img" @click="clickImg(myImage.src)">
             <div class="info">{{myImage.name}}<span><img class="like" :src="download"/><img class="like"
                                                                                             :src="like"/></span></div>
           </div>
@@ -21,7 +21,7 @@
         <div class="element"
              v-for="(myImage, index) in images">
           <div v-if="index%3===1">
-            <img class="images" :src="myImage.src" alt="img">
+            <img class="images" :src="myImage.src" alt="img" @click="clickImg(myImage.src)">
             <div class="info">{{myImage.name}}<span><img class="like" :src="download"/><img class="like"
                                                                                             :src="like"/></span></div>
           </div>
@@ -32,14 +32,18 @@
         <div class="element"
              v-for="(myImage, index) in images">
           <div v-if="index%3===2">
-            <img class="images" :src="myImage.src" alt="img">
+            <img class="images" :src="myImage.src" alt="img" @click="clickImg(myImage.src)">
             <div class="info">{{myImage.name}}<span><img class="like" :src="download"/><img class="like"
                                                                                             :src="like"/></span></div>
           </div>
         </div>
-
       </div>
 
+    </div>
+    <div id="ImgModal" class="modal">
+      <div class="modal-content">
+        <span @click="closeImg" class="close">&times;</span>
+      </div>
     </div>
   </section>
 </template>
@@ -48,6 +52,7 @@
   import heart from '@/assets/heart.png'
   import heartFill from '@/assets/heart_fill.png'
   import dload from '@/assets/download.png'
+
 
   export default {
     name: "Gallery",
@@ -61,8 +66,20 @@
       }
     },
     components: {},
-    methods: {}
+    methods: {
+      clickImg(src) {
+        document.getElementById('ImgModal').style.display = "block";
+        let img = document.createElement("img");
+        img.src = src;
+        img.className = "modal-images";
+        // document.getElementsByClassName('modal-content')[0].appendChild(img);
+      },
+      closeImg() {
+        document.getElementById('ImgModal').style.display = "none";
+      }
+    }
   }
+
 </script>
 
 <style scoped>
@@ -97,7 +114,7 @@
     margin: 5px;
     height: 40px;
     box-sizing: border-box;
-    width: calc(100% - 10px);
+    width: calc(100% - 14px);
     z-index: -10;
     transition: transform 0.25s ease-in-out, opacity 0.75s;
     opacity: 0;
@@ -129,6 +146,45 @@
   .column {
     flex: 1;
     /*border: 1px solid #e9e9e9;*/
+  }
+
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .modal-images {
+    width: 200px;
+    height: auto;
   }
 
 

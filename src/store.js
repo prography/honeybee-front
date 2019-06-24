@@ -8,6 +8,7 @@ export const store=new Vuex.Store({
 
   state:{
     signIn: false,
+    userId: '',
     imgOBJ:[],
     filterResult:'',
   },
@@ -23,9 +24,17 @@ export const store=new Vuex.Store({
     getfilterResult(state){
       return state.filterResult;
       //필터를 적용한 결과를 저장
+    },
+    getUserId(state) { // 사용자 아이디 반환
+      return state.userId;
     }
+    
   },
   mutations:{
+    signIn(state, userId) { // 로그인을 통해 회원 정보 전송
+      state.signIn = true;
+      state.userId = userId;
+    },
     signOut(state, payload){
       state.signIn=false;
     },

@@ -10,7 +10,7 @@
     <form>
       <label for="userEmail">Email</label>
       <input type="email" id="user_Email" @keyup='emailCheck'>
-      <div class="warn" id="warnWrongEM">이메일이 옳바르지 않은 형식입니다</div>
+      <div class="warn" id="warnWrongEM">이메일이 올바르지 않은 형식입니다</div>
     </form>
     <form>
       <label for="userPassword">PassWord</label>
@@ -40,7 +40,7 @@ export default {
       ID_OK:false,
       Email_OK:false,
       PWD_OK:false,
-      PWD_Check_OK:false,
+      PWD_Check_OK:false
     }
   },
   methods:{
@@ -60,6 +60,9 @@ export default {
           document.getElementById('warnDuplicateID').style.display="none";
         }
       }else{
+        this.ID_OK = true;
+        document.getElementById('warnLengthID').style.display="none";
+        document.getElementById('user_ID').style.borderColor="LimeGreen";
         console.log(ID.length);
         console.log(ID);
         //서버에서 ID 중복 확인 필요
@@ -169,12 +172,12 @@ export default {
         document.getElementById('warnPWDSame').style.display="none";
       }else if(this.PWD_OK===true){
         if(PWD===PWD_Check){
-          this.PWD_Check_OK=false;
+          this.PWD_Check_OK=true;
           document.getElementById('user_PWD_Check').style.borderColor="LimeGreen";
           document.getElementById('warnPWDCompl').style.display="none";
           document.getElementById('warnPWDSame').style.display="none";
         }else{
-          this.PWD_Check_OK=true;
+          this.PWD_Check_OK=false;
           document.getElementById('user_PWD_Check').style.borderColor="orangered";
           document.getElementById('warnPWDCompl').style.display="none";
           document.getElementById('warnPWDSame').style.display="block";
@@ -182,15 +185,19 @@ export default {
       }
     },
     signUp(){
+
       let ID=document.getElementById("user_ID").value;
       let Email=document.getElementById("user_Email").value;
       let PWD=document.getElementById("user_PWD").value;
       let PWD_Check=document.getElementById("user_PWD_Check").value;
-
+      console.log(this.ID_OK+" "+this.Email_OK+" "+this.PWD_OK+" "+this.PWD_Check_OK);
       if(this.ID_OK===true && this.Email_OK===true && this.PWD_OK===true && this.PWD_Check_OK===true){
         //회원 가입 실행
+        window.alert('회원가입 성공');
+        this.$router.push('/sign_in');
+
       }else{
-        window.alert("입력을 완료해주세요.")
+        window.alert("입력을 완료해주세요.");
       }
 
     }
@@ -254,6 +261,7 @@ button.signup{
   box-shadow: 0 0 3px yellow;
   font-weight: bold;
   color: #555;
+  font-size: 18px;
 }
 
 </style>
