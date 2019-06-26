@@ -56,15 +56,19 @@ export default {
     },
 
     addImages: function(files) {
-      let file=files[0];
-      let fileReader=new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = function(e) {
-        let image_data=e.target.result;
-        // eventbus.$emit('transfer-file', image_data);
-        //이벤트 버스를 이용한 데이터 전달. 인코딩된 이미지 전달. FilterSection.vue로 전달.
-      }
-    }
+      loadImage(
+        files[0],
+        function(img){
+          eventbus.$emit('original', img.toDataURL());
+        },
+        {
+          maxWidth:300,
+          maxHeight:300,
+          orientation:true,
+        }
+      );
+    },
+
   }
 
 }

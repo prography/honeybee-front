@@ -2,7 +2,6 @@
   <div class="filter_section">
     <div class="result_section">
       <div class="result">
-        <!-- <div id="beforeIMG"></div> -->
         <img id="beforeIMG">
       </div>
       <div class="arrow">
@@ -90,17 +89,9 @@ export default {
     }
   },
   created(){
-    loadImage(
-      this.$store.getters.getOBJ[0],
-      function(img){
-        
-      },
-      {
-        maxWidth:300,
-        maxHeight:300,
-        orientation:true,
-      }
-    );
+    eventbus.$on('original', function(tmp){
+      document.getElementById('beforeIMG').src=tmp;
+    })
   }
 }
 </script>
