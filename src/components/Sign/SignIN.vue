@@ -3,20 +3,16 @@
     <div class="signIn_title">SIGN IN</div>
     <form>
       <label for="userID">ID</label>
-      <br>
       <input id="user_ID" type="text">
     </form>
     <form>
       <label for="userPWD">PassWord</label>
-      <br>
       <input id="user_PWD" type="password">
     </form>
-    <div class="etc">
-      <router-link to='/sign_up' tag="button">회원가입</router-link>
-      <button>아이디 비밀번호 찾기</button>
-    </div>
-    <button @click="signIn()">Sign In</button>
-    <button>
+    <button class="buttonA" @click="signIn()">Sign In</button>
+    <router-link to='/sign_up' tag="button" class="buttonA">회원가입</router-link>
+    <button class="buttonA">아이디 비밀번호 찾기</button>
+    <button class="buttonA">
       <!-- <img src="../assets/google_logo.png"> -->
       Google Sign In
     </button>
@@ -47,6 +43,8 @@ export default {
           document.getElementById("user_PWD").style.borderColor="orangered";
         }
       }else{
+        this.$store.commit('signIn', ID); // 로그인 성공시 로그인 상태로 바뀜
+        this.$router.push('/user_page');
         document.getElementById("user_ID").style.borderColor="initial";
         document.getElementById("user_PWD").style.borderColor="initial";
         document.getElementById("user_ID").value="";
@@ -60,16 +58,20 @@ export default {
 <style scoped>
 .signIn{
   text-align:center;
-  margin-left:35%;
-  margin-right:35%;
-  padding-top:100px;
-  padding-bottom:100px;
+  margin-left:25%;
+  margin-right:25%;
+  margin-top:100px;
+  margin-bottom:100px;
+  padding: 50px;
+  border: 1px solid #eee;
+  box-shadow: 0 0 3px #eee;
+  color: #555;
 }
 
 .signIn_title{
   text-align:center;
   margin:5%;
-  font-size:55px;
+  font-size:40px;
 }
 
 form{
@@ -81,23 +83,31 @@ form{
 label{
   display:flex;
   justify-content:flex-start;
+  margin-bottom: 15px;
+  font-weight: bold;
 }
 
 input{
   width:100%;
   height:30px;
+  margin-bottom: 10px;
 }
 
-button{
-  margin-top:5%;
-  width:100%;
-  height:30px;
+
+button.buttonA {
+  margin-top: 20px;
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  border: 0px;
+  background-color: yellow;
+  box-shadow: 0 0 3px yellow;
+  font-weight: bold;
+  color: #555;
+  font-size: 18px;
 }
 
-.etc{
-  display:flex;
-  justify-content: space-around;
-}
+
 
 </style>
 

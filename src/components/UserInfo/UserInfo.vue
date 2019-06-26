@@ -34,7 +34,7 @@ export default {
   data(){
     return{
       user_img:false,
-      ID:"OWEN",
+      ID: this.$store.getters.getUserId,
       Introduce:"Hello, I'm Owen. Nice to meet you. I like honeybees. I work for prography blur blur....",
       likes:"177",
       downloads:"547"
