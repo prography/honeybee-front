@@ -2,7 +2,8 @@
   <div class="filter_section">
     <div class="result_section">
       <div class="result">
-        <div id="beforeIMG"></div>
+        <!-- <div id="beforeIMG"></div> -->
+        <img id="beforeIMG">
       </div>
       <div class="arrow">
         <img src="@/assets/right-arrow.png" alt="화살표">
@@ -92,7 +93,7 @@ export default {
     loadImage(
       this.$store.getters.getOBJ[0],
       function(img){
-        document.getElementById('beforeIMG').appendChild(img);
+        
       },
       {
         maxWidth:300,
