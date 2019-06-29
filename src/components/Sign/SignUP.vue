@@ -193,6 +193,15 @@ export default {
       console.log(this.ID_OK+" "+this.Email_OK+" "+this.PWD_OK+" "+this.PWD_Check_OK);
       if(this.ID_OK===true && this.Email_OK===true && this.PWD_OK===true && this.PWD_Check_OK===true){
         //회원 가입 실행
+
+        axios.post('http://127.0.0.1:8000/tmppicture/',
+          {
+            userID:ID,
+            userEMAIL:Email,
+            userPWD:PWD,
+          }
+        );
+
         window.alert('회원가입 성공');
         this.$router.push('/sign_in');
 

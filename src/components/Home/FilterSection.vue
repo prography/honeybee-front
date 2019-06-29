@@ -70,7 +70,7 @@ export default {
       }
       formData.append('filter_info', filter);
 
-      axios.post ('http://3.218.93.179:8000/tmppicture/',
+      axios.post ('http://127.0.0.1:8000/tmppicture/',
         formData,
         {
            headers: {
@@ -79,7 +79,6 @@ export default {
         }).then(
           function(response){
             //loadImage를 사용해야함. 그리고 vuex에 데이터 저장할 수 있도록 해야함.
-            let imgSRC="data:image.png;base64,"+response.data;
             document.getElementById('after').src="data:image.png;base64,"+response.data;
             document.getElementById('loading').style.display='none'
             document.getElementById('after').style.display='block';
@@ -90,7 +89,12 @@ export default {
   },
   created(){
     eventbus.$on('original', function(tmp){
+      
       document.getElementById('beforeIMG').src=tmp;
+      document.getElementById('beforeFilter').style.display='block';
+      document.getElementById('after').style.display='none';
+      document.getElementById('loading').style.display='none';
+
     })
   }
 }
