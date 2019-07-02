@@ -28,9 +28,9 @@
       <button class="filter" @click="applyFilter('picabia')">피카비아 필터</button>
     </div>
     <div class="buttons">
-      <button class="btn">DOWNLOAD</button>
       <button class="btn" @click="close">CLOSE</button>
     </div>
+    <a id="download" href="">DOWNLOAD</a>
   </div>
 </template>
 
@@ -45,6 +45,7 @@ export default {
   data(){
     return{
       files:'',
+      result:'',
     }
   },
   components:{
@@ -59,6 +60,7 @@ export default {
       document.getElementById('beforeFilter').style.display='none';
       document.getElementById('after').style.display='none';
       document.getElementById('loading').style.display='block';
+      document.getElementById("download").style.display='none';
 
       this.files=this.$store.getters.getOBJ;
       //data()에 vuex에 저장된 배열을 저장.
@@ -78,23 +80,28 @@ export default {
            }
         }).then(
           function(response){
-            //loadImage를 사용해야함. 그리고 vuex에 데이터 저장할 수 있도록 해야함.
-            document.getElementById('after').src="data:image.png;base64,"+response.data;
+            let result="data:image.png;base64,"+response.data;
+            document.getElementById('after').src=result;
+            let src="data:image.png;base64,"+response.data;
             document.getElementById('loading').style.display='none'
             document.getElementById('after').style.display='block';
+
+            let dwn=document.getElementById("download");
+            dwn.href=result;
+            dwn.download="result.png";
+            dwn.style.display='inline';
           }
         );
       //서버에 필터 이름과 함꼐 이미지를 전송.
-    }
+    },
   },
   created(){
     eventbus.$on('original', function(tmp){
-      
       document.getElementById('beforeIMG').src=tmp;
       document.getElementById('beforeFilter').style.display='block';
       document.getElementById('after').style.display='none';
       document.getElementById('loading').style.display='none';
-
+      document.getElementById("download").style.display='none';
     })
   }
 }
@@ -106,6 +113,7 @@ export default {
   /*height:700px;*/
   padding: 50px;
   background-color: #333333;
+  text-align:center;
 }
 
 .result_section{
@@ -197,9 +205,11 @@ export default {
   background-color: #678679;
 }
 
+
+
 .buttons{
   margin-top:50px;
-  margin-bottom:50px;
+  margin-bottom:20px;
   text-align:center;
 }
 
@@ -209,6 +219,19 @@ export default {
   height:30px;
   font-size:14px;
   background-color:white;
+  border:none;
+  border-radius:20px;
+}
+
+#download{
+  display: none;
+  margin:10px 20px;
+  padding:6px 15px;
+  text-align: center;
+  text-decoration: none;
+  color:black;
+  font-size:14px;
+  background-color: white;
   border:none;
   border-radius:20px;
 }
