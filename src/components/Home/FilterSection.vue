@@ -2,7 +2,7 @@
   <div class="filter_section">
     <div class="result_section">
       <div class="result">
-        <div id="beforeIMG"></div>
+        <img id="beforeIMG">
       </div>
       <div class="arrow">
         <img src="@/assets/right-arrow.png" alt="화살표">
@@ -28,9 +28,9 @@
       <button class="filter" @click="applyFilter('picabia')">피카비아 필터</button>
     </div>
     <div class="buttons">
-      <button class="btn">DOWNLOAD</button>
       <button class="btn" @click="close">CLOSE</button>
     </div>
+    <a id="download" href="">DOWNLOAD</a>
   </div>
 </template>
 
@@ -45,6 +45,7 @@ export default {
   data(){
     return{
       files:'',
+      result:'',
     }
   },
   components:{
@@ -59,6 +60,7 @@ export default {
       document.getElementById('beforeFilter').style.display='none';
       document.getElementById('after').style.display='none';
       document.getElementById('loading').style.display='block';
+      document.getElementById("download").style.display='none';
 
       this.files=this.$store.getters.getOBJ;
       //data()에 vuex에 저장된 배열을 저장.
@@ -70,7 +72,7 @@ export default {
       }
       formData.append('filter_info', filter);
 
-      axios.post ('http://3.218.93.179:8000/tmppicture/',
+      axios.post ('http://127.0.0.1:8000/tmppicture/',
         formData,
         {
            headers: {
@@ -78,28 +80,29 @@ export default {
            }
         }).then(
           function(response){
-            //loadImage를 사용해야함. 그리고 vuex에 데이터 저장할 수 있도록 해야함.
-            let imgSRC="data:image.png;base64,"+response.data;
-            document.getElementById('after').src="data:image.png;base64,"+response.data;
+            let result="data:image.png;base64,"+response.data;
+            document.getElementById('after').src=result;
+            let src="data:image.png;base64,"+response.data;
             document.getElementById('loading').style.display='none'
             document.getElementById('after').style.display='block';
+
+            let dwn=document.getElementById("download");
+            dwn.href=result;
+            dwn.download="result.png";
+            dwn.style.display='inline';
           }
         );
       //서버에 필터 이름과 함꼐 이미지를 전송.
-    }
+    },
   },
   created(){
-    loadImage(
-      this.$store.getters.getOBJ[0],
-      function(img){
-        document.getElementById('beforeIMG').appendChild(img);
-      },
-      {
-        maxWidth:300,
-        maxHeight:300,
-        orientation:true,
-      }
-    );
+    eventbus.$on('original', function(tmp){
+      document.getElementById('beforeIMG').src=tmp;
+      document.getElementById('beforeFilter').style.display='block';
+      document.getElementById('after').style.display='none';
+      document.getElementById('loading').style.display='none';
+      document.getElementById("download").style.display='none';
+    })
   }
 }
 </script>
@@ -110,6 +113,7 @@ export default {
   /*height:700px;*/
   padding: 50px;
   background-color: #333333;
+  text-align:center;
 }
 
 .result_section{
@@ -201,9 +205,11 @@ export default {
   background-color: #678679;
 }
 
+
+
 .buttons{
   margin-top:50px;
-  margin-bottom:50px;
+  margin-bottom:20px;
   text-align:center;
 }
 
@@ -213,6 +219,19 @@ export default {
   height:30px;
   font-size:14px;
   background-color:white;
+  border:none;
+  border-radius:20px;
+}
+
+#download{
+  display: none;
+  margin:10px 20px;
+  padding:6px 15px;
+  text-align: center;
+  text-decoration: none;
+  color:black;
+  font-size:14px;
+  background-color: white;
   border:none;
   border-radius:20px;
 }

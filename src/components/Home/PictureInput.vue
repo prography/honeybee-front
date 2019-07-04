@@ -42,9 +42,8 @@ export default {
         window.alert("이미지가 아닙니다");
         return;
       }
-           
+
       this.addImages(this.files1);
-      //이미지 인코딩하는 부분
 
       this.$store.commit('setOBJ', Array.from(this.files1));
       //vuex이용하여 사진을 저장. Array.from()=>유사배열을 배열로 전환(아직 공부 더 해야함), 데이터 전달 문제 해겨을 위하여 사용
@@ -52,21 +51,25 @@ export default {
       this.$emit("forTransfer", this.files1);
       //컴포넌트간 데이터 통신(이벤트 버스X, 자식->부모). 단순히 파일이 업로드 되었다는 것을 알려주기 위하여 파일을 상위 컴포넌트(Intro.vue)에 전달. forTransger 이벤트에 인코딩 전 파일을 전달.
 
+
+
       e.target.value = '';
     },
 
     addImages: function(files) {
-      let file=files[0];
-      let fileReader=new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = function(e) {
-        let image_data=e.target.result;
-        // eventbus.$emit('transfer-file', image_data);
-        //이벤트 버스를 이용한 데이터 전달. 인코딩된 이미지 전달. FilterSection.vue로 전달.
-      }
-    }
+      loadImage(
+        files[0],
+        function(img){
+          eventbus.$emit('original', img.toDataURL());
+        },
+        {
+          maxWidth:300,
+          maxHeight:300,
+          orientation:true,
+        }
+      );
+    },
   }
-
 }
 </script>
 
