@@ -10,25 +10,23 @@ export const store=new Vuex.Store({
     signIn: false,
     userId: '',
     imgOBJ:[],
-    filterResult:'',
+    imgExifOrientation:'',
   },
   getters:{
     getSignIn(state){
       return state.signIn;
       //로그인 상태 저장
     },
+    getUserId(state) { // 사용자 아이디 반환
+      return state.userId;
+    },
     getOBJ(state){
       return state.imgOBJ;
       //원본 이미지 객체를 저장
     },
-    getfilterResult(state){
-      return state.filterResult;
-      //필터를 적용한 결과를 저장
-    },
-    getUserId(state) { // 사용자 아이디 반환
-      return state.userId;
+    getImgExifOrientation(state){
+      return state.imgExifOrientation;
     }
-    
   },
   mutations:{
     signIn(state, userId) { // 로그인을 통해 회원 정보 전송
@@ -41,8 +39,8 @@ export const store=new Vuex.Store({
     setOBJ(state, payload){
       state.imgOBJ=payload;
     },
-    setfilterResult(state, payload){
-      state.filterResult=payload;
-    },
+    setImgExifOrientation(state, payload){
+      state.imgExifOrientation=payload;
+    }
   }
 });

@@ -45,7 +45,7 @@ export default {
   data(){
     return{
       files:'',
-      result:'',
+      orientation:''
     }
   },
   components:{
@@ -81,8 +81,8 @@ export default {
         }).then(
           function(response){
             let result="data:image.png;base64,"+response.data;
+
             document.getElementById('after').src=result;
-            let src="data:image.png;base64,"+response.data;
             document.getElementById('loading').style.display='none'
             document.getElementById('after').style.display='block';
 
