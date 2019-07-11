@@ -26,6 +26,7 @@ export default {
   	return {
       isDragging : false,
       imgObjs:'',
+      orientation:'',
     };
   },
 
@@ -63,6 +64,8 @@ export default {
         }
         return callback(-1);
       };
+
+      reader.readAsArrayBuffer(file.slice(0, 64 * 1024));
     },
   	onChange: function(e) {
       this.isDragging = false;
@@ -76,6 +79,7 @@ export default {
         window.alert("이미지가 아닙니다");
         return;
       }
+
 
       this.getOrientation(this.imgObjs[0], function(orientation) {
         console.log(orientation);

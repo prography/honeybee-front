@@ -29,6 +29,7 @@
     </div>
     <div class="buttons">
       <button class="btn" @click="close">CLOSE</button>
+      <!-- <button class="btn" id="upload" @click="upload">UPLOAD</button> -->
     </div>
     <a id="download" href="">DOWNLOAD</a>
   </div>
@@ -45,7 +46,8 @@ export default {
   data(){
     return{
       files:'',
-      orientation:''
+      orientation:'',
+      resultImgUrl:''
     }
   },
   components:{
@@ -64,6 +66,7 @@ export default {
 
       this.files=this.$store.getters.getOBJ;
       //data()에 vuex에 저장된 배열을 저장.
+
 
       let formData=new FormData();
       for( var i = 0; i < this.files.length; i++ ){
@@ -90,14 +93,16 @@ export default {
             dwn.href=result;
             dwn.download="result.png";
             dwn.style.display='inline';
+
           }
         );
       //서버에 필터 이름과 함꼐 이미지를 전송.
+
     },
   },
   created(){
-    eventbus.$on('original', function(tmp){
-      document.getElementById('beforeIMG').src=tmp;
+    eventbus.$on('original', function(imgSrc){
+      document.getElementById('beforeIMG').src=imgSrc;
       document.getElementById('beforeFilter').style.display='block';
       document.getElementById('after').style.display='none';
       document.getElementById('loading').style.display='none';
@@ -221,6 +226,10 @@ export default {
   background-color:white;
   border:none;
   border-radius:20px;
+}
+
+#upload{
+  display:none;
 }
 
 #download{
