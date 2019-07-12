@@ -24,6 +24,7 @@ import img6 from '@/assets/img6.jpg'
 import img7 from '@/assets/img7.jpg'
 import img8 from '@/assets/img8.jpg'
 import img9 from '@/assets/img9.jpg'
+import img10 from '@/assets/img10.jpg'
 
 export default {
   name: 'home',
@@ -72,6 +73,11 @@ export default {
       {
         src: img9,
         name: 'james',
+        show: false
+      },
+      {
+        src: img10,
+        name: 'maria',
         show: false
       },
     ];
