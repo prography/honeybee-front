@@ -10,32 +10,27 @@
       </div>
       <form>
         <label for="userName">Name</label>
-        <br>
         <input type="text" id="user_Name">
       </form>
       <form>
         <label for="userID">ID</label>
-        <br>
         <input type="text" id="user_ID">
       </form>
       <form>
         <label for="userEmail">Email</label>
-        <br>
-        <input type="email" id="user_Email"> 
+        <input type="email" id="user_Email">
       </form>
       <form>
         <label for="userPassword">PassWord</label>
-        <br>
         <input type="password" id="user_PWD">
       </form>
       <form>
         <label for="userPassword_check">PassWord 확인</label>
-        <br>
         <input type="password" id="user_PWD_Check">
       </form>
       <div class="warningMesage"></div>
-      <button>Edit</button>
-      <router-link to='/user_Page' tag="button">Cancel</router-link>
+      <button class="buttonA">Edit</button>
+      <router-link to='/user_Page' tag="button" class="buttonA">Cancel</router-link>
     </div>
   </div>
 </template>
@@ -66,10 +61,14 @@ export default {
 
 .info_change{
   text-align:center;
-  margin-left:35%;
-  margin-right:35%;
-  padding-top:100px;
-  padding-bottom:100px;
+  margin-left:25%;
+  margin-right:25%;
+  margin-top:100px;
+  margin-bottom:100px;
+  padding: 50px;
+  border: 1px solid #eee;
+  box-shadow: 0 0 3px #eee;
+  color: #555;
 }
 
 .user_img{
@@ -117,16 +116,26 @@ form{
 label{
   display:flex;
   justify-content:flex-start;
+  margin-bottom: 15px;
+  font-weight: bold;
 }
 
 input{
   width:100%;
   height:30px;
+  margin-bottom: 10px;
 }
 
-button{
-  margin-top:5%;
-  width:100%;
-  height:30px;
+.buttonA {
+  margin-top: 20px;
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  border: 0px;
+  background-color: yellow;
+  box-shadow: 0 0 3px yellow;
+  font-weight: bold;
+  color: #555;
+  font-size: 18px;
 }
 </style>
