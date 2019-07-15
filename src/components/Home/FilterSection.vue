@@ -15,7 +15,6 @@
           <loading/>
         </div>
         <img id="after">
-        <!-- <div id="afterIMG"></div> -->
       </div>
     </div>
     <div class="filter_button">
@@ -27,10 +26,8 @@
       <button class="filter" @click="applyFilter('katsushika')">가쓰시카 필터</button>
       <button class="filter" @click="applyFilter('picabia')">피카비아 필터</button>
     </div>
-    <div class="buttons">
-      <button class="btn" @click="close">CLOSE</button>
-      <!-- <button class="btn" id="upload" @click="upload">UPLOAD</button> -->
-    </div>
+    <button class="btn" @click="close">CLOSE</button>
+    <button class="btn" id="upload" @click="upload">UPLOAD</button>
     <a id="download" href="">DOWNLOAD</a>
   </div>
 </template>
@@ -47,7 +44,6 @@ export default {
     return{
       files:'',
       orientation:'',
-      resultImgUrl:''
     }
   },
   components:{
@@ -63,6 +59,7 @@ export default {
       document.getElementById('after').style.display='none';
       document.getElementById('loading').style.display='block';
       document.getElementById("download").style.display='none';
+      document.getElementById("upload").style.display='none';
 
       this.files=this.$store.getters.getOBJ;
       //data()에 vuex에 저장된 배열을 저장.
@@ -71,7 +68,7 @@ export default {
       let formData=new FormData();
       for( var i = 0; i < this.files.length; i++ ){
         let file = this.files[i];
-        formData.append('pic_address', file);
+        formData.append ('pic_address', file);
       }
       formData.append('filter_info', filter);
 
@@ -81,10 +78,8 @@ export default {
            headers: {
                'Content-Type': 'multipart/form-data'
            }
-        }).then(
-          function(response){
+        }).then((response)=>{
             let result="data:image.png;base64,"+response.data;
-
             document.getElementById('after').src=result;
             document.getElementById('loading').style.display='none'
             document.getElementById('after').style.display='block';
@@ -94,11 +89,27 @@ export default {
             dwn.download="result.png";
             dwn.style.display='inline';
 
+            document.getElementById("upload").style.display='inline';
+            this.$store.commit('setResultUrl', result);
           }
         );
       //서버에 필터 이름과 함꼐 이미지를 전송.
-
+      
     },
+    upload(){
+      let logInState=this.$store.getters.getSignIn;
+
+      if(logInState===true){
+        window.alert(this.$store.getters.getResultUrl);
+      }else{
+        // window.alert("로그인X");
+        if(window.confirm("로그인이 필요한 기능입니다. 로그인 페이지로 이동하시겠습니까?")){
+          location.href="/sign_in";
+        }
+      }
+
+      console.log(this.$store.getters.getResultUrl);
+    }
   },
   created(){
     eventbus.$on('original', function(imgSrc){
@@ -210,14 +221,6 @@ export default {
   background-color: #678679;
 }
 
-
-
-.buttons{
-  margin-top:50px;
-  margin-bottom:20px;
-  text-align:center;
-}
-
 .btn{
   margin:10px 20px;
   width:120px;
@@ -235,7 +238,7 @@ export default {
 #download{
   display: none;
   margin:10px 20px;
-  padding:6px 15px;
+  padding:6.5px 20px;
   text-align: center;
   text-decoration: none;
   color:black;

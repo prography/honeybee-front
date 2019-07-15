@@ -10,7 +10,7 @@ export const store=new Vuex.Store({
     signIn: false,
     userId: '',
     imgOBJ:[],
-    imgExifOrientation:'',
+    resultUrl:'',
   },
   getters:{
     getSignIn(state){
@@ -24,7 +24,7 @@ export const store=new Vuex.Store({
       return state.imgOBJ;
       //원본 이미지 객체를 저장
     },
-    getImgExifOrientation(state){
+    getResultUrl(state){
       return state.imgExifOrientation;
     }
   },
@@ -39,7 +39,7 @@ export const store=new Vuex.Store({
     setOBJ(state, payload){
       state.imgOBJ=payload;
     },
-    setImgExifOrientation(state, payload){
+    setResultUrl(state, payload){
       state.imgExifOrientation=payload;
     }
   }

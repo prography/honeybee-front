@@ -1,14 +1,14 @@
 <template>
   <div class="signIn">
     <div class="signIn_title">SIGN IN</div>
-    <form>
+    <div>
       <label for="userID">ID</label>
       <input id="user_ID" type="text">
-    </form>
-    <form>
+    </div>
+    <div>
       <label for="userPWD">PassWord</label>
       <input id="user_PWD" type="password">
-    </form>
+    </div>
     <button class="buttonA" @click="signIn()">Sign In</button>
     <router-link to='/sign_up' tag="button" class="buttonA">회원가입</router-link>
     <button class="buttonA">아이디 비밀번호 찾기</button>
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name:'sign_in',
   methods:{
@@ -43,8 +44,21 @@ export default {
           document.getElementById("user_PWD").style.borderColor="orangered";
         }
       }else{
-        this.$store.commit('signIn', ID); // 로그인 성공시 로그인 상태로 바뀜
-        this.$router.push('/user_page');
+
+        axios.post('http://127.0.0.1:8000/api/auth/login/',
+          {
+            username:ID,
+            password:PWD
+          }
+        ).then(response=>{
+          if(response.status===200){
+            this.$store.commit('signIn', ID); // 로그인 성공시 로그인 상태로 바뀜
+            this.$router.push('/user_page');
+          }
+
+        });
+
+        
         document.getElementById("user_ID").style.borderColor="initial";
         document.getElementById("user_PWD").style.borderColor="initial";
         document.getElementById("user_ID").value="";

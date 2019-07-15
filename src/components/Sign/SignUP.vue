@@ -1,30 +1,30 @@
 <template>
   <div class="signUp">
     <div class="signUp_title">SIGN UP</div>
-    <form>
+    <div>
       <label for="userID">ID</label>
       <input type="text" id="user_ID" @keyup='idCheck'>
       <div class="warn" id="warnLengthID">5자리 ~ 10자리 이내로 입력해주세요.</div>
       <div class="warn" id="warnDuplicateID">이미 사용되고 있는 아이디입니다.</div>
-    </form>
-    <form>
+    </div>
+    <div>
       <label for="userEmail">Email</label>
       <input type="email" id="user_Email" @keyup='emailCheck'>
       <div class="warn" id="warnWrongEM">이메일이 올바르지 않은 형식입니다</div>
-    </form>
-    <form>
+    </div>
+    <div>
       <label for="userPassword">PassWord</label>
       <input type="password" id="user_PWD" @keyup='passwordFormCheck'>
       <div class="warn" id="warnPWDLength">8자리 ~ 20자리 이내로 입력해주세요.</div>
       <div class="warn" id="warnPWDBlank">비밀번호는 공백없이 입력해주세요</div>
       <div class="warn" id="warnPWDRule">영문,숫자, 특수문자를 혼합하여 입력해주세요.</div>
-    </form>
-    <form>
+    </div>
+    <div>
       <label for="userPassword_check">PassWord 확인</label>
       <input type="password" id="user_PWD_Check" @keyup="passwordCheck">
       <div class="warn" id="warnPWDCompl">비밀번호를 먼저 입력해주세요.</div>
       <div class="warn" id="warnPWDSame">비밀번호 일치하지 않습니다.</div>
-    </form>
+    </div>
     <div class="warningMesage"></div>
     <button class="signup" @click="signUp()">Sign Up</button>
   </div>
@@ -63,8 +63,6 @@ export default {
         this.ID_OK = true;
         document.getElementById('warnLengthID').style.display="none";
         document.getElementById('user_ID').style.borderColor="LimeGreen";
-        console.log(ID.length);
-        console.log(ID);
         //서버에서 ID 중복 확인 필요
       }
     },
@@ -190,20 +188,22 @@ export default {
       let Email=document.getElementById("user_Email").value;
       let PWD=document.getElementById("user_PWD").value;
       let PWD_Check=document.getElementById("user_PWD_Check").value;
-      console.log(this.ID_OK+" "+this.Email_OK+" "+this.PWD_OK+" "+this.PWD_Check_OK);
+      
       if(this.ID_OK===true && this.Email_OK===true && this.PWD_OK===true && this.PWD_Check_OK===true){
         //회원 가입 실행
 
-        axios.post('http://127.0.0.1:8000/tmppicture/',
+        axios.post('http://127.0.0.1:8000/api/auth/register/',
           {
-            userID:ID,
-            userEMAIL:Email,
-            userPWD:PWD,
+            username:ID,
+            email:Email,
+            password:PWD,
           }
-        );
-
-        window.alert('회원가입 성공');
-        this.$router.push('/sign_in');
+        ).then(response=>{
+          if(response.status===200){
+            window.alert('회원가입 성공');
+            this.$router.push('/sign_in');
+          }
+        })
 
       }else{
         window.alert("입력을 완료해주세요.");
