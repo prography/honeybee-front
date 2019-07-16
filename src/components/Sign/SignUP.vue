@@ -5,7 +5,7 @@
       <label for="userID">ID</label>
       <input type="text" id="user_ID" @keyup='idCheck'>
       <div class="warn" id="warnLengthID">5자리 ~ 10자리 이내로 입력해주세요.</div>
-      <div class="warn" id="warnDuplicateID">이미 사용되고 있는 아이디입니다.</div>
+      <div class="warn" id="warnSameID">이미 사용되고 있는 아이디입니다.</div>
     </div>
     <div>
       <label for="userEmail">Email</label>
@@ -52,12 +52,12 @@ export default {
           this.ID_OK=false;
           document.getElementById('user_ID').style.borderColor="initial";
           document.getElementById('warnLengthID').style.display="none";
-          document.getElementById('warnDuplicateID').style.display="none";
+          document.getElementById('warnSameID').style.display="none";
         }else{
           this.ID_OK=false;
           document.getElementById('user_ID').style.borderColor="OrangeRed";
           document.getElementById('warnLengthID').style.display="block";
-          document.getElementById('warnDuplicateID').style.display="none";
+          document.getElementById('warnSameID').style.display="none";
         }
       }else{
         this.ID_OK = true;
@@ -203,6 +203,10 @@ export default {
             window.alert('회원가입 성공');
             this.$router.push('/sign_in');
           }
+        }).catch(function(){
+          window.alert("이미 사용되고 있는 아이디입니다.");
+          document.getElementById('user_ID').style.borderColor='OrangeRed';
+          document.getElementById('warnSameID').style.display='block';
         })
 
       }else{
