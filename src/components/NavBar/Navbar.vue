@@ -10,8 +10,6 @@
     <navbarButton v-else :buttonText="'SIGN UP'" :page="'/sign_up'"/>
     <navbarButton v-if="signedIn" :buttonText="'SIGN OUT'" :page="'/'" @click.native="signOut"/>
     <navbarButton v-else :buttonText="'SIGN IN'" :page="'/sign_in'"/>
-    <!--<buttonSignIn v-if='signInOut'/>-->
-    <!--<buttonSignOut v-else/>-->
   </div>
   <div @click="open()" class="mobile-navbar">
     <span class="bar"></span>
@@ -24,6 +22,7 @@
 
 <script>
 import navbarButton from './NavbarButton.vue'
+import store from '@/vuex/store.js'
 
 export default{
   name :'navbarSignIn',
@@ -41,13 +40,13 @@ export default{
   },
   computed:{
     signedIn(){
-      return this.$store.getters.getSignIn; //현재 로그인 상태 가지고 온다
+      return store.getters.getSignIn; //현재 로그인 상태 가지고 온다
     },
     currentPath(){
       return this.$route.path;
     },
     getUserId() {
-      return this.$store.getters.getUserId;
+      return store.getters.getUserId;
     }
   },
   methods:{
@@ -57,7 +56,7 @@ export default{
     },
 
     signOut() {
-      this.$store.commit('signOut');//현재 로그인 상태 변경 로그인->로그 아웃
+      store.commit('signOut');//현재 로그인 상태 변경 로그인->로그 아웃
 
     }
   }

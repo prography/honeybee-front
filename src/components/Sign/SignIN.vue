@@ -22,6 +22,8 @@
 
 <script>
 import axios from 'axios'
+import store from '@/vuex/store.js'
+
 export default {
   name:'sign_in',
   methods:{
@@ -52,10 +54,13 @@ export default {
           }
         ).then(response=>{
           if(response.status===200){
-            this.$store.commit('signIn', ID); // 로그인 성공시 로그인 상태로 바뀜
-            this.$router.push('/user_page');
+            window.alert("성공")
+            store.commit('signIn', ID); // 로그인 성공시 로그인 상태로 바뀜
+            this.$router.push('/');
           }
 
+        }).catch(function(){
+          
         });
 
         
@@ -65,6 +70,9 @@ export default {
         document.getElementById("user_PWD").value="";
       }
     }
+  },
+  created(){
+    console.log(store.getters.getSignIn);
   }
 }
 </script>

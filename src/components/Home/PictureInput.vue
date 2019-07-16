@@ -19,6 +19,7 @@
 <script>
 import {eventbus} from '@/eventbus'
 import axios from 'axios'
+import store from '@/vuex/store.js'
 
 export default {
   name:'picture-input',
@@ -46,7 +47,7 @@ export default {
 
       this.addImages(this.imgObjs);
 
-      this.$store.commit('setOBJ', Array.from(this.imgObjs));
+      store.commit('setOBJ', Array.from(this.imgObjs));
       //vuex이용하여 사진을 저장. Array.from()=>유사배열을 배열로 전환(아직 공부 더 해야함), 데이터 전달 문제 해겨을 위하여 사용
 
       this.$emit("forTransfer", this.imgObjs);

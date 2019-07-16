@@ -25,6 +25,7 @@
 
 <script>
 import default_img from "./UserDefaultImg.vue"
+import store from '@/vuex/store.js'
 
 export default {
   name:'user_info',
@@ -34,12 +35,12 @@ export default {
   data(){
     return{
       user_img:false,
-      ID: this.$store.getters.getUserId,
+      ID: store.getters.getUserId,
       Introduce:"Hello, I'm Owen. Nice to meet you. I like honeybees. I work for prography blur blur....",
       likes:"177",
       downloads:"547"
     }
-  }
+  },
   
 }
 </script>

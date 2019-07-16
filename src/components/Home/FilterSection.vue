@@ -37,6 +37,7 @@ import {eventbus} from '@/eventbus';
 import axios from 'axios'
 import beforeFilter from './BeforeFilter.vue'
 import loading from './Loading.vue'
+import store from '@/vuex/store.js'
 
 export default {
   name:'filter-section',
@@ -61,7 +62,7 @@ export default {
       document.getElementById("download").style.display='none';
       document.getElementById("upload").style.display='none';
 
-      this.files=this.$store.getters.getOBJ;
+      this.files=store.getters.getOBJ;
       //data()에 vuex에 저장된 배열을 저장.
 
 
@@ -90,17 +91,17 @@ export default {
             dwn.style.display='inline';
 
             document.getElementById("upload").style.display='inline';
-            this.$store.commit('setResultUrl', result);
+            store.commit('setResultUrl', result);
           }
         );
       //서버에 필터 이름과 함꼐 이미지를 전송.
       
     },
     upload(){
-      let logInState=this.$store.getters.getSignIn;
+      let logInState=store.getters.getSignIn;
 
       if(logInState===true){
-        window.alert(this.$store.getters.getResultUrl);
+        window.alert(store.getters.getResultUrl);
       }else{
         // window.alert("로그인X");
         if(window.confirm("로그인이 필요한 기능입니다. 로그인 페이지로 이동하시겠습니까?")){
@@ -108,7 +109,7 @@ export default {
         }
       }
 
-      console.log(this.$store.getters.getResultUrl);
+      console.log(store.getters.getResultUrl);
     }
   },
   created(){

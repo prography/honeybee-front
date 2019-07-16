@@ -6,8 +6,11 @@ import SignUp from './views/SignUp.vue'
 import SignIn from './views/SignIn.vue'
 import UserPage from './views/UserPage.vue'
 import UserInfoChange from './views/UserInfoChange.vue'
+import store from './vuex/store.js'
+
 
 Vue.use(Router);
+
 
 export default new Router({
   mode: 'history',
@@ -25,22 +28,50 @@ export default new Router({
     {
       path: '/sign_up',
       name: 'sign_up',
-      component: SignUp
+      component: SignUp,
+      beforeEnter:function(to, from, next){
+        if(store.getters.getSignIn===false){
+          next();
+        }else if(store.getters.getSignIn===true){
+          next('/');
+        }
+      }
     },
     {
       path: '/sign_in',
       name: 'sign_in',
-      component: SignIn
+      component: SignIn,
+      beforeEnter:function(to, from, next){
+        if(store.getters.getSignIn===false){
+          next();
+        }else if(store.getters.getSignIn===true){
+          next('/');
+        }
+      }
     },
     {
       path: '/user_page',
       name: 'user_page',
-      component: UserPage
+      component: UserPage,
+      beforeEnter: function(to, from, next){
+        if(store.getters.getSignIn===true){
+          next();
+        }else{
+          next('/sign_in')
+        }
+      }
     },
     {
       path: '/user_info_change',
-      name: 'user_inf_change',
-      component: UserInfoChange
+      name: 'user_info_change',
+      component: UserInfoChange,
+      beforeEnter: function(to, from, next){
+        if(store.getters.getSignIn===true){
+          next();
+        }else{
+          next('/sign_in')
+        }
+      }
     }
   ]
 })
