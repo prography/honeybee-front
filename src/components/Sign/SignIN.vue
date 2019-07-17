@@ -54,13 +54,14 @@ export default {
           }
         ).then(response=>{
           if(response.status===200){
-            window.alert("성공")
-            store.commit('signIn', ID); // 로그인 성공시 로그인 상태로 바뀜
+            sessionStorage.setItem('signIN', true);
+            sessionStorage.setItem('userID', ID);
+            sessionStorage.setItem('token', response.data.token);
+            location.reload();
             this.$router.push('/');
           }
-
         }).catch(function(){
-          
+          window.alert("실패");
         });
 
         
@@ -70,9 +71,6 @@ export default {
         document.getElementById("user_PWD").value="";
       }
     }
-  },
-  created(){
-    console.log(store.getters.getSignIn);
   }
 }
 </script>

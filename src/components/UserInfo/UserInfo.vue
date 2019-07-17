@@ -35,7 +35,7 @@ export default {
   data(){
     return{
       user_img:false,
-      ID: store.getters.getUserId,
+      ID: sessionStorage.getItem("userID"),
       Introduce:"Hello, I'm Owen. Nice to meet you. I like honeybees. I work for prography blur blur....",
       likes:"177",
       downloads:"547"

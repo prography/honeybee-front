@@ -36,17 +36,24 @@ export default{
     ];
     return{
       items,
+      signedIN:false,
+      userID:'',
     }
   },
   computed:{
     signedIn(){
-      return store.getters.getSignIn; //현재 로그인 상태 가지고 온다
+      // return this.signedIN;
+      // return store.gettters.getSignIn;
+      return sessionStorage.getItem("signIN"); 
+      //현재 로그인 상태 가지고 온다
+    },
+    getUserId() {
+      // return this.userID;
+      // return store.getters.getUserId;
+      return sessionStorage.getItem("userID");
     },
     currentPath(){
       return this.$route.path;
-    },
-    getUserId() {
-      return store.getters.getUserId;
     }
   },
   methods:{
@@ -57,9 +64,14 @@ export default{
 
     signOut() {
       store.commit('signOut');//현재 로그인 상태 변경 로그인->로그 아웃
-
+      sessionStorage.removeItem("signIN");
+      sessionStorage.removeItem("userID");
+      sessionStorage.removeItem("token");
+      location.reload();
+      this.$router.push('/');
+      
     }
-  }
+  },
 
 }
 </script>

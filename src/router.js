@@ -30,9 +30,9 @@ export default new Router({
       name: 'sign_up',
       component: SignUp,
       beforeEnter:function(to, from, next){
-        if(store.getters.getSignIn===false){
+        if(!sessionStorage.getItem('signIN')){
           next();
-        }else if(store.getters.getSignIn===true){
+        }else{
           next('/');
         }
       }
@@ -42,9 +42,9 @@ export default new Router({
       name: 'sign_in',
       component: SignIn,
       beforeEnter:function(to, from, next){
-        if(store.getters.getSignIn===false){
+        if(!sessionStorage.getItem('signIN')){
           next();
-        }else if(store.getters.getSignIn===true){
+        }else{
           next('/');
         }
       }
@@ -54,9 +54,9 @@ export default new Router({
       name: 'user_page',
       component: UserPage,
       beforeEnter: function(to, from, next){
-        if(store.getters.getSignIn===true){
+        if(sessionStorage.getItem("signIN")){
           next();
-        }else{
+        }else if (!sessionStorage.getItem("signIN")){
           next('/sign_in')
         }
       }
@@ -66,9 +66,9 @@ export default new Router({
       name: 'user_info_change',
       component: UserInfoChange,
       beforeEnter: function(to, from, next){
-        if(store.getters.getSignIn===true){
+        if(sessionStorage.getItem("signIN")){
           next();
-        }else{
+        }else {
           next('/sign_in')
         }
       }

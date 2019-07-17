@@ -105,7 +105,7 @@ export default {
       this.open=false;
       document.getElementById("top").scrollIntoView({behavior:'smooth'});
     }
-  },
+  }
 }
 </script>
 
