@@ -61,7 +61,7 @@ export default {
   components:{
     UserInfo,
     Gallery
-  },
+  }
   
 }
 </script>

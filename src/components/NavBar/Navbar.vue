@@ -1,5 +1,5 @@
 <template>
-<div class="navbar" :class="[currentPath==='/' ? '' : 'notHome' ]">
+<div id='nav' class="navbar" :class="[currentPath==='/' ? '' : 'notHome' ]">
   <div class="navbar-logo">
     <img id="logo_round" src="@/assets/logo_shape.png">
     <span id="brand_title"><a class="logo_word" href="/">Honeybee</a></span>
@@ -23,6 +23,7 @@
 <script>
 import navbarButton from './NavbarButton.vue'
 import store from '@/vuex/store.js'
+import axios from 'axios'
 
 export default{
   name :'navbarSignIn',
@@ -63,15 +64,27 @@ export default{
     },
 
     signOut() {
+      
+      // axios.post('http://localhost:8000/api/auth/logout/',{
+      //   headers:{
+      //     'token':sessionStorage.getItem("token")
+      //   }
+      // }).then(response=>{
+      //   console.log(response);
+        
+      // })
+
       store.commit('signOut');//현재 로그인 상태 변경 로그인->로그 아웃
       sessionStorage.removeItem("signIN");
       sessionStorage.removeItem("userID");
       sessionStorage.removeItem("token");
+
+
       location.reload();
       this.$router.push('/');
-      
+
     }
-  },
+  }
 
 }
 </script>

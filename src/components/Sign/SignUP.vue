@@ -3,25 +3,25 @@
     <div class="signUp_title">SIGN UP</div>
     <div>
       <label for="userID">ID</label>
-      <input type="text" id="user_ID" @keyup='idCheck'>
+      <input class="sign-input" type="text" id="user_ID" @keyup='idCheck'>
       <div class="warn" id="warnLengthID">5자리 ~ 10자리 이내로 입력해주세요.</div>
       <div class="warn" id="warnSameID">이미 사용되고 있는 아이디입니다.</div>
     </div>
     <div>
       <label for="userEmail">Email</label>
-      <input type="email" id="user_Email" @keyup='emailCheck'>
+      <input class="sign-input" type="email" id="user_Email" @keyup='emailCheck'>
       <div class="warn" id="warnWrongEM">이메일이 올바르지 않은 형식입니다</div>
     </div>
     <div>
       <label for="userPassword">PassWord</label>
-      <input type="password" id="user_PWD" @keyup='passwordFormCheck'>
+      <input class="sign-input" type="password" id="user_PWD" @keyup='passwordFormCheck'>
       <div class="warn" id="warnPWDLength">8자리 ~ 20자리 이내로 입력해주세요.</div>
       <div class="warn" id="warnPWDBlank">비밀번호는 공백없이 입력해주세요</div>
       <div class="warn" id="warnPWDRule">영문,숫자, 특수문자를 혼합하여 입력해주세요.</div>
     </div>
     <div>
       <label for="userPassword_check">PassWord 확인</label>
-      <input type="password" id="user_PWD_Check" @keyup="passwordCheck">
+      <input class="sign-input" type="password" id="user_PWD_Check" @keyup="passwordCheck">
       <div class="warn" id="warnPWDCompl">비밀번호를 먼저 입력해주세요.</div>
       <div class="warn" id="warnPWDSame">비밀번호 일치하지 않습니다.</div>
     </div>
@@ -50,7 +50,7 @@ export default {
       if(ID.length<5 || ID.length>10){
         if(ID.length===0){
           this.ID_OK=false;
-          document.getElementById('user_ID').style.borderColor="initial";
+          document.getElementById('user_ID').style.borderColor="#e9e9e9";
           document.getElementById('warnLengthID').style.display="none";
           document.getElementById('warnSameID').style.display="none";
         }else{
@@ -70,7 +70,7 @@ export default {
       let Email=document.getElementById("user_Email").value;
       if(Email.length===0){
         this.Email_OK=false;
-        document.getElementById('user_Email').style.borderColor="initial";
+        document.getElementById('user_Email').style.borderColor="#e9e9e9";
         document.getElementById('warnWrongEM').style.display="none";
       }else{
         let re = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
@@ -95,7 +95,7 @@ export default {
 
       if(PW.length===0){
         this.PWD_OK=false;
-        document.getElementById('user_PWD').style.borderColor="initial";
+        document.getElementById('user_PWD').style.borderColor="#e9e9e9";
         document.getElementById('warnPWDLength').style.display="none";
         document.getElementById('warnPWDBlank').style.display="none";
         document.getElementById('warnPWDRule').style.display="none";
@@ -160,7 +160,7 @@ export default {
 
       if(PWD_Check.length===0){
         this.PWD_Check_OK=false;
-        document.getElementById('user_PWD_Check').style.borderColor="initial";
+        document.getElementById('user_PWD_Check').style.borderColor="#e9e9e9";
         document.getElementById('warnPWDCompl').style.display="none";
         document.getElementById('warnPWDSame').style.display="none";
       }else if(this.PWD_OK===false){
@@ -220,6 +220,20 @@ export default {
 
 <style scoped>
 
+.sign-input{
+  box-sizing: border-box;
+  height: 40px;
+  font-size: 14px;
+  color: #1e1e1e;
+  border-radius: 4px;
+  border: 1px solid #e9e9e9;
+  box-shadow: none;
+  background-color: #ffffff;
+  padding: 7px 12px;
+  outline: none;
+}
+
+
 .warn{
   display: none;
   text-align:left;
@@ -276,6 +290,22 @@ button.signup{
   color: #555;
   font-size: 18px;
 }
+
+
+
+/*************************************/
+
+
+/* .sign-input::placeholder{
+  font-size: 14px;
+  color: #808080;
+}
+
+.sign-input>img{
+  height: 16px;
+  width: 16px;
+  float: right;
+} */
 
 </style>
 

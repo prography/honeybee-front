@@ -18,7 +18,7 @@
         <span class="total_dl"> downloads</span>
       </span>
     </div>
-    <router-link to="/user_info_change" tag="button">Edit Info</router-link>
+    <button @click='edit'>Edit Info</button>
   </div>
 </template>
 
@@ -41,6 +41,11 @@ export default {
       downloads:"547"
     }
   },
+  methods:{
+    edit(){
+      this.$router.push({path:'user_info_change'});
+    }
+  }
   
 }
 </script>

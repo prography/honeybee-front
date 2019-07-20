@@ -98,9 +98,7 @@ export default {
       
     },
     upload(){
-      let logInState=store.getters.getSignIn;
-
-      if(logInState===true){
+      if(sessionStorage.getItem('signIN')){
         window.alert(store.getters.getResultUrl);
       }else{
         // window.alert("로그인X");
@@ -108,8 +106,6 @@ export default {
           location.href="/sign_in";
         }
       }
-
-      console.log(store.getters.getResultUrl);
     }
   },
   created(){

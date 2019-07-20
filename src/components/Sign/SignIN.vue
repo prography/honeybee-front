@@ -3,11 +3,11 @@
     <div class="signIn_title">SIGN IN</div>
     <div>
       <label for="userID">ID</label>
-      <input id="user_ID" type="text">
+      <input class="sign-input" id="user_ID" type="text">
     </div>
     <div>
       <label for="userPWD">PassWord</label>
-      <input id="user_PWD" type="password">
+      <input class="sign-input" id="user_PWD" type="password">
     </div>
     <button class="buttonA" @click="signIn()">Sign In</button>
     <router-link to='/sign_up' tag="button" class="buttonA">회원가입</router-link>
@@ -39,10 +39,10 @@ export default {
         }else if(ID.length===0){
           window.alert("아이디를 입력해 주세요.");
           document.getElementById("user_ID").style.borderColor="orangered";
-          document.getElementById("user_PWD").style.borderColor="initial";
+          document.getElementById("user_PWD").style.borderColor="#e9e9e9";
         }else if(PWD.length===0){
           window.alert("비밀번호를 입력해 주세요.");
-          document.getElementById("user_ID").style.borderColor="initial";
+          document.getElementById("user_ID").style.borderColor="#e9e9e9";
           document.getElementById("user_PWD").style.borderColor="orangered";
         }
       }else{
@@ -57,16 +57,21 @@ export default {
             sessionStorage.setItem('signIN', true);
             sessionStorage.setItem('userID', ID);
             sessionStorage.setItem('token', response.data.token);
-            location.reload();
+            
+            
+            location.reload(true);
+            window.alert("성공");
             this.$router.push('/');
+            
           }
         }).catch(function(){
+          console.log(e);
           window.alert("실패");
         });
 
         
-        document.getElementById("user_ID").style.borderColor="initial";
-        document.getElementById("user_PWD").style.borderColor="initial";
+        document.getElementById("user_ID").style.borderColor="#e9e9e9";
+        document.getElementById("user_PWD").style.borderColor="#e9e9e9";
         document.getElementById("user_ID").value="";
         document.getElementById("user_PWD").value="";
       }
@@ -76,6 +81,19 @@ export default {
 </script>
 
 <style scoped>
+.sign-input{
+  box-sizing: border-box;
+  height: 40px;
+  font-size: 14px;
+  color: #1e1e1e;
+  border-radius: 4px;
+  border: 1px solid #e9e9e9;
+  box-shadow: none;
+  background-color: #ffffff;
+  padding: 7px 12px;
+  outline: none;
+}
+
 .signIn{
   text-align:center;
   margin-left:25%;
