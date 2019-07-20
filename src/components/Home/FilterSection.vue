@@ -2,10 +2,10 @@
   <div class="filter_section">
     <div class="result_section">
       <div class="result">
-        <img alt="" id="beforeIMG">
+        <img id="beforeIMG">
       </div>
       <div class="arrow">
-        <img src="../../assets/right-arrow.png" alt="화살표">
+        <img src="@/assets/right-arrow.png" alt="화살표">
       </div>
       <div class="result">
         <div id="beforeFilter">
@@ -14,7 +14,7 @@
         <div id="loading">
           <loading/>
         </div>
-        <img alt="" id="after">
+        <img id="after">
         <!-- <div id="afterIMG"></div> -->
       </div>
     </div>
