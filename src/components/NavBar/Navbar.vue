@@ -65,23 +65,22 @@ export default{
 
     signOut() {
       
-      // axios.post('http://localhost:8000/api/auth/logout/',{
-      //   headers:{
-      //     'token':sessionStorage.getItem("token")
-      //   }
-      // }).then(response=>{
-      //   console.log(response);
-        
-      // })
+      axios.post('http://localhost:8000/api/auth/logout/',{},{
+        headers:{
+          'Authorization': 'Token '+sessionStorage.getItem("token")
+        }
+      }).then(()=>{
+        store.commit('signOut');//현재 로그인 상태 변경 로그인->로그 아웃
+        sessionStorage.removeItem("signIN");
+        sessionStorage.removeItem("userID");
+        sessionStorage.removeItem("token");
+      })
 
-      store.commit('signOut');//현재 로그인 상태 변경 로그인->로그 아웃
-      sessionStorage.removeItem("signIN");
-      sessionStorage.removeItem("userID");
-      sessionStorage.removeItem("token");
+      
 
 
-      location.reload();
-      this.$router.push('/');
+      // location.reload();
+      // this.$router.push('/');
 
     }
   }
