@@ -2,10 +2,10 @@
   <div class="filter_section">
     <div class="result_section">
       <div class="result">
-        <img id="beforeIMG">
+        <img alt="" id="beforeIMG">
       </div>
       <div class="arrow">
-        <img src="@/assets/right-arrow.png" alt="화살표">
+        <img src="../../assets/right-arrow.png" alt="화살표">
       </div>
       <div class="result">
         <div id="beforeFilter">
@@ -14,7 +14,7 @@
         <div id="loading">
           <loading/>
         </div>
-        <img id="after">
+        <img alt="" id="after">
         <!-- <div id="afterIMG"></div> -->
       </div>
     </div>
@@ -28,9 +28,10 @@
       <button class="filter" @click="applyFilter('picabia')">피카비아 필터</button>
     </div>
     <div class="buttons">
-      <button class="btn" @click="close">CLOSE</button>
+      <button id="download" class="btn">DOWNLOAD</button>
+      <button id="share" class="btn">SHARE</button>
+      <button id="close" class="btn" @click="close">CLOSE</button>
     </div>
-    <a id="download" href="">DOWNLOAD</a>
   </div>
 </template>
 
@@ -61,6 +62,8 @@ export default {
       document.getElementById('after').style.display='none';
       document.getElementById('loading').style.display='block';
       document.getElementById("download").style.display='none';
+      document.getElementById("share").style.display='none';
+      document.getElementById("close").style.display='none';
 
       this.files=this.$store.getters.getOBJ;
       //data()에 vuex에 저장된 배열을 저장.
@@ -83,8 +86,10 @@ export default {
             let result="data:image.png;base64,"+response.data;
             document.getElementById('after').src=result;
             let src="data:image.png;base64,"+response.data;
-            document.getElementById('loading').style.display='none'
+            document.getElementById('loading').style.display='none';
             document.getElementById('after').style.display='block';
+            document.getElementById('share').style.display='inline';
+            document.getElementById('close').style.display='inline';
 
             let dwn=document.getElementById("download");
             dwn.href=result;
@@ -102,6 +107,8 @@ export default {
       document.getElementById('after').style.display='none';
       document.getElementById('loading').style.display='none';
       document.getElementById("download").style.display='none';
+      document.getElementById("share").style.display='none';
+      document.getElementById("close").style.display='none';
     })
   }
 }
@@ -223,17 +230,17 @@ export default {
   border-radius:20px;
 }
 
-#download{
-  display: none;
-  margin:10px 20px;
-  padding:6px 15px;
-  text-align: center;
-  text-decoration: none;
-  color:black;
-  font-size:14px;
-  background-color: white;
-  border:none;
-  border-radius:20px;
-}
+/*#download{*/
+/*  display: none;*/
+/*  margin:10px 20px;*/
+/*  padding:6px 15px;*/
+/*  text-align: center;*/
+/*  text-decoration: none;*/
+/*  color:black;*/
+/*  font-size:14px;*/
+/*  background-color: white;*/
+/*  border:none;*/
+/*  border-radius:20px;*/
+/*}*/
 
 </style>

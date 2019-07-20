@@ -11,7 +11,7 @@
                 <div class="element"
                      v-for="(myImage, index) in images">
                     <div v-if="index%4===0">
-                        <img class="images" :src="myImage.src" alt="img" @click="clickImg(myImage.src)">
+                        <img class="images" :src="myImage.src" alt="img" @click="clickImg(myImage)">
                         <div class="info">{{myImage.name}}<span><img class="like" :src="download"/><img class="like" :src="like"/></span></div>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                 <div class="element"
                      v-for="(myImage, index) in images">
                     <div v-if="index%4===1">
-                        <img class="images" :src="myImage.src" alt="img" @click="clickImg(myImage.src)">
+                        <img class="images" :src="myImage.src" alt="img" @click="clickImg(myImage)">
                         <div class="info">{{myImage.name}}<span><img class="like" :src="download"/><img class="like" :src="like"/></span></div>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                 <div class="element"
                      v-for="(myImage, index) in images">
                     <div v-if="index%4===2">
-                        <img class="images" :src="myImage.src" alt="img" @click="clickImg(myImage.src)">
+                        <img class="images" :src="myImage.src" alt="img" @click="clickImg(myImage)">
                         <div class="info">{{myImage.name}}<span><img class="like" :src="download"/><img class="like" :src="like"/></span></div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                 <div class="element"
                      v-for="(myImage, index) in images">
                     <div v-if="index%4===3">
-                        <img class="images" :src="myImage.src" alt="img" @click="clickImg(myImage.src)">
+                        <img class="images" :src="myImage.src" alt="img" @click="clickImg(myImage)">
                         <div class="info">{{myImage.name}}<span><img class="like" :src="download"/><img class="like" :src="like"/></span></div>
                     </div>
                 </div>
@@ -76,12 +76,12 @@
         },
         components: {},
         methods: {
-            clickImg(src) {
+            clickImg(myImage) {
                 document.getElementById('ImgModal').style.display = "block";
                 let img = document.createElement("img");
                 let name = document.createElement("div");
-                img.src = src;
-                name.innerHTML = '<br>user_name'; // 여기서 이름 어떻게 받아오지?
+                img.src = myImage.src;
+                name.innerHTML = '<br>'+myImage.name+'<br>Like : '+myImage.like+'<br>Download : '+myImage.download;
                 document.getElementById('modal-content').appendChild(img);
                 img.style.width = "100%";
                 document.getElementById('modal-content').appendChild(name);
@@ -182,7 +182,7 @@
         margin: 15% auto; /* 15% from the top and centered */
         padding: 20px;
         border: 1px solid #888;
-        width: 300px; /* Could be more or less, depending on screen size */
+        width: 400px; /* Could be more or less, depending on screen size */
     }
 
     .close {

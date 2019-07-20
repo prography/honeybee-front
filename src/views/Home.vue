@@ -33,52 +33,72 @@ export default {
       {
         src: img1,
         name: 'John',
-        show: false
+        show: false,
+        like: 27,
+        download: 13
       },
       {
         src: img2,
         name: 'kevin',
-        show: false
+        show: false,
+        like: 20,
+        download: 19
       },
       {
         src: img3,
         name: 'abigail',
-        show: false
+        show: false,
+        like: 17,
+        download: 34
       },
       {
         src: img4,
         name: 'sarah',
-        show: false
+        show: false,
+        like: 27,
+        download: 90
       },
       {
         src: img5,
         name: 'ruth',
-        show: false
+        show: false,
+        like: 27,
+        download: 80
       },
       {
         src: img6,
         name: 'peter',
-        show: false
+        show: false,
+        like: 55,
+        download: 8
       },
       {
         src: img7,
         name: 'micheal',
-        show: false
+        show: false,
+        like: 97,
+        download: 87
       },
       {
         src: img8,
         name: 'owen',
-        show: false
+        show: false,
+        like: 20,
+        download: 10
       },
       {
         src: img9,
         name: 'james',
-        show: false
+        show: false,
+        like: 49,
+        download: 9
       },
       {
         src: img10,
         name: 'maria',
-        show: false
+        show: false,
+        like: 12,
+        download: 3
       },
     ];
     return {
