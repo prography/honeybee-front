@@ -26,6 +26,7 @@ import img8 from '@/assets/img8.jpg'
 import img9 from '@/assets/img9.jpg'
 import img10 from '@/assets/img10.jpg'
 
+
 export default {
   name: 'home',
   data() {
@@ -105,6 +106,9 @@ export default {
       document.getElementById("top").scrollIntoView({behavior:'smooth'});
     }
   },
+  created(){
+    console.log(sessionStorage.getItem("token"));
+  }
 }
 </script>
 

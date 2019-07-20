@@ -1,5 +1,5 @@
 <template>
-<div class="navbar" :class="[currentPath==='/' ? '' : 'notHome' ]">
+<div id='nav' class="navbar" :class="[currentPath==='/' ? '' : 'notHome' ]">
   <div class="navbar-logo">
     <img id="logo_round" src="@/assets/logo_shape.png">
     <span id="brand_title"><a class="logo_word" href="/">Honeybee</a></span>
@@ -10,8 +10,6 @@
     <navbarButton v-else :buttonText="'SIGN UP'" :page="'/sign_up'"/>
     <navbarButton v-if="signedIn" :buttonText="'SIGN OUT'" :page="'/'" @click.native="signOut"/>
     <navbarButton v-else :buttonText="'SIGN IN'" :page="'/sign_in'"/>
-    <!--<buttonSignIn v-if='signInOut'/>-->
-    <!--<buttonSignOut v-else/>-->
   </div>
   <div @click="open()" class="mobile-navbar">
     <span class="bar"></span>
@@ -24,6 +22,8 @@
 
 <script>
 import navbarButton from './NavbarButton.vue'
+import store from '@/vuex/store.js'
+import axios from 'axios'
 
 export default{
   name :'navbarSignIn',
@@ -37,17 +37,24 @@ export default{
     ];
     return{
       items,
+      signedIN:false,
+      userID:'',
     }
   },
   computed:{
     signedIn(){
-      return this.$store.getters.getSignIn; //현재 로그인 상태 가지고 온다
+      // return this.signedIN;
+      // return store.gettters.getSignIn;
+      return sessionStorage.getItem("signIN"); 
+      //현재 로그인 상태 가지고 온다
+    },
+    getUserId() {
+      // return this.userID;
+      // return store.getters.getUserId;
+      return sessionStorage.getItem("userID");
     },
     currentPath(){
       return this.$route.path;
-    },
-    getUserId() {
-      return this.$store.getters.getUserId;
     }
   },
   methods:{
@@ -57,7 +64,24 @@ export default{
     },
 
     signOut() {
-      this.$store.commit('signOut');//현재 로그인 상태 변경 로그인->로그 아웃
+      
+      // axios.post('http://localhost:8000/api/auth/logout/',{
+      //   headers:{
+      //     'token':sessionStorage.getItem("token")
+      //   }
+      // }).then(response=>{
+      //   console.log(response);
+        
+      // })
+
+      store.commit('signOut');//현재 로그인 상태 변경 로그인->로그 아웃
+      sessionStorage.removeItem("signIN");
+      sessionStorage.removeItem("userID");
+      sessionStorage.removeItem("token");
+
+
+      location.reload();
+      this.$router.push('/');
 
     }
   }

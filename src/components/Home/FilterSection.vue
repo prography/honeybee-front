@@ -15,7 +15,6 @@
           <loading/>
         </div>
         <img id="after">
-        <!-- <div id="afterIMG"></div> -->
       </div>
     </div>
     <div class="filter_button">
@@ -27,9 +26,8 @@
       <button class="filter" @click="applyFilter('katsushika')">가쓰시카 필터</button>
       <button class="filter" @click="applyFilter('picabia')">피카비아 필터</button>
     </div>
-    <div class="buttons">
-      <button class="btn" @click="close">CLOSE</button>
-    </div>
+    <button class="btn" @click="close">CLOSE</button>
+    <button class="btn" id="upload" @click="upload">UPLOAD</button>
     <a id="download" href="">DOWNLOAD</a>
   </div>
 </template>
@@ -39,13 +37,14 @@ import {eventbus} from '@/eventbus';
 import axios from 'axios'
 import beforeFilter from './BeforeFilter.vue'
 import loading from './Loading.vue'
+import store from '@/vuex/store.js'
 
 export default {
   name:'filter-section',
   data(){
     return{
       files:'',
-      result:'',
+      orientation:'',
     }
   },
   components:{
@@ -61,14 +60,16 @@ export default {
       document.getElementById('after').style.display='none';
       document.getElementById('loading').style.display='block';
       document.getElementById("download").style.display='none';
+      document.getElementById("upload").style.display='none';
 
-      this.files=this.$store.getters.getOBJ;
+      this.files=store.getters.getOBJ;
       //data()에 vuex에 저장된 배열을 저장.
+
 
       let formData=new FormData();
       for( var i = 0; i < this.files.length; i++ ){
         let file = this.files[i];
-        formData.append('pic_address', file);
+        formData.append ('pic_address', file);
       }
       formData.append('filter_info', filter);
 
@@ -78,11 +79,9 @@ export default {
            headers: {
                'Content-Type': 'multipart/form-data'
            }
-        }).then(
-          function(response){
+        }).then((response)=>{
             let result="data:image.png;base64,"+response.data;
             document.getElementById('after').src=result;
-            let src="data:image.png;base64,"+response.data;
             document.getElementById('loading').style.display='none'
             document.getElementById('after').style.display='block';
 
@@ -90,14 +89,28 @@ export default {
             dwn.href=result;
             dwn.download="result.png";
             dwn.style.display='inline';
+
+            document.getElementById("upload").style.display='inline';
+            store.commit('setResultUrl', result);
           }
         );
       //서버에 필터 이름과 함꼐 이미지를 전송.
+      
     },
+    upload(){
+      if(sessionStorage.getItem('signIN')){
+        window.alert(store.getters.getResultUrl);
+      }else{
+        // window.alert("로그인X");
+        if(window.confirm("로그인이 필요한 기능입니다. 로그인 페이지로 이동하시겠습니까?")){
+          location.href="/sign_in";
+        }
+      }
+    }
   },
   created(){
-    eventbus.$on('original', function(tmp){
-      document.getElementById('beforeIMG').src=tmp;
+    eventbus.$on('original', function(imgSrc){
+      document.getElementById('beforeIMG').src=imgSrc;
       document.getElementById('beforeFilter').style.display='block';
       document.getElementById('after').style.display='none';
       document.getElementById('loading').style.display='none';
@@ -205,14 +218,6 @@ export default {
   background-color: #678679;
 }
 
-
-
-.buttons{
-  margin-top:50px;
-  margin-bottom:20px;
-  text-align:center;
-}
-
 .btn{
   margin:10px 20px;
   width:120px;
@@ -223,10 +228,14 @@ export default {
   border-radius:20px;
 }
 
+#upload{
+  display:none;
+}
+
 #download{
   display: none;
   margin:10px 20px;
-  padding:6px 15px;
+  padding:6.5px 20px;
   text-align: center;
   text-decoration: none;
   color:black;
