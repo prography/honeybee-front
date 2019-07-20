@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="navbar_section" :class="{'not-on-image': overWindow}">
+    <div class="navbar_section" id="navbar" :class="{'not-on-image': overWindow}">
       <navbar/>
     </div>
     <div class="main_contents">
