@@ -15,7 +15,8 @@
       <div clas="howtoImgs">
         <div class="howto">
           <div>
-            1. 필터를 적용하고 싶은 사진을 클릭하거나 드래그앤 드랍을<br/> 이용하여 이미지를 업로드합니다.
+            <div>1. 필터를 적용하고 싶은 사진을 클릭하거나 드래그앤 드랍을 </div>
+            <div>이용하여 이미지를 업로드합니다.</div>
           </div>
           <img class="howtoImg" src="../assets/howto1.png">
         </div>
@@ -27,7 +28,7 @@
         </div>
         <div class="howto">
           <div>
-            3. 이미지 결과가 나오면 해당 결과를 버튼을 통하여<br/> 공유하거나 다운로드 합니다. 공유는 로그인을 해야만<br/>사용할 수 있습니다.
+            3. 이미지 결과가 나오면 해당 결과를 버튼을 통하여 공유하거나 다운로드 합니다. 공유는 로그인을 해야만사용할 수 있습니다.
           </div>
           <img class="howtoImg" src="../assets/howto3.png">
         </div>   
@@ -84,8 +85,8 @@ export default {
 .about{
   margin-top:80px;
   margin-bottom: 50px;
-  margin-left:400px;
-  margin-right:400px;
+  margin-left:22%;
+  margin-right:22%;
   font-size:19px;
   font-weight: bold;
 }

@@ -24,6 +24,7 @@
 import navbarButton from './NavbarButton.vue'
 import store from '@/vuex/store.js'
 import axios from 'axios'
+import { setTimeout } from 'timers';
 
 export default{
   name :'navbarSignIn',
@@ -45,13 +46,13 @@ export default{
     signedIn(){
       // return this.signedIN;
       // return store.gettters.getSignIn;
-      return sessionStorage.getItem("signIN"); 
+      return localStorage.getItem("signIN"); 
       //현재 로그인 상태 가지고 온다
     },
     getUserId() {
       // return this.userID;
       // return store.getters.getUserId;
-      return sessionStorage.getItem("userID");
+      return localStorage.getItem("userID");
     },
     currentPath(){
       return this.$route.path;
@@ -67,20 +68,20 @@ export default{
       
       axios.post('http://localhost:8000/api/auth/logout/',{},{
         headers:{
-          'Authorization': 'Token '+sessionStorage.getItem("token")
+          'Authorization': 'Token '+localStorage.getItem("token")
         }
-      }).then(()=>{
-        store.commit('signOut');//현재 로그인 상태 변경 로그인->로그 아웃
-        sessionStorage.removeItem("signIN");
-        sessionStorage.removeItem("userID");
-        sessionStorage.removeItem("token");
       })
 
+      store.commit('signOut');//현재 로그인 상태 변경 로그인->로그 아웃
+      localStorage.removeItem("signIN");
+      localStorage.removeItem("userID");
+      localStorage.removeItem("token");
+
+      location.reload();
+      setTimeout(function(){
+        this.$router.push('/');
+      }, 4000);
       
-
-
-      // location.reload();
-      // this.$router.push('/');
 
     }
   }

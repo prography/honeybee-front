@@ -105,9 +105,6 @@ export default {
       this.open=false;
       document.getElementById("top").scrollIntoView({behavior:'smooth'});
     }
-  },
-  created(){
-    console.log(sessionStorage.getItem("token"));
   }
 }
 </script>
