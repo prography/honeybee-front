@@ -54,19 +54,20 @@ export default {
           }
         ).then(response=>{
           if(response.status===200){
-            sessionStorage.setItem('signIN', true);
-            sessionStorage.setItem('userID', ID);
-            sessionStorage.setItem('token', response.data.token);
+            localStorage.setItem('signIN', true);
+            localStorage.setItem('userID', ID);
+            localStorage.setItem('token', response.data.token);
             
             
             location.reload(true);
-            window.alert("성공");
-            this.$router.push('/');
+            // window.alert("성공");
+            setTimeout(function(){
+              this.$router.push('/');
+            }, 2000);
             
           }
         }).catch(function(){
-          console.log(e);
-          window.alert("실패");
+          window.alert("일치하는 정보가 없습니다. 입력하신 정보를 확인해주세요.");
         });
 
         
