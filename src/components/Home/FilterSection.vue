@@ -28,8 +28,8 @@
       <button class="filter" @click="applyFilter('picabia')">피카비아 필터</button>
     </div>
     <div class="buttons">
-      <button id="download" class="btn">DOWNLOAD</button>
-      <button id="share" class="btn">SHARE</button>
+      <a id="download" class="btn" href="">DOWNLOAD</a>
+      <button id="share" class="btn" @click="share">SHARE</button>
       <button id="close" class="btn" @click="close">CLOSE</button>
     </div>
   </div>
@@ -40,6 +40,8 @@ import {eventbus} from '@/eventbus';
 import axios from 'axios'
 import beforeFilter from './BeforeFilter.vue'
 import loading from './Loading.vue'
+import store from '@/vuex/store.js'
+
 
 export default {
   name:'filter-section',
@@ -65,7 +67,7 @@ export default {
       document.getElementById("share").style.display='none';
       document.getElementById("close").style.display='none';
 
-      this.files=this.$store.getters.getOBJ;
+      this.files=store.getters.getOBJ;
       //data()에 vuex에 저장된 배열을 저장.
 
       let formData=new FormData();
@@ -83,6 +85,7 @@ export default {
            }
         }).then(
           function(response){
+            console.log(response);
             let result="data:image.png;base64,"+response.data;
             document.getElementById('after').src=result;
             let src="data:image.png;base64,"+response.data;
@@ -91,14 +94,29 @@ export default {
             document.getElementById('share').style.display='inline';
             document.getElementById('close').style.display='inline';
 
-            let dwn=document.getElementById("download");
+            let dwn=document.getElementById('download');
             dwn.href=result;
             dwn.download="result.png";
-            dwn.style.display='inline';
+            dwn.style.display = "inline";
+
+            store.commit('setResultUrl', result);
           }
         );
       //서버에 필터 이름과 함꼐 이미지를 전송.
     },
+    share() {
+      axios.get('http://localhost:8000/picture')
+              .then(res => console.log(res))
+              .catch(err => console.log(err));
+      // if(sessionStorage.getItem('signIN')){
+      //   window.alert(store.getters.getResultUrl);
+      // } else {
+      //   // window.alert("로그인X");
+      //   if(window.confirm("로그인이 필요한 기능입니다. 로그인 페이지로 이동하시겠습니까?")){
+      //     location.href="/sign_in";
+      //   }
+      // }
+    }
   },
   created(){
     eventbus.$on('original', function(tmp){
@@ -230,17 +248,23 @@ export default {
   border-radius:20px;
 }
 
-/*#download{*/
-/*  display: none;*/
-/*  margin:10px 20px;*/
-/*  padding:6px 15px;*/
-/*  text-align: center;*/
-/*  text-decoration: none;*/
-/*  color:black;*/
-/*  font-size:14px;*/
-/*  background-color: white;*/
-/*  border:none;*/
-/*  border-radius:20px;*/
-/*}*/
+#download{
+  display: none;
+  margin:10px 20px;
+  padding:7px 20px;
+  text-align: center;
+  text-decoration: none;
+  color:black;
+  font-size:14px;
+  background-color: white;
+  border:none;
+
+  border-radius:20px;
+  width: 120px;
+  height: 30px;
+  font-size: 14px;
+  border: none;
+  border-radius: 20px;
+}
 
 </style>

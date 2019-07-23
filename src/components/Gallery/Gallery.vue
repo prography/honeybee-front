@@ -12,7 +12,7 @@
                      v-for="(myImage, index) in images">
                     <div v-if="index%4===0">
                         <img class="images" :src="myImage.src" alt="img" @click="clickImg(myImage)">
-                        <div class="info">{{myImage.name}}<span><img class="like" :src="download"/><img class="like" :src="like"/></span></div>
+                        <div class="info">{{myImage.name}}<span><img class="like" :src="download" @click="downloadImg(myImage)"/><img class="like" :src="myImage.show ? likeFill : like" @click="heartToggle(myImage)"/></span></div>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                      v-for="(myImage, index) in images">
                     <div v-if="index%4===1">
                         <img class="images" :src="myImage.src" alt="img" @click="clickImg(myImage)">
-                        <div class="info">{{myImage.name}}<span><img class="like" :src="download"/><img class="like" :src="like"/></span></div>
+                        <div class="info">{{myImage.name}}<span><img class="like" :src="download"/><img class="like" :src="myImage.show ? likeFill : like" @click="heartToggle(myImage)"/></span></div>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                      v-for="(myImage, index) in images">
                     <div v-if="index%4===2">
                         <img class="images" :src="myImage.src" alt="img" @click="clickImg(myImage)">
-                        <div class="info">{{myImage.name}}<span><img class="like" :src="download"/><img class="like" :src="like"/></span></div>
+                        <div class="info">{{myImage.name}}<span><img class="like" :src="download"/><img class="like" :src="myImage.show ? likeFill : like" @click="heartToggle(myImage)"/></span></div>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                      v-for="(myImage, index) in images">
                     <div v-if="index%4===3">
                         <img class="images" :src="myImage.src" alt="img" @click="clickImg(myImage)">
-                        <div class="info">{{myImage.name}}<span><img class="like" :src="download"/><img class="like" :src="like"/></span></div>
+                        <div class="info">{{myImage.name}}<span><img class="like" :src="download"/><img class="like" :src="myImage.show ? likeFill : like" @click="heartToggle(myImage)"/></span></div>
                     </div>
                 </div>
             </div>
@@ -91,6 +91,12 @@
                 let div = document.getElementById('modal-content');
                 div.getElementsByTagName('img')[0].remove();
                 div.getElementsByTagName('div')[0].remove();
+            },
+            heartToggle(myImage) {
+                myImage.show = !myImage.show;
+            },
+            downloadImg(myImage) {
+                console.log(myImage);
             }
         }
     }

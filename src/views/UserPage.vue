@@ -26,32 +26,44 @@ export default {
       {
         src: img1,
         name: 'John',
-        show: false
+        show: false,
+        like: 27,
+        download: 13
       },
       {
         src: img2,
         name: 'kevin',
-        show: false
+        show: false,
+        like: 27,
+        download: 13
       },
       {
         src: img3,
         name: 'abigail',
-        show: false
+        show: false,
+        like: 27,
+        download: 13
       },
       {
         src: img4,
         name: 'sarah',
-        show: false
+        show: false,
+        like: 27,
+        download: 13
       },
       {
         src: img5,
         name: 'ruth',
-        show: false
+        show: false,
+        like: 27,
+        download: 13
       },
       {
         src: img6,
         name: 'peter',
-        show: false
+        show: false,
+        like: 27,
+        download: 13
       }
     ];
     return {
