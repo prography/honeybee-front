@@ -1,18 +1,22 @@
 <template>
   <div class="user_info_change">
     <div class="info_change">
-      <div>
+      <!-- <div>
         <label for="userID">ID</label>
         <input class="edit-input" type="text" id="user_ID" @keyup="idCheck">
+      </div> -->
+      <div class="notice">
+        아이디 변경은 지원하지 않습니다.<br>
+        수정 완료 후 Edit 버튼을 누르지 않으면 수정하신 내용이 저장 되지 않습니다.
       </div>
       <div>
         <label for="userEmail">Email</label>
         <input class="edit-input" type="email" id="user_Email" @keyup="emailCheck">
       </div>
-      <div>
+      <!-- <div>
         <label for="currentUserPassword">현재 PassWord 입력</label>
         <input class="edit-input" type="password" id="current_user_PWD" @keyup="currentPwdCheck">
-      </div>
+      </div> -->
       <div>
         <label for="UserPassword">변경 PassWord 입력</label>
         <input class="edit-input" type="password" id="user_PWD" @keyup="pwdFormCheck">
@@ -23,7 +27,7 @@
       </div>
       <div class="warningMesage"></div>
       <button class="buttonA">Edit</button>
-      <button class="buttonA" @click='cancel'>Cancel</button>
+      <!-- <button class="buttonA" @click='cancel'>Cancel</button> -->
     </div>
   </div>
 </template>
@@ -136,5 +140,11 @@ input{
   font-weight: bold;
   color: #555;
   font-size: 18px;
+}
+
+.notice{
+  margin-top:10px;
+  margin-bottom:10px;
+  color:orangered;
 }
 </style>

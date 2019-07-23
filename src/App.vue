@@ -69,10 +69,10 @@ body{
 
 
 .main_contents{
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 120px);
 }
 
 .footer_section{
-  height:100px; //Footer.vue에서 설정한 Footer의 height
+  height:120px; //Footer.vue에서 설정한 Footer의 height
 }
 </style>

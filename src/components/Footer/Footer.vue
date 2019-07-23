@@ -1,6 +1,10 @@
 <template>
 <div class="footer">
-  <h1>Footer</h1>
+  <div class="contents">
+    <!-- <div>Honeybee</div> -->
+    <img src="@/assets/navbar-logo.png">
+    <div class="prography">with Prography</div>
+  </div>
 </div>
 </template>
 
@@ -13,8 +17,17 @@ export default {
 <style scoped>
 .footer{
   text-align: center;
-  height: 100px;
-  background-color:rgba(51, 51, 51); /*47, 45, 22*/
-  color:white;
+  height: 120px;
+  background-color:rgba(20, 20, 20); /*47, 45, 22*/ /*51, 51, 51*/
+  color:silver;
+}
+
+img{
+  height:60px;
+}
+
+.prography{
+  text-align:center;
+  font-size:30px;
 }
 </style>
