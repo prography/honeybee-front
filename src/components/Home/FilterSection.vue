@@ -77,7 +77,7 @@ export default {
       }
       formData.append('filter_info', filter);
 
-      axios.post ('http://127.0.0.1:8000/tmppicture/',
+      axios.post('http://127.0.0.1:8000/tmppicture/',
         formData,
         {
            headers: {
@@ -85,7 +85,6 @@ export default {
            }
         }).then(
           function(response){
-            console.log(response);
             let result="data:image.png;base64,"+response.data;
             document.getElementById('after').src=result;
             let src="data:image.png;base64,"+response.data;
@@ -105,9 +104,21 @@ export default {
       //서버에 필터 이름과 함꼐 이미지를 전송.
     },
     share() {
-      axios.get('http://localhost:8000/picture')
-              .then(res => console.log(res))
-              .catch(err => console.log(err));
+        /*
+        let imgFile = new Image;
+        axios.post('http://localhost:8000/api/auth/mypage/',
+          {
+              'pic_address' : , // 유석아 이 부분 부탁한다..
+              'share' : true
+          },
+          {
+              headers: {
+                  'Authorization' : 'token ' + localStorage.getItem('token')
+              }
+          })
+          .then(res => console.log(res))
+          .catch(e => console.log(e));
+         */
       // if(sessionStorage.getItem('signIN')){
       //   window.alert(store.getters.getResultUrl);
       // } else {

@@ -135,12 +135,12 @@
                     console.log(res);
                     res.data.forEach(e => {
                         let pic = {};
-                        let picSrc = e.pic_address;
-                        picSrc = "../../../../../VSCodeProjects/honeybee_server/honeybee_back"+picSrc;
+                        let picAddr = e.pic_address;
+                        picAddr = "http://localhost:8000"+picAddr;
                         // let picSrc = e.pic_address.split('/');
                         // picSrc[2] = "temp";
                         // picSrc = picSrc.join('/');
-                        pic.src = picSrc;
+                        pic.src = picAddr;
                         pic.name = e.id;
                         pic.show = false;
                         pic.like = e.like;
