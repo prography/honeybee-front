@@ -36,7 +36,22 @@ export default {
       this.$router.push({path:'user_info_change'});
     },
     withdraw(){
-      console.log("ㅠㅠ");
+      if(confirm ("회원을 탈퇴하시겠습니까?")==true){
+        axios.delete('http://localhost:8000/api/auth/user/',{
+          headers:{
+            'Authorization':'Token '+localStorage.getItem("token")
+          }
+        })
+        localStorage.removeItem("signIN");
+        localStorage.removeItem("userID");
+        localStorage.removeItem("token");
+
+        alert("회원 탈퇴가 성공적으로 진행되었습니다")
+        location.reload();
+        setTimeout(function(){
+          this.$router.push('/');
+        }, 4000);
+      }
     }
   },
   created(){
