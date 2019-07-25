@@ -51,6 +51,7 @@ export default {
         setTimeout(function(){
           this.$router.push('/');
         }, 4000);
+        
       }
     }
   },
