@@ -12,10 +12,6 @@
     <button class="buttonA" @click="signIn()">Sign In</button>
     <router-link to='/sign_up' tag="button" class="buttonA">회원가입</router-link>
     <button class="buttonA">아이디 비밀번호 찾기</button>
-    <button class="buttonA">
-      <!-- <img src="../assets/google_logo.png"> -->
-      Google Sign In
-    </button>
     
   </div>
 </template>

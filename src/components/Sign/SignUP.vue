@@ -60,9 +60,24 @@ export default {
           document.getElementById('warnSameID').style.display="none";
         }
       }else{
-        this.ID_OK = true;
-        document.getElementById('warnLengthID').style.display="none";
-        document.getElementById('user_ID').style.borderColor="LimeGreen";
+        axios.get('http://localhost:8000/checkid/', {
+          params:{
+            username:ID
+          }
+        }).then(response=>{
+          if(response.data.overlap==="fail"){
+            this.ID_OK=false;
+            document.getElementById('user_ID').style.borderColor="OrangeRed";
+            document.getElementById('warnLengthID').style.display="none";
+            document.getElementById('warnSameID').style.display="block";
+          }else{
+            this.ID_OK = true;
+            document.getElementById('warnLengthID').style.display="none";
+            document.getElementById('warnSameID').style.display="none";
+            document.getElementById('user_ID').style.borderColor="LimeGreen";
+          }
+        });
+        
         //서버에서 ID 중복 확인 필요
       }
     },
