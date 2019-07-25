@@ -11,6 +11,6 @@ export default{
     //원본 이미지 객체를 저장
   },
   getResultUrl(state){
-    return state.imgExifOrientation;
+    return state.resultUrl;
   }
 }

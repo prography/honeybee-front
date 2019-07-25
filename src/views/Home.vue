@@ -128,7 +128,7 @@
             }
         },
         created(){
-            console.log(sessionStorage.getItem("token"));
+            console.log(localStorage.getItem("token"));
             axios.get('http://localhost:8000/picture')
                 .then(res =>
                 {
