@@ -2,7 +2,7 @@
 <div id='nav' class="navbar" :class="[currentPath==='/' ? '' : 'notHome' ]">
   <div class="navbar-logo">
     <img id="logo_round" src="@/assets/logo_shape.png">
-    <span id="brand_title"><a class="logo_word" href="/">Honeybee</a></span>
+    <span id="brand_title"><a class="logo_word" href="/">HoneyBee</a></span>
   </div>
   <div class="navbar-buttons">
     <navbarButton v-for="item in items" :key="item.id" :buttonText="item.name" :page="item.path"/>
