@@ -87,7 +87,8 @@ export default {
            }
         }).then(
           function(response){
-
+            console.log(response);
+            
             let result="data:image.png;base64,"+response.data;
             document.getElementById('after').src=result;
             let src="data:image.png;base64,"+response.data;
