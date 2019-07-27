@@ -67,6 +67,8 @@ export default {
       document.getElementById("share").style.display='none';
       document.getElementById("close").style.display='none';
 
+
+
       this.files=store.getters.getOBJ;
       //data()에 vuex에 저장된 배열을 저장.
 
@@ -85,6 +87,8 @@ export default {
            }
         }).then(
           function(response){
+            console.log(response);
+            
             let result="data:image.png;base64,"+response.data;
             document.getElementById('after').src=result;
             let src="data:image.png;base64,"+response.data;
@@ -104,29 +108,30 @@ export default {
       //서버에 필터 이름과 함꼐 이미지를 전송.
     },
     share() {
-        /*
-        let imgFile = new Image;
-        axios.post('http://localhost:8000/api/auth/mypage/',
-          {
-              'pic_address' : , // 유석아 이 부분 부탁한다..
-              'share' : true
-          },
-          {
-              headers: {
-                  'Authorization' : 'token ' + localStorage.getItem('token')
-              }
-          })
-          .then(res => console.log(res))
-          .catch(e => console.log(e));
-         */
-      // if(sessionStorage.getItem('signIN')){
-      //   window.alert(store.getters.getResultUrl);
-      // } else {
-      //   // window.alert("로그인X");
-      //   if(window.confirm("로그인이 필요한 기능입니다. 로그인 페이지로 이동하시겠습니까?")){
-      //     location.href="/sign_in";
-      //   }
-      // }
+        
+      if(sessionStorage.getItem('signIN')){
+
+        // let data=new FormData();
+        // data.append
+        window.alert(store.getters.getResultUrl);
+
+
+        // axios.post('http://localhost:8000/api/auth/mypage/',
+        //   {
+        //       'pic_address' : , // 유석아 이 부분 부탁한다..
+        //       'share' : true
+        //   },
+        //   {
+        //       headers: {
+        //           'Authorization' : 'token ' + localStorage.getItem('token')
+        //       }
+        //   })
+      } else {
+        // window.alert("로그인X");
+        if(window.confirm("로그인이 필요한 기능입니다. 로그인 페이지로 이동하시겠습니까?")){
+          location.href="/sign_in";
+        }
+      }
     }
   },
   created(){
@@ -218,28 +223,28 @@ export default {
   color: #ffffff;
   background-color: white;
 }
-.filter:nth-child(1){
-  background-color: #123123;
+.filter{
+  background-color: #234234;
 }
-.filter:nth-child(2){
+/* .filter:nth-child(2){
   background-color: #234234;
 }
 .filter:nth-child(3){
-  background-color: #345345;
+  background-color: #234234;
 }
 .filter:nth-child(4){
-  background-color: #456456;
+  background-color: #234234;
 }
 .filter:nth-child(5){
-  background-color: #567567;
+  background-color: #234234;
 }
 .filter:nth-child(6){
-  background-color: #678678;
+  background-color: #234234;
 }
 
 .filter:nth-child(7){
-  background-color: #678679;
-}
+  background-color: #234234;
+} */
 
 
 

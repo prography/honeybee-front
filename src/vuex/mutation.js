@@ -15,6 +15,6 @@ export default{
     state.imgOBJ=payload;
   },
   setResultUrl(state, payload){
-    state.imgExifOrientation=payload;
+    state.resultUrl=payload;
   }
 }

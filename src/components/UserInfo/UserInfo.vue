@@ -1,24 +1,16 @@
 <template>
   <div class="user_info">
     <div class="user">
-      <img v-if="user_img" class="profile_img" src="../../assets/img5.jpg">
-      <default_img v-else/> <!--컴포넌트입니다-->
+      <default_img/> <!--컴포넌트입니다-->
       <div class="profile">
         <div class="profile_info profile_id">{{ID}}</div>
-        <div class="profile_info profile_intro">{{Introduce}}</div>
+        <div class="profile_info profile_Email">{{Email}}</div>
       </div>
     </div>
-    <div class="total_like_dl">
-      <span class="total">
-        <span class="total_like_num">{{likes}}</span>
-        <span class="total_like"> likes</span>
-      </span>
-      <span class="total">
-        <span class="total_dl_num">{{downloads}}</span>
-        <span class="total_dl"> downloads</span>
-      </span>
+    <div class="buttons">
+      <button @click='edit'>Edit Info</button>
+      <button @click='withdraw'>Withdrawal</button>
     </div>
-    <button @click='edit'>Edit Info</button>
   </div>
 </template>
 
@@ -26,6 +18,7 @@
 <script>
 import default_img from "./UserDefaultImg.vue"
 import store from '@/vuex/store.js'
+import axios from 'axios'
 
 export default {
   name:'user_info',
@@ -34,17 +27,42 @@ export default {
   },
   data(){
     return{
-      user_img:false,
-      ID: sessionStorage.getItem("userID"),
-      Introduce:"Hello, I'm Owen. Nice to meet you. I like honeybees. I work for prography blur blur....",
-      likes:"177",
-      downloads:"547"
+      ID: localStorage.getItem("userID"),
+      Email: ''
     }
   },
   methods:{
     edit(){
       this.$router.push({path:'user_info_change'});
+    },
+    withdraw(){
+      if(confirm ("회원을 탈퇴하시겠습니까?")==true){
+        axios.delete('http://localhost:8000/api/auth/user/',{
+          headers:{
+            'Authorization':'Token '+localStorage.getItem("token")
+          }
+        })
+        localStorage.removeItem("signIN");
+        localStorage.removeItem("userID");
+        localStorage.removeItem("token");
+
+        alert("회원 탈퇴가 성공적으로 진행되었습니다")
+        location.reload();
+        setTimeout(function(){
+          this.$router.push('/');
+        }, 4000);
+        
+      }
     }
+  },
+  created(){
+    axios.get('http://localhost:8000/api/auth/user/',{
+      headers:{
+        'Authorization':'Token '+localStorage.getItem("token")
+      }
+    }).then(response=>{
+      this.Email=response.data.email;
+    })
   }
   
 }
@@ -83,33 +101,26 @@ export default {
   font-weight: 700;
 }
 
-.total_like_dl{
-  margin-bottom:20px;
-  text-align:center;
-  font-size:20px;
-}
-
-.total{
-  margin-left:10px;
-  margin-right:10px;
-}
-
-.total_like_num{
-  font-weight:bold;
-}
-
-.total_dl_num{
-  font-weight:bold;
+.profile_Email{
+  font-size: 30px;
+  font-weight: 700;
 }
 
 button{
+  text-align:center;
+  width:170px;
   height:40px;
+  margin: 0px 10px;
   padding:5px 40px;
   border:none;
   border-radius:20px;
   background-color:#333;
   font-size:18px;
   color:white;
+}
+
+.withdrawal{
+
 }
 
 </style>
