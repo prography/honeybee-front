@@ -87,7 +87,6 @@ export default {
            }
         }).then(
           function(response){
-            console.log(response);
             
             let result="data:image.png;base64,"+response.data;
             document.getElementById('after').src=result;
@@ -109,11 +108,11 @@ export default {
     },
     share() {
         
-      if(sessionStorage.getItem('signIN')){
+      if(localstorage.getItem('signIN')){
 
         // let data=new FormData();
         // data.append
-        window.alert(store.getters.getResultUrl);
+        // window.alert(store.getters.getResultUrl);
 
 
         // axios.post('http://localhost:8000/api/auth/mypage/',
