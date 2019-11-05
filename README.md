@@ -1,29 +1,7 @@
 # honeybee-front
 
-## Project setup
-```
-yarn install
-```
+## 서비스 소개
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+## 기술 스택
 
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 포스터
