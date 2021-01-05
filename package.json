@@ -7,7 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "exif-js": "^2.3.0",
     "save": "^2.3.3",
     "vue": "^2.6.6",
